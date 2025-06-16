@@ -227,7 +227,7 @@ export default function Home() {
           </svg>
         </>
       ) : (
-        section.replace(/^\w/, (c) => c.toUpperCase()) + " US"
+        {section === "brands" ? "Our Brands" : section.charAt(0).toUpperCase() + section.slice(1) + " US"}
       )}
       <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-white transition-all duration-300 group-hover:w-full" />
     </a>
