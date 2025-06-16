@@ -99,7 +99,7 @@ export default function Home() {
       </Head>
 
    <>
-  {/* === Sticky Header (Visible after Hero scroll) === */}
+{/* === Sticky Header (Visible after Hero scroll) === */}
 {showHeader && (
   <header
     className={cn(
@@ -129,7 +129,9 @@ export default function Home() {
                 </svg>
               </>
             ) : (
-              section.replace(/^\w/, (c) => c.toUpperCase()) + " US"
+              section === "brands"
+                ? "Our Brands"
+                : section.charAt(0).toUpperCase() + section.slice(1) + " US"
             )}
             <span
               className={`absolute -bottom-1 left-0 h-[1.5px] bg-black transition-all duration-300 ${
@@ -179,7 +181,9 @@ export default function Home() {
             >
               {section === "contact"
                 ? "GET IN TOUCH"
-                : section.replace(/^\w/, (c) => c.toUpperCase()) + " US"}
+                : section === "brands"
+                  ? "Our Brands"
+                  : section.charAt(0).toUpperCase() + section.slice(1) + " US"}
             </a>
           ))}
         </nav>
@@ -188,52 +192,52 @@ export default function Home() {
   </header>
 )}
 
+{/* === Hero Section === */}
+<section className="relative h-[100vh] sm:h-screen w-full overflow-hidden font-termina">
+  {/* Static Logo top-left */}
+  <div className="absolute top-10 left-6 z-50">
+    <Image
+      src="/img/logo.png"
+      alt="I&A International Logo"
+      width={100}
+      height={40}
+      priority
+      className="filter brightness-0 invert"
+    />
+  </div>
 
-  {/* === Hero Section === */}
-  <section className="relative h-[100vh] sm:h-screen w-full overflow-hidden font-termina">
-    {/* Static Logo top-left */}
-    <div className="absolute top-10 left-6 z-50">
-      <Image
-        src="/img/logo.png"
-        alt="I&A International Logo"
-        width={100}
-        height={40}
-        priority
-        className="filter brightness-0 invert"
-      />
-    </div>
+  {/* Vertical Side Navigation (Right) */}
+  <div className="absolute top-16 right-4 z-50 text-white flex flex-col items-end space-y-5 text-sm">
+    {/* Optional: Search Button */}
+    <button className="hover:text-gray-300 transition">
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+    </button>
 
-   {/* Vertical Side Navigation (Right) */}
-<div className="absolute top-16 right-4 z-50 text-white flex flex-col items-end space-y-5 text-sm">
-  {/* Optional: Search Button */}
-  <button className="hover:text-gray-300 transition">
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-      <circle cx="11" cy="11" r="8" />
-      <line x1="21" y1="21" x2="16.65" y2="16.65" />
-    </svg>
-  </button>
-
-  {["about", "brands", "contact"].map((section) => (
-    <a
-      key={section}
-      href={`#${section}`}
-      className="relative group hover:text-gray-300 transition flex items-center gap-1"
-    >
-      {section === "contact" ? (
-        <>
-          GET IN TOUCH
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-            <path d="M21 10l-6 6-4-4-6 6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </>
-      ) : (
-        {section === "brands" ? "Our Brands" : section.charAt(0).toUpperCase() + section.slice(1) + " US"}
-      )}
-      <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-white transition-all duration-300 group-hover:w-full" />
-    </a>
-  ))}
-</div>
-
+    {["about", "brands", "contact"].map((section) => (
+      <a
+        key={section}
+        href={`#${section}`}
+        className="relative group hover:text-gray-300 transition flex items-center gap-1"
+      >
+        {section === "contact" ? (
+          <>
+            GET IN TOUCH
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+              <path d="M21 10l-6 6-4-4-6 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </>
+        ) : (
+          section === "brands"
+            ? "Our Brands"
+            : section.charAt(0).toUpperCase() + section.slice(1) + " US"
+        )}
+        <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-white transition-all duration-300 group-hover:w-full" />
+      </a>
+    ))}
+  </div>
 
     {/* Hero Background Images with Fade + Parallax */}
     {images.map((img, index) => (
