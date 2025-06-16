@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* styles/globals.css */
+@font-face {
+  font-family: 'Termina';
+  src: url('/fonts/Termina-Regular.woff2') format('woff2'); /* Adjust path and formats */
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Termina', sans-serif;
+}
