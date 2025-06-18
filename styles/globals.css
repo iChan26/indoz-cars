@@ -19,3 +19,25 @@ body {
   -webkit-text-stroke: 0.6px white;
   text-shadow: 0 0 2px rgba(255, 255, 255, 0.6);
 }
+@keyframes typewriter {
+  0% {
+    width: 0;
+  }
+  80% {
+    width: 100%;
+  }
+  93% {
+    width: 100%; /* Hold the full text for ~3s */
+  }
+  100% {
+    width: 0;
+  }
+}
+
+.animate-typewriter {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid black;
+  animation: typewriter 6s steps(60, end) infinite;
+}

@@ -273,48 +273,39 @@ export default function About() {
           </div>
 
           {/* Main content grid */}
-          <div className="grid md:grid-cols-2 gap-10 items-start">
-            {/* Mobile-only image shown above paragraphs */}
-            <div className="block md:hidden w-full rounded-lg overflow-hidden shadow-md">
-              <img
-                src="/img/discussing-document-min.jpg"
-                alt="Corporate responsibility in action"
-                className="object-cover w-full h-full"
-              />
-            </div>
+       <div className="grid md:grid-cols-2 gap-10 items-start">
+  {/* Left column - Paragraphs */}
+  <div className="space-y-6 text-gray-700 text-[15px] leading-relaxed order-2 md:order-1">
+    <p>
+      At I&A International, we take our role in the community seriously. We are committed to reducing our environmental impact by integrating sustainable practices into every part of our operations — from minimizing waste and using eco-friendly packaging to implementing energy-efficient lighting.
+    </p>
+    <p>
+      We proudly support local and global charitable causes, especially those promoting <strong>education</strong>, <strong>healthcare</strong>, and <strong>environmental sustainability</strong>. Our partnerships with suppliers are based on shared values of ethical sourcing, safety, and fairness in working conditions.
+    </p>
+    <p>
+      Diversity and inclusion are integral to our identity. We foster a workplace that celebrates differences, ensuring every individual feels respected, heard, and empowered.
+    </p>
+    <p>
+      For us, corporate responsibility isn’t a trend — it’s a cornerstone of how we operate. We remain dedicated to making a positive impact both within and beyond our industry.
+    </p>
+  </div>
 
-            {/* Left column - Paragraphs */}
-            <div className="space-y-6 text-gray-700 text-[15px] leading-relaxed">
-              <p>
-                At I&A International, we take our role in the community seriously. We are committed to reducing our environmental impact by integrating sustainable practices into every part of our operations — from minimizing waste and using eco-friendly packaging to implementing energy-efficient lighting.
-              </p>
-              <p>
-                We proudly support local and global charitable causes, especially those promoting <strong>education</strong>, <strong>healthcare</strong>, and <strong>environmental sustainability</strong>. Our partnerships with suppliers are based on shared values of ethical sourcing, safety, and fairness in working conditions.
-              </p>
-              <p>
-                Diversity and inclusion are integral to our identity. We foster a workplace that celebrates differences, ensuring every individual feels respected, heard, and empowered.
-              </p>
-              <p>
-                For us, corporate responsibility isn’t a trend — it’s a cornerstone of how we operate. We remain dedicated to making a positive impact both within and beyond our industry.
-              </p>
-            </div>
-
-            {/* Right column - Image (desktop only) */}
-            <div className="relative hidden md:block">
-              <div className="w-full h-full rounded-lg overflow-hidden shadow-md">
-                <img
-                  src="/img/discussing-document-min.jpg"
-                  alt="Corporate responsibility in action"
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 px-4 py-3 rounded shadow-md max-w-[90%]">
-                <p className="text-sm text-gray-800 italic">
-                  "Sustainability and responsibility are not choices — they are our commitments."
-                </p>
-              </div>
-            </div>
-          </div>
+  {/* Right column - Image + Quote (shared for all screens) */}
+  <div className="relative order-1 md:order-2">
+    <div className="w-full rounded-lg overflow-hidden shadow-md">
+      <img
+        src="/img/discussing-document-min.jpg"
+        alt="Corporate responsibility in action"
+        className="object-cover w-full h-full"
+      />
+    </div>
+    <div className="absolute bottom-4 left-4 right-4 bg-white/90 px-4 py-3 rounded shadow-md">
+      <p className="text-sm text-gray-800 italic whitespace-nowrap overflow-hidden border-r-2 border-gray-800 animate-typewriter">
+        "Sustainability and responsibility are not choices — they are our commitments."
+      </p>
+    </div>
+  </div>
+</div>
 
         </div>
       </section>
