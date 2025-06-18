@@ -54,7 +54,7 @@ export default function About() {
         <div className="absolute inset-0 bg-black/30" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 h-full flex items-center justify-between text-white">
-      
+
 
           {/* === Main Banner Content Centered === */}
           <div className="relative z-10 mx-auto text-center">
@@ -62,7 +62,7 @@ export default function About() {
           </div>
         </div>
 
-       
+
       </div>
 
       {/* === Sticky Header (with backdrop blur) === */}
@@ -90,14 +90,35 @@ export default function About() {
                   className={`relative group transition ${section === "about" ? "text-black" : "hover:text-gray-600"} flex items-center gap-1`}
                 >
                   {section === "contact" ? (
-                    <>
+                    <Link
+                      href="/contact-us"
+                      className={`text-sm transition flex items-center gap-1 ${activeSection === "contact"
+                          ? "text-black font-semibold"
+                          : "text-gray-700 hover:text-black"
+                        }`}
+                    >
                       GET IN TOUCH
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                        <path d="M21 10l-6 6-4-4-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M21 10l-6 6-4-4-6 6"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
                       </svg>
-                    </>
+                    </Link>
                   ) : section === "brands" ? (
-                    "Our Brands"
+                    <Link key={section} href="/our-brands" passHref>
+                      <div className="relative group hover:text-black-900 transition flex items-center gap-1 cursor-pointer">
+                        Our Brands
+                        <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-white transition-all duration-300 group-hover:w-full" />
+                      </div>
+                    </Link>
                   ) : (
                     section.charAt(0).toUpperCase() + section.slice(1) + " US"
                   )}
@@ -134,23 +155,50 @@ export default function About() {
           {mobileMenuOpen && (
             <div className="md:hidden px-4 pb-4 pt-2">
               <nav className="flex flex-col items-start gap-4">
-                {["about", "brands", "contact"].map((section) => (
+                <Link
+                  href="/about-us"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-sm text-black underline underline-offset-4"
+                >
+                  About Us
+                </Link>
+
+                <Link
+                  href="/our-brands"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-sm text-gray-700 hover:text-black"
+                >
+                  Our Brands
+                </Link>
+
+                <Link href="/contact-us" legacyBehavior>
                   <a
-                    key={section}
-                    href={`#${section}`}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`text-sm transition ${section === "about" ? "text-black font-semibold underline underline-offset-4" : "text-gray-700 hover:text-black"}`}
+                    className={`text-sm transition flex items-center gap-1 ${activeSection === "contact"
+                        ? "text-black font-semibold"
+                        : "text-gray-700 hover:text-black"
+                      }`}
                   >
-                    {section === "contact"
-                      ? "GET IN TOUCH"
-                      : section === "brands"
-                        ? "Our Brands"
-                        : section.charAt(0).toUpperCase() + section.slice(1) + " US"}
+                    GET IN TOUCH
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M21 10l-6 6-4-4-6 6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </a>
-                ))}
+                </Link>
               </nav>
             </div>
           )}
+
         </header>
       )}
 
@@ -226,6 +274,15 @@ export default function About() {
 
           {/* Main content grid */}
           <div className="grid md:grid-cols-2 gap-10 items-start">
+            {/* Mobile-only image shown above paragraphs */}
+            <div className="block md:hidden w-full rounded-lg overflow-hidden shadow-md">
+              <img
+                src="/img/discussing-document-min.jpg"
+                alt="Corporate responsibility in action"
+                className="object-cover w-full h-full"
+              />
+            </div>
+
             {/* Left column - Paragraphs */}
             <div className="space-y-6 text-gray-700 text-[15px] leading-relaxed">
               <p>
@@ -242,21 +299,23 @@ export default function About() {
               </p>
             </div>
 
-            {/* Right column - Visual or illustration */}
-            <div className="relative">
+            {/* Right column - Image (desktop only) */}
+            <div className="relative hidden md:block">
               <div className="w-full h-full rounded-lg overflow-hidden shadow-md">
                 <img
-                  src="/img/discussing-document-min.jpg" // Replace with your actual image or leave as-is to use a placeholder
+                  src="/img/discussing-document-min.jpg"
                   alt="Corporate responsibility in action"
                   className="object-cover w-full h-full"
                 />
               </div>
-              {/* Optional overlay or quote */}
               <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 px-4 py-3 rounded shadow-md max-w-[90%]">
-                <p className="text-sm text-gray-800 italic">"Sustainability and responsibility are not choices — they are our commitments."</p>
+                <p className="text-sm text-gray-800 italic">
+                  "Sustainability and responsibility are not choices — they are our commitments."
+                </p>
               </div>
             </div>
           </div>
+
         </div>
       </section>
 

@@ -14,3 +14,8 @@
 body {
   font-family: 'Termina', sans-serif;
 }
+/* tailwind text stroke utility */
+.stroke-text {
+  -webkit-text-stroke: 0.6px white;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.6);
+}

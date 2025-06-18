@@ -99,7 +99,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-   <>
+  
+  <>
 {/* === Sticky Header (Visible after Hero scroll) === */}
 {showHeader && (
   <header
@@ -114,33 +115,45 @@ export default function Home() {
 
       {/* === Desktop Navigation === */}
       <nav className="hidden md:flex items-center gap-8">
-        {["about", "brands", "contact"].map((section) => (
-          <a
-            key={section}
-            href={`#${section}`}
-            className={`relative group transition ${
-              activeSection === section ? "text-black" : "hover:text-gray-600"
-            } flex items-center gap-1`}
-          >
-            {section === "contact" ? (
-              <>
-                GET IN TOUCH
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                  <path d="M21 10l-6 6-4-4-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </>
-            ) : (
-              section === "brands"
-                ? "Our Brands"
-                : section.charAt(0).toUpperCase() + section.slice(1) + " US"
-            )}
-            <span
-              className={`absolute -bottom-1 left-0 h-[1.5px] bg-black transition-all duration-300 ${
-                activeSection === section ? "w-full" : "w-0 group-hover:w-full"
-              }`}
-            />
-          </a>
-        ))}
+        <Link href="/about-us" className="relative group transition text-black flex items-center gap-1">
+          About Us
+          <span className="absolute -bottom-1 left-0 h-[1.5px] bg-black transition-all duration-300 w-0 group-hover:w-full" />
+        </Link>
+
+        <Link href="/our-brands" className="relative group transition text-black flex items-center gap-1">
+          Our Brands
+          <span className="absolute -bottom-1 left-0 h-[1.5px] bg-black transition-all duration-300 w-0 group-hover:w-full" />
+        </Link>
+
+   <Link
+  href="/contact-us"
+  className={`relative group text-sm transition flex items-center gap-1 ${
+    activeSection === "contact"
+      ? "text-black font-semibold"
+      : "text-gray-700 hover:text-black"
+  }`}
+>
+  GET IN TOUCH
+  <svg
+    className="w-4 h-4"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    viewBox="0 0 24 24"
+  >
+    <path
+      d="M21 10l-6 6-4-4-6 6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+  <span
+    className={`absolute -bottom-1 left-0 h-[1.5px] bg-black transition-all duration-300 ${
+      activeSection === "contact" ? "w-full" : "w-0 group-hover:w-full"
+    }`}
+  />
+</Link>
+
 
         {/* Optional: Search icon */}
         <button className="hover:text-gray-300 transition">
@@ -171,22 +184,46 @@ export default function Home() {
     {mobileMenuOpen && (
       <div className="md:hidden px-4 pb-4 pt-2">
         <nav className="flex flex-col items-start gap-4">
-          {["about", "brands", "contact"].map((section) => (
-            <a
-              key={section}
-              href={`#${section}`}
-              onClick={() => setMobileMenuOpen(false)} // Close on click
-              className={`text-sm transition ${
-                activeSection === section ? "text-black font-semibold" : "text-gray-700 hover:text-black"
-              }`}
+          <Link
+            href="/about-us"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-sm transition text-black"
+          >
+            About Us
+          </Link>
+
+          <Link
+            href="/our-brands"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-sm text-gray-700 hover:text-black"
+          >
+            Our Brands
+          </Link>
+
+          <Link
+            href="/contact-us"
+            onClick={() => setMobileMenuOpen(false)}
+            className={`text-sm transition flex items-center gap-1 ${
+              activeSection === "contact"
+                ? "text-black font-semibold"
+                : "text-gray-700 hover:text-black"
+            }`}
+          >
+            GET IN TOUCH
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              viewBox="0 0 24 24"
             >
-              {section === "contact"
-                ? "GET IN TOUCH"
-                : section === "brands"
-                  ? "Our Brands"
-                  : section.charAt(0).toUpperCase() + section.slice(1) + " US"}
-            </a>
-          ))}
+              <path
+                d="M21 10l-6 6-4-4-6 6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </Link>
         </nav>
       </div>
     )}
@@ -207,8 +244,6 @@ export default function Home() {
     />
   </div>
 
- 
- 
 {/* Vertical Side Navigation (Right) */}
 <div className="absolute top-16 right-4 z-50 text-white flex flex-col items-end space-y-5 text-sm">
   {/* Search Button */}
@@ -222,83 +257,96 @@ export default function Home() {
   {["about", "brands", "contact"].map((section) => {
     if (section === "about") {
       return (
-        <Link key={section} href="/about" passHref>
-          <div className="relative group hover:text-gray-300 transition flex items-center gap-1 cursor-pointer">
+        <Link key={section} href="/about-us" passHref>
+          <div className="relative group cursor-pointer text-white hover:text-gray-300 transition flex items-center gap-1">
             About Us
-            <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-white transition-all duration-300 group-hover:w-full" />
+            <span className="absolute -bottom-1 left-0 h-[1.5px] bg-white w-0 group-hover:w-full transition-all duration-300" />
           </div>
         </Link>
       );
     }
 
+    if (section === "brands") {
+      return (
+        <Link key={section} href="/our-brands" passHref>
+          <div className="relative group cursor-pointer text-white hover:text-gray-300 transition flex items-center gap-1">
+            Our Brands
+            <span className="absolute -bottom-1 left-0 h-[1.5px] bg-white w-0 group-hover:w-full transition-all duration-300" />
+          </div>
+        </Link>
+      );
+    }
+
+    // section === "contact"
     return (
-      <a
-        key={section}
-        href={`#${section}`}
-        className="relative group hover:text-gray-300 transition flex items-center gap-1"
-      >
-        {section === "contact" ? (
-          <>
-            GET IN TOUCH
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-              <path d="M21 10l-6 6-4-4-6 6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </>
-        ) : (
-          "Our Brands"
-        )}
-        <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-white transition-all duration-300 group-hover:w-full" />
-      </a>
+      <Link key={section} href="/contact-us" passHref>
+  <div className="relative group flex items-center gap-1 text-white hover:opacity-80 transition">
+    GET IN TOUCH
+    <svg
+      className="w-4 h-4 text-white"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      viewBox="0 0 24 24"
+    >
+      <path d="M21 10l-6 6-4-4-6 6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+    <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-white group-hover:w-full transition-all duration-300" />
+  </div>
+</Link>
+
     );
   })}
 </div>
 
-    {/* Hero Background Images with Fade + Parallax */}
-    {images.map((img, index) => (
-      <div
-        key={index}
-        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-          index === currentSlide ? "opacity-100 z-0" : "opacity-0 z-0"
-        }`}
-        style={{ transform: `translateY(${scrollY * 0.2}px)` }}
-      >
-        <div className="relative w-full h-full overflow-hidden">
-          <Image
-            src={img}
-            alt={`Hero image ${index + 1}`}
-            fill
-            className={`object-cover transition-transform ease-in-out duration-[5000ms] ${
-              index === currentSlide ? "scale-110" : "scale-100"
-            }`}
-            style={{ objectPosition: "center top" }}
-            quality={90}
-            priority={index === 0}
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-black/30" />
-        </div>
-      </div>
-    ))}
 
-    {/* Hero Text */}
-    <div className="relative z-10 h-full flex flex-col justify-center items-center text-center text-white px-4">
-      <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
-        <Typewriter
-          words={["I&A International", "Luxury Redefined", "Where Fashion Meets Elegance"]}
-          loop
-          cursor
-          cursorStyle="_"
-          typeSpeed={80}
-          deleteSpeed={50}
-          delaySpeed={2000}
+  {/* Hero Background Images with Fade + Parallax */}
+  {images.map((img, index) => (
+    <div
+      key={index}
+      className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+        index === currentSlide ? "opacity-100 z-0" : "opacity-0 z-0"
+      }`}
+      style={{ transform: `translateY(${scrollY * 0.2}px)` }}
+    >
+      <div className="relative w-full h-full overflow-hidden">
+        <Image
+          src={img}
+          alt={`Hero image ${index + 1}`}
+          fill
+          className={`object-cover transition-transform ease-in-out duration-[5000ms] ${
+            index === currentSlide ? "scale-110" : "scale-100"
+          }`}
+          style={{ objectPosition: "center top" }}
+          quality={90}
+          priority={index === 0}
+          sizes="100vw"
         />
-      </h1>
-      <p className="text-base sm:text-lg md:text-2xl max-w-2xl">
-        Explore timeless elegance and high fashion with I&A International.
-      </p>
+        <div className="absolute inset-0 bg-black/30" />
+      </div>
     </div>
-  </section>
+  ))}
+
+  {/* Hero Text */}
+  <div className="relative z-10 h-full flex flex-col justify-center items-center text-center text-white px-4">
+    <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
+      <Typewriter
+        words={["I&A International", "Luxury Redefined", "Where Fashion Meets Elegance"]}
+        loop
+        cursor
+        cursorStyle="_"
+        typeSpeed={80}
+        deleteSpeed={50}
+        delaySpeed={2000}
+      />
+    </h1>
+    <p className="text-base sm:text-lg md:text-2xl max-w-2xl">
+      Explore timeless elegance and high fashion with I&A International.
+    </p>
+  </div>
+</section>
 </>
+
 
 
 
