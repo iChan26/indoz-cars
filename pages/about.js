@@ -54,44 +54,7 @@ export default function About() {
         <div className="absolute inset-0 bg-black/30" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 h-full flex items-center justify-between text-white">
-          {/* === Vertical Nav List (Left Side) === */}
-          <div className="absolute top-16 left-4 z-50 flex flex-col items-start space-y-5 text-sm">
-            <button className="hover:text-gray-300 transition" aria-label="Search">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-            </button>
-
-            {["about", "brands", "contact"].map((section) =>
-              section === "about" ? (
-                <Link key={section} href="/about" passHref legacyBehavior>
-                  <a className="relative group text-white transition flex items-center gap-1 cursor-pointer">
-                    About Us
-                    <span className="absolute -bottom-1 left-0 w-full h-[1.5px] bg-white" />
-                  </a>
-                </Link>
-              ) : (
-                <a
-                  key={section}
-                  href={`#${section}`}
-                  className="relative group hover:text-gray-300 transition flex items-center gap-1"
-                >
-                  {section === "contact" ? (
-                    <>
-                      GET IN TOUCH
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                        <path d="M21 10l-6 6-4-4-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </>
-                  ) : (
-                    "Our Brands"
-                  )}
-                  <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-white transition-all duration-300 group-hover:w-full" />
-                </a>
-              )
-            )}
-          </div>
+      
 
           {/* === Main Banner Content Centered === */}
           <div className="relative z-10 mx-auto text-center">
@@ -99,24 +62,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* === Static Logo at Middle Right (clickable) === */}
-        <div className="absolute top-1/2 right-4 sm:right-8 md:right-16 -translate-y-1/2 z-50">
-          <div className="w-[70px] h-auto md:w-[100px]">
-            <Link href="/" passHref legacyBehavior>
-              <a>
-                <Image
-                  src="/img/logo.png"
-                  alt="I&A International Logo"
-                  layout="responsive"
-                  width={100}
-                  height={40}
-                  priority
-                  className="filter brightness-0 invert"
-                />
-              </a>
-            </Link>
-          </div>
-        </div>
+       
       </div>
 
       {/* === Sticky Header (with backdrop blur) === */}
