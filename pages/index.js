@@ -347,7 +347,7 @@ export default function Home() {
       {/* === Timeline Item === */}
       <div className="relative pl-8">
         <div className="absolute top-1 left-[-0.45rem] w-4 h-4 bg-black rounded-full"></div>
-        <h3 className="text-lg font-semibold text-gray-800">1991 — Founded by Ardit Caushi</h3>
+        <h3 className="text-lg font-semibold text-gray-800">1991</h3>
         <p className="text-sm text-gray-600 mt-2">
           I&A International was established as a luxury jewelry retailer in Albania, setting the foundation for decades of elegance and excellence.
         </p>
