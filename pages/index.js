@@ -6,6 +6,7 @@ import { ArrowRight, MailIcon, UserIcon, MessageSquareIcon, LinkedinIcon, Facebo
 import { useEffect, useState, useRef } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import Slider from "react-slick";
+import Link from 'next/link'; // make sure this is imported at the top
 
 export default function Home() {
    const settings = {
@@ -206,17 +207,31 @@ export default function Home() {
     />
   </div>
 
-  {/* Vertical Side Navigation (Right) */}
-  <div className="absolute top-16 right-4 z-50 text-white flex flex-col items-end space-y-5 text-sm">
-    {/* Optional: Search Button */}
-    <button className="hover:text-gray-300 transition">
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="8" />
-        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-      </svg>
-    </button>
+ 
+ 
+{/* Vertical Side Navigation (Right) */}
+<div className="absolute top-16 right-4 z-50 text-white flex flex-col items-end space-y-5 text-sm">
+  {/* Search Button */}
+  <button className="hover:text-gray-300 transition">
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </svg>
+  </button>
 
-    {["about", "brands", "contact"].map((section) => (
+  {["about", "brands", "contact"].map((section) => {
+    if (section === "about") {
+      return (
+        <Link key={section} href="/about" passHref>
+          <div className="relative group hover:text-gray-300 transition flex items-center gap-1 cursor-pointer">
+            About Us
+            <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-white transition-all duration-300 group-hover:w-full" />
+          </div>
+        </Link>
+      );
+    }
+
+    return (
       <a
         key={section}
         href={`#${section}`}
@@ -230,14 +245,13 @@ export default function Home() {
             </svg>
           </>
         ) : (
-          section === "brands"
-            ? "Our Brands"
-            : section.charAt(0).toUpperCase() + section.slice(1) + " US"
+          "Our Brands"
         )}
         <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-white transition-all duration-300 group-hover:w-full" />
       </a>
-    ))}
-  </div>
+    );
+  })}
+</div>
 
     {/* Hero Background Images with Fade + Parallax */}
     {images.map((img, index) => (
@@ -318,6 +332,53 @@ export default function Home() {
           <Image src="/img/handsring.jpg" alt="Hand with rings" width={500} height={500} className="rounded-md w-full h-auto object-cover" />
         </div>
       </Slider>
+    </div>
+  </div>
+</section>
+
+{/* === Timeline Section === */}
+<section className="py-24 px-6 bg-white font-termina" id="timeline">
+  <div className="max-w-6xl mx-auto">
+    <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
+      Our Journey
+    </h2>
+
+    <div className="relative border-l-2 border-gray-200 ml-4 space-y-12">
+      {/* === Timeline Item === */}
+      <div className="relative pl-8">
+        <div className="absolute top-1 left-[-0.45rem] w-4 h-4 bg-black rounded-full"></div>
+        <h3 className="text-lg font-semibold text-gray-800">1991 — Founded by Ardit Caushi</h3>
+        <p className="text-sm text-gray-600 mt-2">
+          I&A International was established as a luxury jewelry retailer in Albania, setting the foundation for decades of elegance and excellence.
+        </p>
+      </div>
+
+      {/* === Timeline Item === */}
+      <div className="relative pl-8">
+        <div className="absolute top-1 left-[-0.45rem] w-4 h-4 bg-black rounded-full"></div>
+        <h3 className="text-lg font-semibold text-gray-800">2000s — Expansion Across Albania</h3>
+        <p className="text-sm text-gray-600 mt-2">
+          Grew presence with multiple retail stores and strengthened partnerships with world-renowned jewelry brands.
+        </p>
+      </div>
+
+      {/* === Timeline Item === */}
+      <div className="relative pl-8">
+        <div className="absolute top-1 left-[-0.45rem] w-4 h-4 bg-black rounded-full"></div>
+        <h3 className="text-lg font-semibold text-gray-800">2015 — Exclusive Brand Partnerships</h3>
+        <p className="text-sm text-gray-600 mt-2">
+          Secured exclusive selling rights for top-tier jewelry and luxury watch brands like Anna Maria Cammilli, Fope, and Eberhard & Co.
+        </p>
+      </div>
+
+      {/* === Timeline Item === */}
+      <div className="relative pl-8">
+        <div className="absolute top-1 left-[-0.45rem] w-4 h-4 bg-black rounded-full"></div>
+        <h3 className="text-lg font-semibold text-gray-800">2025 — New Digital Experience</h3>
+        <p className="text-sm text-gray-600 mt-2">
+          Launch of our new website and digital branding — bringing our luxury experience to customers worldwide.
+        </p>
+      </div>
     </div>
   </div>
 </section>
