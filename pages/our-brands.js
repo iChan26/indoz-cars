@@ -70,7 +70,7 @@ const NavBrands = ({ isMobile }) => {
         onClick={isMobile ? handleMobileClick : undefined}
         passHref
       >
-        <div className="flex justify-between items-center text-white hover:text-gray-300 cursor-pointer transition w-full">
+        <div className="flex justify-between items-center text-white hover:text-gray-300 cursor-pointer transition w-full ">
           <span className="relative">
             Our Brands
             <span className="absolute -bottom-1 left-0 h-[1.5px] bg-white w-0 group-hover:w-full transition-all duration-300" />
@@ -178,6 +178,15 @@ export default function About() {
     }
   }
   useEffect(() => {
+  const handleScroll = () => {
+    setOffsetY(window.scrollY);
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+
+  useEffect(() => {
     const handleOutside = (e) => {
       // if open and the click is outside our dropdown container, close it
       if (isOpen && containerRef.current && !containerRef.current.contains(e.target)) {
@@ -218,7 +227,7 @@ export default function About() {
           }}
         />
         <div className="absolute inset-0 bg-black/30" />
-        <div className="relative z-10 max-w-6xl mx-auto px-4 h-full flex items-center justify-center text-white">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 h-full flex items-center justify-center text-white mt-[50px]">
           <h2 className="text-3xl md:text-4xl font-bold uppercase">Our Brands</h2>
         </div>
       </div>
@@ -300,7 +309,7 @@ export default function About() {
             </div>
 
             <Link href="/contact-us" passHref legacyBehavior>
-              <a className="relative group text-sm transition flex items-center gap-1 text-gray-700 hover:text-black">
+              <a className="relative group text-sm transition flex items-center gap-1  hover:text-black">
                 GET IN TOUCH
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                   <path d="M21 10l-6 6-4-4-6 6" strokeLinecap="round" strokeLinejoin="round" />
@@ -367,7 +376,7 @@ export default function About() {
                   {/* === Mobile Our Brands Dropdown (click‑twice) === */}
                   <div ref={containerRef} className="relative w-full text-center">
                     {/* Trigger Row */}
-                    <div className="flex items-center justify-center w-full py-2 text-sm text-gray-700 relative">
+                    <div className="flex items-center justify-center w-full py-2 text-sm  relative">
                       {/* Main “Our Brands” link (always navigates) */}
                       <Link href="/our-brands" className="mr-1 relative">
                         <span className="relative">
@@ -424,7 +433,7 @@ export default function About() {
                   <Link href="/contact-us" passHref legacyBehavior>
                     <a
                       onClick={() => setMobileMenuOpen(false)}
-                      className="text-sm flex items-center gap-1 text-gray-700 hover:text-black transition"
+                      className="text-sm flex items-center gap-1 hover:text-black transition"
                     >
                       GET IN TOUCH
                       <svg

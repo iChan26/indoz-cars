@@ -203,6 +203,15 @@ useEffect(() => {
     { name: 'PANDORA', href: '/our-brands/pandora' },
     { name: 'ROBERTO BRAVO', href: '/our-brands/roberto-bravo' },
   ]
+
+  useEffect(() => {
+  const handleScroll = () => {
+    setOffsetY(window.scrollY);
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
   return (
     <>
       <Head>
@@ -227,9 +236,10 @@ useEffect(() => {
 
 
           {/* === Main Banner Content Centered === */}
-          <div className="relative z-10 mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold">About Us</h2>
-          </div>
+       <div className="relative z-10 mx-auto text-center mt-[100px]">
+  <h2 className="text-3xl md:text-4xl font-bold">About Us</h2>
+</div>
+
         </div>
 
 
@@ -311,7 +321,7 @@ useEffect(() => {
 
 
               <Link href="/contact-us" passHref legacyBehavior>
-                <a className="relative group text-sm transition flex items-center gap-1 text-gray-700 hover:text-black">
+                <a className="relative group text-sm transition flex items-center gap-1  hover:text-black">
                   GET IN TOUCH
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                     <path d="M21 10l-6 6-4-4-6 6" strokeLinecap="round" strokeLinejoin="round" />
@@ -400,7 +410,7 @@ useEffect(() => {
               className={`text-sm transition ${
                 isBrandsPage
                   ? 'text-black underline underline-offset-4'
-                  : 'text-gray-700 hover:text-black'
+                  : ' hover:text-black'
               }`}
             >
               About Us
@@ -410,7 +420,7 @@ useEffect(() => {
           {/* === Mobile Our Brands Dropdown (click‑twice) === */}
                       <div ref={containerRef} className="relative w-full text-center">
                         {/* Trigger Row */}
-                        <div className="flex items-center justify-center w-full py-2 text-sm text-gray-700">
+                        <div className="flex items-center justify-center w-full py-2 text-sm ">
                           {/* Main “Our Brands” link (always navigates) */}
                           <Link href="/our-brands" className="mr-1">
                             Our Brands
@@ -461,7 +471,7 @@ useEffect(() => {
           <Link href="/contact-us" passHref legacyBehavior>
             <a
               onClick={() => setMobileMenuOpen(false)}
-              className="text-sm flex items-center gap-1 text-gray-700 hover:text-black transition"
+              className="text-sm flex items-center gap-1 hover:text-black transition"
             >
               GET IN TOUCH
               <svg

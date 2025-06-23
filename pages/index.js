@@ -473,7 +473,7 @@ export default function Home() {
                       <Link href="/about-us" passHref legacyBehavior>
                         <a
                           onClick={() => setMobileMenuOpen(false)}
-                          className="text-sm text-gray-700 hover:text-black transition"
+                          className="text-sm  hover:text-black transition"
                         >
                           About Us
                         </a>
@@ -482,7 +482,7 @@ export default function Home() {
                       {/* === Our Brands Dropdown (click‑twice) === */}
                       <div ref={containerRef} className="relative w-full text-center">
                         {/* Trigger Row */}
-                        <div className="flex items-center justify-center w-full py-2 text-sm text-gray-700">
+                        <div className="flex items-center justify-center w-full py-2 text-sm">
                           {/* Main “Our Brands” link (always navigates) */}
                           <Link href="/our-brands" className="mr-1">
                             Our Brands
@@ -534,7 +534,7 @@ export default function Home() {
                       <Link href="/contact-us" passHref legacyBehavior>
                         <a
                           onClick={() => setMobileMenuOpen(false)}
-                          className="flex items-center gap-1 text-sm text-gray-700 hover:text-black transition px-4 py-2"
+                          className="flex items-center gap-1 text-sm hover:text-black transition px-4 py-2"
                         >
                           GET IN TOUCH
                           <svg
@@ -839,11 +839,23 @@ export default function Home() {
             ].map((brand, idx) => (
               <div key={idx} className="relative w-full aspect-square [perspective:1000px]">
                 <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] hover:[transform:rotateY(180deg)]">
+
+                  {/* Front Face */}
                   <div className="absolute w-full h-full [backface-visibility:hidden] bg-white rounded overflow-hidden shadow-md flex items-center justify-center">
-                    <img src={brand.img} alt={brand.name} className="w-full h-full object-contain p-2" />
+                    <img
+                      src={brand.img}
+                      alt={brand.name}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
-                  <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-white rounded overflow-hidden shadow-md flex items-center justify-center">
-                    <img src={brand.productImg} alt={`${brand.name} Product`} className="w-full h-full object-contain p-2" />
+
+                  {/* Back Face (Product Image Fill) */}
+                  <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-white rounded overflow-hidden shadow-md">
+                    <img
+                      src={brand.productImg}
+                      alt={`${brand.name} Product`}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
               </div>
@@ -851,6 +863,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
 
       <section className="py-20 bg-beige-50 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">

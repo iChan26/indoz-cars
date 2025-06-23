@@ -183,7 +183,14 @@ const isMobile = useIsMobile();
     document.addEventListener('mousedown', handleOutside)
     return () => document.removeEventListener('mousedown', handleOutside)
   }, [isOpen])
+useEffect(() => {
+  const handleScroll = () => {
+    setOffsetY(window.scrollY);
+  };
 
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
   const brands = [
     { name: 'Altınbaş', href: '/our-brands/altinbas' },
     { name: 'BELMA', href: '/our-brands/belma' },
@@ -215,7 +222,7 @@ const isMobile = useIsMobile();
         />
         <div className="absolute inset-0 bg-black/30" />
         <div className="relative z-10 max-w-6xl mx-auto px-4 h-full flex items-center justify-center text-white">
-          <h2 className="text-3xl md:text-4xl font-bold uppercase">Contact Us</h2>
+          <h2 className="text-3xl md:text-4xl font-bold uppercase mt-[100px]">Contact Us</h2>
         </div>
       </div>
 
@@ -290,7 +297,7 @@ const isMobile = useIsMobile();
                   )}
                 </div>
 
-            <Link href="/contact-us" className="relative group text-gray-700 hover:text-black flex items-center gap-1">
+            <Link href="/contact-us" className="relative group  hover:text-black flex items-center gap-1">
               GET IN TOUCH
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                 <path d="M21 10l-6 6-4-4-6 6" strokeLinecap="round" strokeLinejoin="round" />
@@ -355,7 +362,7 @@ const isMobile = useIsMobile();
         {/* === Mobile Our Brands Dropdown (click‑twice) === */}
                       <div ref={containerRef} className="relative w-full text-center">
                         {/* Trigger Row */}
-                        <div className="flex items-center justify-center w-full py-2 text-sm text-gray-700">
+                        <div className="flex items-center justify-center w-full py-2 text-sm ">
                           {/* Main “Our Brands” link (always navigates) */}
                           <Link href="/our-brands" className="mr-1">
                             Our Brands
@@ -409,7 +416,7 @@ const isMobile = useIsMobile();
               className={`flex items-center gap-1 text-sm ${
                 isBrandsPage
                   ? 'text-black underline underline-offset-4'
-                  : 'text-gray-700 hover:text-black'
+                  : ' hover:text-black'
               }`}
             >
               GET IN TOUCH
