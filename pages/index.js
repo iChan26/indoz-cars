@@ -16,6 +16,10 @@ import {
   InstagramIcon,
 } from 'lucide-react';
 import { Typewriter } from 'react-simple-typewriter';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
 
 // ——————————————————————————
 // Helpers & Hooks
@@ -54,6 +58,10 @@ const NavBrands = ({ isMobile }) => {
       setIsOpen(false)        // second tap allows navigation
     }
   }
+const visible = true;
+
+
+
 
   const brands = [
     { name: 'Altınbaş', href: '/our-brands/altinbas' },
@@ -70,6 +78,7 @@ const NavBrands = ({ isMobile }) => {
 
 
   return (
+    
     <div className="relative group w-full">
       <Link
         href="/our-brands"
@@ -245,8 +254,14 @@ export default function Home() {
   // ─── Inline “click‑twice” dropdown state & handler ─────────────────────────
 
   const [tappedOnce, setTappedOnce] = useState(false)
-  const [isOpen, setIsOpen] = useState(false)
+ 
   const containerRef = useRef(null)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+const [isOpen, setIsOpen] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+
 
   const handleClick = (e) => {
     if (!isOpen) {
@@ -281,6 +296,26 @@ export default function Home() {
     { name: 'PANDORA', href: '/our-brands/pandora' },
     { name: 'ROBERTO BRAVO', href: '/our-brands/roberto-bravo' },
   ]
+const [prevScrollPos, setPrevScrollPos] = useState(0);
+const [visible, setVisible] = useState(true);
+
+useEffect(() => {
+  const handleScroll = () => {
+    const currentScrollPos = window.scrollY;
+    const isScrollingUp = prevScrollPos > currentScrollPos;
+
+    if (currentScrollPos < 10) {
+      setVisible(true); // always visible at top
+    } else {
+      setVisible(isScrollingUp);
+    }
+
+    setPrevScrollPos(currentScrollPos);
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, [prevScrollPos]);
 
 
   return (
@@ -293,504 +328,269 @@ export default function Home() {
 
 
       <>
-        {/* === Sticky Header (Visible after Hero scroll) === */}
-        {showHeader && (
-          <header
-            className={cn(
-              "fixed top-0 left-0 w-full z-50 bg-white/60 backdrop-blur-md shadow-md text-black font-termina text-sm",
-              "transition-all duration-500 ease-out animate-slideDown"
-            )}
-          >
-            <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-              {/* Logo */}
-              <Link href="/" passHref legacyBehavior>
-                <a>
-                  <Image src="/img/logo.png" alt="Logo" width={90} height={36} />
-                </a>
-              </Link>
-
-              {/* Desktop Navigation */}
-              <nav className="hidden md:flex items-center gap-8">
-                <Link
-                  href="/about-us"
-                  className="relative group flex items-center gap-1 transition text-black"
-                >
-                  About Us
-                  <span
-                    className="absolute -bottom-1 left-0 h-[1.5px] bg-black w-0 group-hover:w-full transition-all duration-300"
-                  />
-                </Link>
+       
 
 
-
-                {/* === Our Brands Dropdown (click‑twice) === */}
-                <div ref={containerRef} className="relative">
-                  {/* Main Link: click twice to open/close */}
-                  <Link
-                    href="/our-brands"
-                    onClick={handleClick}
-                    className="group flex items-center gap-1 text-black transition cursor-pointer relative"
-                  >
-                    Our Brands
-                    <span
-                      className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-black 
-               group-hover:w-full transition-all duration-300"
-                    />
-                    <svg
-                      className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''
-                        }`}
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71
-         a.75.75 0 111.08 1.04l-4.25 4.25
-         a.75.75 0 01-1.08 0L5.21 8.27
-         a.75.75 0 01.02-1.06z"
-                      />
-                    </svg>
-                  </Link>
+  <section className="relative h-screen w-full overflow-hidden font-termina bg-black">
+      {/* === HEADER === */}
+   <header
+  className={`w-full bg-white text-black z-50 fixed top-0 left-0 right-0 transition-transform duration-300 ${
+    visible ? 'translate-y-0' : '-translate-y-full'
+  } shadow-[0_2px_8px_rgba(0,0,0,0.75)]`}
+>
 
 
-                  {/* Dropdown Menu: only when open */}
-                  {isOpen && (
-                    <div className="
-    absolute left-0 mt-2 w-48
-    bg-white text-black
-    rounded shadow-md z-50
-    divide-y divide-gray-200
-    overflow-hidden
-  ">
-                      {brands.map((b) => (
-                        <Link
-                          key={b.name}
-                          href={b.href}
-                          className="block px-4 py-2 hover:bg-gray-100 transition"
-                        >
-                          {b.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
+        {/* Top Logo */}
+        <div className="flex justify-center items-center py-3">
+          <Image
+            src="/img/logo.png"
+            alt="I&A International Logo"
+            width={100}
+            height={40}
+            priority
+            
+          />
+        </div>
 
-                <Link href="/contact-us" passHref legacyBehavior>
-                  <a
-                    className={`relative group flex items-center gap-1 text-sm transition "text-black font-semibold" : "text-gray-700 hover:text-black"
-          }`}
-                  >
-                    GET IN TOUCH
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M21 10l-6 6-4-4-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-black group-hover:w-full transition-all duration-300" />
-                  </a>
-                </Link>
-
-                {/* Search Icon */}
-                <button className="hover:text-gray-300 transition">
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                  </svg>
-                </button>
-              </nav>
-
-              {/* Mobile Toggle Button */}
-              <button
-                className="md:hidden focus:outline-none z-50 relative"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                aria-label="Toggle Menu"
-              >
-                <motion.svg
-                  className="w-6 h-6 text-black"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  initial={false}
-                  animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                >
-                  {mobileMenuOpen ? (
-                    <motion.path
-                      d="M6 18L18 6M6 6l12 12"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
-                    />
-                  ) : (
-                    <motion.path
-                      d="M4 6h16M4 12h16M4 18h16"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
-                    />
-                  )}
-                </motion.svg>
-              </button>
-            </div>
-
-            {/* === Mobile Navigation Menu === */}
-            <AnimatePresence initial={false}>
-              {mobileMenuOpen && (
-                <motion.div
-                  key="mobile-nav"
-                  className="md:hidden px-4 pt-2 overflow-hidden"
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: navHeight, opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{
-                    height: { duration: 0.25, ease: [0.4, 0, 0.2, 1] },
-                    opacity: { duration: 0.2, ease: "easeOut" },
-                  }}
-                >
-                  <div ref={navRef}>
-                    {/* Divider */}
-                    <div className="w-full h-[1.5px] bg-black mb-4" />
-
-                    {/* Mobile Nav List */}
-                    <nav className="flex flex-col items-center gap-4 pb-4">
-                      {/* About Us */}
-                      <Link href="/about-us" passHref legacyBehavior>
-                        <a
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="text-sm  hover:text-black transition"
-                        >
-                          About Us
-                        </a>
-                      </Link>
-
-                      {/* === Our Brands Dropdown (click‑twice) === */}
-                      <div ref={containerRef} className="relative w-full text-center">
-                        {/* Trigger Row */}
-                        <div className="flex items-center justify-center w-full py-2 text-sm">
-                          {/* Main “Our Brands” link (always navigates) */}
-                          <Link href="/our-brands" className="mr-1">
-                            Our Brands
-                          </Link>
-
-                          {/* Toggle arrow */}
-                          <button
-                            type="button"
-                            onClick={handleClick}
-                            aria-label={isOpen ? "Close brands menu" : "Open brands menu"}
-                            className="p-1 focus:outline-none"
-                          >
-                            <svg
-                              className={`w-4 h-4 transform transition-transform duration-300 ${isOpen ? "rotate-180" : ""
-                                }`}
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                clipRule="evenodd"
-                                d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71
-             a.75.75 0 111.08 1.04l-4.25 4.25
-             a.75.75 0 01-1.08 0L5.21 8.27
-             a.75.75 0 01.02-1.06z"
-                              />
-                            </svg>
-                          </button>
-                        </div>
-
-                        {/* Sub‑menu */}
-                        {isOpen && (
-                          <div className="w-full divide-y divide-gray-200 overflow-hidden">
-                            {brands.map((b) => (
-                              <Link key={b.name} href={b.href} legacyBehavior>
-                                <a
-                                  onClick={() => setIsOpen(false)}
-                                  className="block px-4 py-2 text-sm hover:bg-gray-100 transition"
-                                >
-                                  {b.name}
-                                </a>
-                              </Link>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Contact */}
-                      <Link href="/contact-us" passHref legacyBehavior>
-                        <a
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="flex items-center gap-1 text-sm hover:text-black transition px-4 py-2"
-                        >
-                          GET IN TOUCH
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="1.5"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              d="M21 10l-6 6-4-4-6 6"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </a>
-                      </Link>
-                    </nav>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-          </header>
-
-        )}
-        {/* === Hero Section === */}
-        <section className="relative h-[100vh] sm:h-screen w-full overflow-hidden font-termina">
-          {/* Static Logo top-left */}
-          <div className="absolute top-10 left-6 z-50">
-            <Image
-              src="/img/logo.png"
-              alt="I&A International Logo"
-              width={100}
-              height={40}
-              priority
-              className="filter brightness-0 invert"
-            />
-          </div>
-
-          {/* Vertical Side Navigation (Right) */}
-          <div className="absolute top-16 right-4 z-50 text-white flex flex-col items-end space-y-5 text-sm">
-            {/* Search Button */}
-            <button className="hover:text-gray-300 transition">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+        {/* Desktop Navbar */}
+        <div className="hidden md:flex border-t border-black/20 py-3 px-6 items-center justify-between max-w-7xl mx-auto text-sm">
+          {/* Left: Search + Button */}
+          <div className="w-1/3 flex justify-start items-center gap-4">
+            <button className="hover:text-black-300 hover:font-bold transition">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="8" />
                 <line x1="21" y1="21" x2="16.65" y2="16.65" />
               </svg>
             </button>
-
-            {["about", "brands", "contact"].map((section) => {
-              if (section === "about") {
-                return (
-                  <Link key={section} href="/about-us" passHref>
-                    <div className="relative group cursor-pointer text-white hover:text-gray-300 transition flex items-center gap-1">
-                      About Us
-                      <span className="absolute -bottom-1 left-0 h-[1.5px] bg-white w-0 group-hover:w-full transition-all duration-300" />
-                    </div>
-                  </Link>
-                );
-              }
-
-              if (section === "brands") {
-                return (
-                  <div ref={containerRef} className="relative">
-                    {/* Main Link */}
-                    <Link
-                      href="/our-brands"
-                      onClick={handleClick}
-                      className="group flex items-center gap-1 text-white transition cursor-pointer relative"
-                      passHref
-                    >
-                      <div className="flex items-center gap-1">
-                        Our Brands
-                        <span
-                          className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-white
-                   transition-all duration-300 group-hover:w-full"
-                        />
-                        <svg
-                          className={`w-4 h-4 mt-[1px] transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''
-                            }`}
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71
-             a.75.75 0 111.08 1.04l-4.25 4.25
-             a.75.75 0 01-1.08 0L5.21 8.27
-             a.75.75 0 01.02-1.06z"
-                          />
-                        </svg>
-                      </div>
-                    </Link>
-
-                    {/* Dropdown Menu: below on mobile, to the left on desktop */}
-                    {isOpen && (
-                      <div
-                        className="
-      absolute
-      top-full inset-x-0              /* mobile: full‑width below trigger */
-      md:top-0 md:right-full md:inset-x-auto  /* desktop: beside trigger */
-      md:mr-2                          /* small gap on desktop */
-      w-full md:min-w-[12rem]          /* full width mobile, at least 18rem on desktop */
-      bg-white text-black rounded-md shadow-lg z-50
-      max-h-[60vh] overflow-y-auto divide-y divide-gray-200
-      px-2 md:px-0
-    "
-                      >
-                        {brands.map((b) => (
-                          <Link
-                            key={b.name}
-                            href={b.href}
-                            className="block px-4 py-2 hover:bg-gray-100 whitespace-nowrap transition"
-                          >
-                            {b.name}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                )
-              }
-
-              // section === "contact"
-              return (
-                <Link key={section} href="/contact-us" passHref>
-                  <div className="relative group flex items-center gap-1 text-white hover:opacity-80 transition">
-                    GET IN TOUCH
-                    <svg
-                      className="w-4 h-4 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M21 10l-6 6-4-4-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-white group-hover:w-full transition-all duration-300" />
-                  </div>
-                </Link>
-
-              );
-            })}
+            <Link href="/contact-us" className="border border-black px-4 py-1 rounded hover:bg-black hover:text-white transition">
+              Get in Touch
+            </Link>
           </div>
 
+              {/* Center Nav */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 flex gap-6">
+                <Link href="/" className="relative hover:text-black-300 hover:font-bold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">Home</Link>
+                <Link href="/about-us" className="relative hover:text-black-300 hover:font-bold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">About Us</Link>
+              <div className="relative group">
+  {/* Link for Navigation */}
+  <Link
+    href="/our-brands"
+    className="flex items-center gap-1 relative hover:text-black-300 hover:font-bold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+  >
+    Our Brands
+    <svg
+      className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z"
+      />
+    </svg>
+  </Link>
 
-          {/* Hero Background Images with Fade + Parallax */}
-          {images.map((img, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? "opacity-100 z-0" : "opacity-0 z-0"
-                }`}
-              style={{ transform: `translateY(${scrollY * 0.2}px)` }}
-            >
-              <div className="relative w-full h-full overflow-hidden">
-                <Image
-                  src={img}
-                  alt={`Hero image ${index + 1}`}
-                  fill
-                  className={`object-cover transition-transform ease-in-out duration-[5000ms] ${index === currentSlide ? "scale-110" : "scale-100"
-                    }`}
-                  style={{ objectPosition: "center top" }}
-                  quality={90}
-                  priority={index === 0}
-                  sizes="100vw"
-                />
+  {/* Dropdown on Hover */}
+  <div className="absolute top-full mt-2 w-48 bg-white text-black rounded-md shadow-lg z-50 divide-y divide-gray-200 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300">
+    {brands.map((b) => (
+      <Link
+        key={b.name}
+        href={b.href}
+        className="block px-4 py-2 hover:bg-gray-100 whitespace-nowrap transition"
+      >
+        {b.name}
+      </Link>
+    ))}
+  </div>
+</div>
 
-                {/* Gradient overlay + black vignette */}
-                <div className="absolute inset-0 pointer-events-none">
-                  {/* Faded dark overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
-
-                  {/* Black vignette */}
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background: 'radial-gradient(circle, transparent 50%, rgba(0, 0, 0, 0.5) 100%)',
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-
-          ))}
-
-          {/* Hero Text */}
-          <div className="relative z-10 h-full flex flex-col justify-center items-center text-center text-white px-4">
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
-              <Typewriter
-                words={["I&A International", "Luxury Redefined", "Where Fashion Meets Elegance"]}
-                loop
-                cursor
-                cursorStyle="_"
-                typeSpeed={80}
-                deleteSpeed={50}
-                delaySpeed={2000}
-              />
-            </h1>
-            <p className="text-base sm:text-lg md:text-2xl max-w-2xl">
-              Explore timeless elegance and high fashion with I&A International.
-            </p>
+            <Link href="/press" className="relative hover:text-black-300 hover:font-bold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">Press</Link>
           </div>
-        </section>
+        </div>
+
+        {/* Mobile Header */}
+        <div className="flex md:hidden items-center justify-between px-4 py-3 border-t border-black/20">
+          {/* Hamburger */}
+          <button onClick={() => setMobileNavOpen(!mobileNavOpen)}>
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
+          {/* Search */}
+          <button className="hover:text-gray-300 transition">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile Nav Drawer */}
+<div
+  className={`md:hidden bg-white border-t border-black/10 text-black overflow-hidden transition-all duration-500 ease-in-out 
+    ${mobileNavOpen ? 'max-h-[500px] opacity-100 py-4 px-4 space-y-4' : 'max-h-0 opacity-0 py-0 px-4'}
+  `}
+>
+  <Link href="/" className="block transition-opacity duration-300">Home</Link>
+  <Link href="/about-us" className="block transition-opacity duration-300">About Us</Link>
+
+  <details className="group">
+    <summary className="cursor-pointer">Our Brands</summary>
+    <div className="pl-4 pt-2 space-y-2">
+      {brands.map((b) => (
+        <Link key={b.name} href={b.href} className="block hover:text-gray-300 transition">
+          {b.name}
+        </Link>
+      ))}
+    </div>
+  </details>
+
+  <Link href="/contact-us" className="block transition-opacity duration-300">Contact</Link>
+</div>
+
+      </header>
+
+  {/* === HERO VIDEO === */}
+<div className="absolute inset-0 overflow-hidden z-0">
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="w-full h-full object-cover"
+    style={{
+      transform: `translateY(${scrollY * 0.2}px)`,
+    }}
+  >
+    <source src="/vid/hero.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  {/* Overlays */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 pointer-events-none" />
+  <div
+    className="absolute inset-0 pointer-events-none"
+    style={{
+      background:
+        'radial-gradient(circle, transparent 50%, rgba(0, 0, 0, 0.5) 100%)',
+    }}
+  />
+</div>
+
+
+
+      {/* === HERO TEXT === */}
+      <div className="relative z-10 h-full flex flex-col justify-center items-center text-center text-white px-4">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
+          <Typewriter
+            words={['I&A International', 'Luxury Redefined', 'Where Fashion Meets Elegance']}
+            loop
+            cursor
+            cursorStyle="_"
+            typeSpeed={80}
+            deleteSpeed={50}
+            delaySpeed={2000}
+          />
+        </h1>
+        <p className="text-base sm:text-lg md:text-2xl max-w-2xl">
+          Explore timeless elegance and high fashion with I&A International.
+        </p>
+      </div>
+    </section>
+
       </>
 
 
 
+      <section className="bg-white py-12 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
-      <section id="about" className="py-20 bg-white text-black px-4 sm:px-6 max-w-6xl mx-auto font-termina">
-        <div className="mb-12 text-center">
-          <h1 className="text-3xl sm:text-5xl font-bold mb-4">About Us</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base lg:text-lg">
-            Discover our legacy, mission, and passion for luxury.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-2xl sm:text-4xl font-bold mb-4">
-              I&A <span className="font-light">INTERNATIONAL</span>
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-6 text-sm sm:text-base">
-              Where luxury meets elegance and quality. I&A International is a well-established Albanian jewelry retailer founded by Artan Cuci in 1991. Now a leader in the jewelry industry with internationally acclaimed luxury brands.
-            </p>
-            <a href="#" className="inline-flex items-center gap-2 bg-black text-white px-5 py-3 rounded-md font-medium hover:bg-gray-800 transition">
-              View More <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
-
+          {/* Left: Event Image */}
           <div className="w-full">
-            <Slider {...sliderSettings}>
-              <div>
-                <Image
-                  src="/img/mansitting.png"
-                  alt="Jewelry close‑up"
-                  width={500}
-                  height={500}
-                  className="rounded-md w-full h-auto object-cover"
-                />
-              </div>
-              <div>
-                <Image
-                  src="/img/handsring.jpg"
-                  alt="Hand with rings"
-                  width={500}
-                  height={500}
-                  className="rounded-md w-full h-auto object-cover"
-                />
-              </div>
-            </Slider>
+            <Image
+              src="/img/recent-event.webp" // Replace with your actual event image
+              alt="I&A Luxury Showcase"
+              width={800}
+              height={600}
+              className="w-full h-auto object-cover rounded-lg shadow-md"
+            />
           </div>
 
+          {/* Right: Event Details */}
+          <div>
+            <p className="text-gray-500 text-sm uppercase mb-2">Recent Event</p>
+
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
+              I&A International Hosts Global Luxury Showcase 2025
+            </h2>
+
+            <p className="text-lg text-gray-700 mb-6">
+              Where luxury meets elegance and quality. I&A International recently hosted an exclusive showcase celebrating its legacy since 1991. Featuring iconic pieces from world-renowned brands, the event reflects our rise as a leader in Albania’s jewelry industry.
+            </p>
+
+            <Link
+              href="/events/recent-event"
+              className="inline-block border border-gray-800 text-gray-800 font-semibold px-6 py-2 rounded hover:bg-black hover:text-white transition duration-300"
+            >
+              View Full Highlights
+            </Link>
+          </div>
         </div>
       </section>
+
+
+<section id="about" className="bg-gray-100 py-20 px-4 sm:px-10 lg:px-20 font-termina w-full">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center max-w-7xl mx-auto">
+
+    {/* === Left: Text Content === */}
+    <div className="text-left">
+      <p className="text-sm text-gray-500 mb-2">About us</p>
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-800 mb-6 leading-tight">
+        I&A International
+      </h2>
+      <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-6 max-w-prose">
+        Where luxury meets elegance and quality. I&A International is a well-established Albanian jewelry retailer founded by Artan Cuci in 1991. Now a leader in the jewelry industry with internationally acclaimed luxury brands.
+      </p>
+      <a
+        href="#"
+        className="inline-block border border-black text-black hover:text-white hover:bg-black transition px-6 py-3 text-sm font-medium rounded"
+      >
+        View More
+      </a>
+    </div>
+
+    {/* === Right: Swiper Image Slider === */}
+    <div className="w-full">
+      <Swiper
+        modules={[Autoplay]}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        loop={true}
+        slidesPerView={1}
+        className="rounded-md shadow-lg"
+      >
+        {[
+          { src: '/img/mansitting.png', alt: 'Jewelry sketches and hands' },
+          { src: '/img/handsring.jpg', alt: 'Jewelry sketches and hands 2' }
+        ].map((img, idx) => (
+          <SwiperSlide key={idx}>
+            <div className="relative w-full aspect-[16/9] overflow-hidden rounded-md">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-cover"
+              />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+    
+  </div>
+</section>
+
 
     {/* === Timeline Section === */}
 <section className="py-24 px-6 bg-white font-termina" id="timeline">
@@ -872,6 +672,167 @@ export default function Home() {
   </div>
 </section>
 
+<section className="bg-white py-12 px-6 md:px-12">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+    {/* === Image (Shown First on Mobile) === */}
+    <div className="order-1 md:order-2">
+      <Image
+        src="/img/recent-event2.webp"
+        alt="Anniversary Gala"
+        width={800}
+        height={600}
+        className="w-full h-auto object-cover rounded-lg shadow-md"
+      />
+    </div>
+
+    {/* === Text Section === */}
+    <div className="order-2 md:order-1">
+      <p className="text-gray-500 text-sm uppercase mb-2">Recent Event</p>
+      <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
+        Celebrating Over 30 Years of Timeless Craft
+      </h2>
+      <p className="text-lg text-gray-700 mb-6">
+        To commemorate over three decades of craftsmanship, I&A International unveiled a curated collection of designer pieces. This milestone event reaffirmed our commitment to elegance, quality, and international excellence.
+      </p>
+      <Link
+        href="#"
+        className="inline-block border border-gray-800 text-gray-800 font-semibold px-6 py-2 rounded hover:bg-black hover:text-white transition duration-300"
+      >
+        View the Collection
+      </Link>
+    </div>
+
+  </div>
+</section>
+
+<section className="bg-white py-16 px-6 md:px-12">
+  <div className="max-w-7xl mx-auto">
+    <div className="flex justify-between items-center mb-8">
+      <h2 className="text-3xl md:text-4xl font-semibold text-gray-900">
+        Latest Press Releases & News
+      </h2>
+      <div>{/* Swiper pagination appears automatically */}</div>
+    </div>
+
+    <Swiper
+      modules={[Autoplay, Pagination]}
+      spaceBetween={30}
+      slidesPerView={1}
+      breakpoints={{
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      }}
+      autoplay={{
+        delay: 4000,
+        disableOnInteraction: false,
+      }}
+      pagination={{ clickable: true }}
+      className="news-swiper"
+    >
+      {/* Slide 1 */}
+      <SwiperSlide>
+        <div className="group">
+          <div className="overflow-hidden rounded-md shadow-md">
+            <Image
+              src="/img/news1.jpg"
+              alt="I&A flagship opening"
+              width={400}
+              height={250}
+              className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <p className="text-sm text-gray-500 mt-4">18 June 2025</p>
+          <h3 className="mt-2 text-lg font-semibold text-gray-900 group-hover:text-black transition">
+            I&A International unveils a flagship boutique in central Tirana
+          </h3>
+        </div>
+      </SwiperSlide>
+
+      {/* Slide 2 */}
+      <SwiperSlide>
+        <div className="group">
+          <div className="overflow-hidden rounded-md shadow-md">
+            <Image
+              src="/img/news2.jpg"
+              alt="Luxury partnership"
+              width={400}
+              height={250}
+              className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <p className="text-sm text-gray-500 mt-4">12 June 2025</p>
+          <h3 className="mt-2 text-lg font-semibold text-gray-900 group-hover:text-black transition">
+            New luxury brand partnerships announced at I&A Gala
+          </h3>
+        </div>
+      </SwiperSlide>
+
+      {/* Slide 3 */}
+      <SwiperSlide>
+        <div className="group">
+          <div className="overflow-hidden rounded-md shadow-md">
+            <Image
+              src="/img/news3.jpg"
+              alt="Annual Report"
+              width={400}
+              height={250}
+              className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <p className="text-sm text-gray-500 mt-4">20 June 2025</p>
+          <h3 className="mt-2 text-lg font-semibold text-gray-900 group-hover:text-black transition">
+            I&A publishes FY25 Annual Report and Strategic Overview
+          </h3>
+        </div>
+      </SwiperSlide>
+    </Swiper>
+  </div>
+</section>
+
+
+<section className="bg-gray-100 py-16 px-6 md:px-12">
+  <div className="max-w-3xl mx-auto text-center">
+    <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-6">
+      Sign up to our Press Releases & News
+    </h2>
+
+   <form className="flex flex-col sm:flex-row items-center justify-center gap-4">
+  <div className="relative w-full sm:w-2/3">
+    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+      {/* Email Icon SVG */}
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-18 8h18a2 2 0 002-2V6a2 2 0 00-2-2H3a2 2 0 00-2 2v8a2 2 0 002 2z"
+        />
+      </svg>
+    </span>
+    <input
+      type="email"
+      placeholder="Enter your email address"
+      className="w-full pl-10 pr-4 py-3 rounded-md shadow-sm border border-gray-300 focus:ring-2 focus:ring-black focus:outline-none transition"
+      required
+    />
+  </div>
+
+  <button
+    type="submit"
+    className="w-full sm:w-auto px-6 py-3 bg-black text-white font-medium rounded-md hover:bg-gray-800 transition"
+  >
+    Subscribe
+  </button>
+</form>
+
+  </div>
+</section>
 
 
       <section className="py-20 bg-beige-50 px-4 sm:px-6">
@@ -1021,6 +982,23 @@ export default function Home() {
 
         </div>
       </footer>
+{/* === Scroll to Top Button === */}
+<button
+  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+  aria-label="Scroll to top"
+  className="fixed bottom-6 right-6 z-[99] p-3 rounded-full bg-black text-white shadow-xl hover:bg-gray-800 transition-all duration-300"
+>
+  <svg
+    className="w-5 h-5 animate-bounce"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    viewBox="0 0 24 24"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+  </svg>
+</button>
+
 
     </>
   );
