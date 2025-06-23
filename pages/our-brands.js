@@ -484,7 +484,7 @@ export default function About() {
               { name: "ZEN", img: "/img/zen-diamond-logo.jpg", productImg: "/img/zen.webp", tagline: "Jewelry Brand" },
               { name: "MICHAEL KORS", img: "/img/michael kors.webp", productImg: "/img/womankors.webp", tagline: "Fashion Brand" },
               { name: "PANDORA", img: "/img/pandora.jpg", productImg: "/img/pandorabracelet.jpeg", tagline: "Jewelry Brand" },
-              { name: "ROBERTO BRAVO", img: "/img/roberto bravo.png", productImg: "/img/noahsark.webp", tagline: "Jewelry Brand" },
+              { name: "ROBERTO BRAVO", img: "/img/roberto bravo.png", productImg: "/img/noahsark.png", tagline: "Jewelry Brand" },
             ].map((brand, idx) => (
               <div key={idx} className="group flex flex-col items-center transition-transform duration-300 hover:scale-[1.02]">
                 {/* Image Card */}
