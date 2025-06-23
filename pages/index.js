@@ -828,49 +828,50 @@ export default function Home() {
   </div>
 </section>
 
+<section id="brands" className="py-20 bg-gray-100 px-4 sm:px-6">
+  <div className="max-w-6xl mx-auto text-center">
+    <h3 className="text-2xl sm:text-3xl font-semibold mb-10 sm:mb-12">Our Brands</h3>
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
+      {[
+        { name: "Altinbas", img: "/img/necklacebrad.jpeg", productImg: "/img/necklace.jpg" },
+        { name: "BELMA", img: "/img/belmajewelry.jpeg", productImg: "/img/rings.jpeg" },
+        { name: "BOSS", img: "/img/boss.jpg", productImg: "/img/bossing.jpeg" },
+        { name: "Estee", img: "/img/esteljewel.jpeg", productImg: "/img/ladyblack.jpeg" },
+        { name: "GELOSIA", img: "/img/gelosiaa.png", productImg: "/img/gayblack.jpg" },
+        { name: "Lagerfeld", img: "/img/karllagerfeld.png", productImg: "/img/karl.webp" },
+        { name: "ZEN", img: "/img/zen-diamond-logo.jpg", productImg: "/img/zen.webp" },
+        { name: "KORS", img: "/img/michael kors.webp", productImg: "/img/womankors.webp" },
+        { name: "Pandora", img: "/img/pandora.jpg", productImg: "/img/pandorabracelet.jpeg" },
+        { name: "Bravo", img: "/img/roberto bravo.png", productImg: "/img/noahsark.png" },
+      ].map((brand, idx) => (
+        <div key={idx} className="group relative w-full aspect-square [perspective:1000px]">
+          <div className="relative w-full h-full transition-transform duration-700 ease-in-out [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
 
-      <section id="brands" className="py-20 bg-gray-100 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <h3 className="text-2xl sm:text-3xl font-semibold mb-10 sm:mb-12">Our Brands</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
-            {[
-              { name: "Altinbas", img: "/img/necklacebrad.jpeg", productImg: "/img/necklace.jpg" },
-              { name: "BELMA", img: "/img/belmajewelry.jpeg", productImg: "/img/rings.jpeg" },
-              { name: "BOSS", img: "/img/boss.jpg", productImg: "/img/bossing.jpeg" },
-              { name: "Estee", img: "/img/esteljewel.jpeg", productImg: "/img/ladyblack.jpeg" },
-              { name: "GELOSIA", img: "/img/gelosiaa.png", productImg: "/img/gayblack.jpg" },
-              { name: "Lagerfeld", img: "/img/karllagerfeld.png", productImg: "/img/karl.webp" },
-              { name: "ZEN", img: "/img/zen-diamond-logo.jpg", productImg: "/img/zen.webp" },
-              { name: "KORS", img: "/img/michael kors.webp", productImg: "/img/womankors.webp" },
-              { name: "Pandora", img: "/img/pandora.jpg", productImg: "/img/pandorabracelet.jpeg" },
-              { name: "Bravo", img: "/img/roberto bravo.png", productImg: "/img/noahsark.webp" },
-            ].map((brand, idx) => (
-              <div key={idx} className="relative w-full aspect-square [perspective:1000px]">
-                <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] hover:[transform:rotateY(180deg)]">
+            {/* Front Face */}
+            <div className="absolute w-full h-full [backface-visibility:hidden] bg-white rounded overflow-hidden shadow-md flex items-center justify-center">
+              <img
+                src={brand.img}
+                alt={brand.name}
+                className="w-full h-full object-contain"
+              />
+            </div>
 
-                  {/* Front Face */}
-                  <div className="absolute w-full h-full [backface-visibility:hidden] bg-white rounded overflow-hidden shadow-md flex items-center justify-center">
-                    <img
-                      src={brand.img}
-                      alt={brand.name}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
+            {/* Back Face (Product Image Fill) */}
+            <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-white rounded overflow-hidden shadow-md">
+              <img
+                src={brand.productImg}
+                alt={`${brand.name} Product`}
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-                  {/* Back Face (Product Image Fill) */}
-                  <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-white rounded overflow-hidden shadow-md">
-                    <img
-                      src={brand.productImg}
-                      alt={`${brand.name} Product`}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
 
       <section className="py-20 bg-beige-50 px-4 sm:px-6">
