@@ -792,34 +792,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* === Timeline Section === */}
-      <section className="py-24 px-6 bg-white font-termina" id="timeline">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
-            Our Journey
-          </h2>
+    {/* === Timeline Section === */}
+<section className="py-24 px-6 bg-white font-termina" id="timeline">
+  <div className="max-w-4xl mx-auto">
+    <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
+      Our Journey
+    </h2>
 
-          <motion.div
-            ref={ref}
-            className="relative border-l-2 border-gray-200 ml-4 space-y-12"
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? 'show' : 'hidden'}
-          >
-            {timelineData.map((item, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="relative pl-8"
-              >
-                <div className="absolute top-1 left-[-0.45rem] w-4 h-4 bg-black rounded-full"></div>
-                <h3 className="text-lg font-semibold text-gray-800">{item.year}</h3>
-                <p className="text-sm text-gray-600 mt-2">{item.text}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+    <motion.div
+      ref={ref}
+      className="relative space-y-12"
+      variants={containerVariants}
+      initial="hidden"
+      animate={isInView ? 'show' : 'hidden'}
+    >
+      {/* Vertical center line */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-full w-[2px] bg-gray-300" />
+
+      {timelineData.map((item, index) => (
+        <motion.div
+          key={index}
+          variants={itemVariants}
+          className={`relative flex flex-col items-center text-center`}
+        >
+          {/* Dot */}
+          <div className="z-10 w-4 h-4 bg-black rounded-full mb-3"></div>
+          {/* Content */}
+          <div className="bg-white px-4 py-2 rounded-lg shadow-md w-full max-w-md">
+            <h3 className="text-lg font-semibold text-gray-800">{item.year}</h3>
+            <p className="text-sm text-gray-600 mt-2">{item.text}</p>
+          </div>
+        </motion.div>
+      ))}
+    </motion.div>
+  </div>
+</section>
+
 
       <section id="brands" className="py-20 bg-gray-100 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto text-center">
