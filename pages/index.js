@@ -860,17 +860,17 @@ useEffect(() => {
       {/* === Recruitment Card === */}
       <SwiperSlide>
         <div className="flex flex-col">
-          <div className="w-full overflow-hidden rounded-md shadow-md mb-4 aspect-video">
-            <video
-              src="/img/recruitement.mp4"
-              autoPlay={false}
-              muted
-              loop
-              playsInline
-              controls
-              className="w-full h-full object-cover"
-            />
-          </div>
+<div className="w-full overflow-hidden rounded-md shadow-md mb-4 aspect-video">
+  <video
+    src="/img/recruitement.mp4"
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="w-full h-full object-cover"
+  />
+</div>
+
           <h4 className="text-xl font-serif text-gray-800 mb-2">Recruitment</h4>
           <p className="text-gray-600 text-sm leading-relaxed mb-3">
             Join our team of jewelry and sales experts and help us bring unparalleled quality and service to the world of luxury jewelry.
