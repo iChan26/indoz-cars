@@ -490,9 +490,6 @@ useEffect(() => {
     />
   </h1>
 
-  <p className="mt-3 text-white font-['Playfair_Display',_serif] text-[16px] sm:text-[20px] md:text-[24px] lg:text-[28px] leading-snug tracking-wide">
-    Explore timeless elegance and high fashion with I&A International.
-  </p>
 </div>
 
 
