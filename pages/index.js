@@ -536,7 +536,7 @@ useEffect(() => {
         I&A International
       </h2>
       <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-6 max-w-prose">
-        Where luxury meets elegance and quality. I&A International is a well-established Albanian jewelry retailer founded by Artan Cuci in 1991. Now a leader in the jewelry industry with internationally acclaimed luxury brands.
+        Where luxury meets elegance and quality. I&A International Company is a well-established Albanian jewelry retailer that was founded by Artan Caushi in 1991. The company has since grown to become a leading player in the jewelry industry, with several stores across Albania and an extensive collection of internationally acclaimed jewelry brands.
       </p>
       <a
         href="#"
@@ -546,74 +546,25 @@ useEffect(() => {
       </a>
     </div>
 
-    {/* === Right: Swiper Image Slider === */}
-    <div className="w-full">
-      <Swiper
-        modules={[Autoplay]}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
-        loop={true}
-        slidesPerView={1}
-        className="rounded-md shadow-lg"
-      >
-        {[
-          { src: '/img/mansitting.png', alt: 'Jewelry sketches and hands' },
-          { src: '/img/handsring.jpg', alt: 'Jewelry sketches and hands 2' }
-        ].map((img, idx) => (
-          <SwiperSlide key={idx}>
-            <div className="relative w-full aspect-[16/9] overflow-hidden rounded-md">
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                className="object-cover"
-              />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
-    
+ {/* === Right: Static Image === */}
+<div className="w-full flex justify-center md:justify-end">
+  <div className="max-w-md rounded-md overflow-hidden shadow-lg w-full">
+    <Image
+      src="/img/handsring.jpg"
+      alt="Jewelry sketches and hands"
+      width={800}
+      height={600}
+      className="w-full h-auto object-cover"
+    />
+  </div>
+</div>
+
+
   </div>
 </section>
 
 
-    {/* === Timeline Section === */}
-<section className="py-24 px-6 bg-white font-termina" id="timeline">
-  <div className="max-w-4xl mx-auto">
-    <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
-      Our Journey
-    </h2>
-
-    <motion.div
-      ref={ref}
-      className="relative space-y-12"
-      variants={containerVariants}
-      initial="hidden"
-      animate={isInView ? 'show' : 'hidden'}
-    >
-      {/* Vertical center line */}
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-full w-[2px] bg-gray-300" />
-
-      {timelineData.map((item, index) => (
-        <motion.div
-          key={index}
-          variants={itemVariants}
-          className={`relative flex flex-col items-center text-center`}
-        >
-          {/* Dot */}
-          <div className="z-10 w-4 h-4 bg-black rounded-full mb-3"></div>
-          {/* Content */}
-          <div className="bg-white px-4 py-2 rounded-lg shadow-md w-full max-w-md">
-            <h3 className="text-lg font-semibold text-gray-800">{item.year}</h3>
-            <p className="text-sm text-gray-600 mt-2">{item.text}</p>
-          </div>
-        </motion.div>
-      ))}
-    </motion.div>
-  </div>
-</section>
-
-<section id="brands" className="py-20 bg-gray-100 px-4 sm:px-6">
+<section id="brands" className="py-20 bg-[#fff] px-4 sm:px-6">
   <div className="max-w-6xl mx-auto text-center">
     <h3 className="text-2xl sm:text-3xl font-semibold mb-10 sm:mb-12">Our Brands</h3>
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
@@ -633,7 +584,7 @@ useEffect(() => {
           <div className="relative w-full h-full transition-transform duration-700 ease-in-out [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
 
             {/* Front Face */}
-            <div className="absolute w-full h-full [backface-visibility:hidden] bg-white rounded overflow-hidden shadow-md flex items-center justify-center">
+            <div className="absolute w-full h-full [backface-visibility:hidden] bg-[#fff] rounded overflow-hidden shadow-md flex items-center justify-center">
               <img
                 src={brand.img}
                 alt={brand.name}
@@ -657,7 +608,7 @@ useEffect(() => {
   </div>
 </section>
 
-<section className="bg-white py-12 px-6 md:px-12">
+<section className="bg-[#eaeaea] py-12 px-6 md:px-12">
   <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
     {/* === Image (Shown First on Mobile) === */}
@@ -820,11 +771,9 @@ useEffect(() => {
 </section>
 
 
-
 <section className="py-20 bg-white px-4 sm:px-6 text-center">
   {/* Title Section */}
   <div className="max-w-5xl mx-auto mb-16 text-center">
-
     <h2 className="text-3xl sm:text-4xl font-serif text-gray-800 border-b-2 inline-block pb-2 mb-6">
       Where Luxury Meets Talent & Craftsmanship
     </h2>
@@ -852,17 +801,16 @@ useEffect(() => {
       {/* === Recruitment Card === */}
       <SwiperSlide>
         <div className="flex flex-col">
-<div className="w-full overflow-hidden rounded-md shadow-md mb-4 aspect-video">
-  <video
-    src="/img/recruitement.mp4"
-    autoPlay
-    muted
-    loop
-    playsInline
-    className="w-full h-full object-cover"
-  />
-</div>
-
+          <div className="w-full aspect-[1/1] overflow-hidden rounded-md shadow-md mb-4">
+            <video
+              src="/img/recruitement.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+            />
+          </div>
           <h4 className="text-xl font-serif text-gray-800 mb-2">Recruitment</h4>
           <p className="text-gray-600 text-sm leading-relaxed mb-3">
             Join our team of jewelry and sales experts and help us bring unparalleled quality and service to the world of luxury jewelry.
@@ -879,11 +827,11 @@ useEffect(() => {
       {/* === Craftsmanship Card === */}
       <SwiperSlide>
         <div className="flex flex-col">
-          <div className="w-full overflow-hidden rounded-md shadow-md mb-4">
+          <div className="w-full aspect-[1/1] overflow-hidden rounded-md shadow-md mb-4">
             <img
               src="/img/craftsmanship.jpg"
               alt="Craftsman working"
-              className="w-full h-64 object-cover transition-transform duration-1000 ease-in-out hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-1000 ease-in-out hover:scale-105"
             />
           </div>
           <h4 className="text-xl font-serif text-gray-800 mb-2">Craftsmanship</h4>
@@ -899,11 +847,11 @@ useEffect(() => {
       {/* === Design & Creation Card === */}
       <SwiperSlide>
         <div className="flex flex-col">
-          <div className="w-full overflow-hidden rounded-md shadow-md mb-4">
+          <div className="w-full aspect-[1/1] overflow-hidden rounded-md shadow-md mb-4">
             <img
               src="/img/creation-card1.jpg"
               alt="Design and creation"
-              className="w-full h-64 object-cover transition-transform duration-1000 ease-in-out hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-1000 ease-in-out hover:scale-105"
             />
           </div>
           <h4 className="text-xl font-serif text-gray-800 mb-2">Design & Creation</h4>
@@ -919,11 +867,11 @@ useEffect(() => {
       {/* === Manufacturing Card === */}
       <SwiperSlide>
         <div className="flex flex-col">
-          <div className="w-full overflow-hidden rounded-md shadow-md mb-4">
+          <div className="w-full aspect-[1/1] overflow-hidden rounded-md shadow-md mb-4">
             <img
               src="/img/creation-card2.jpg"
               alt="Manufacturing process"
-              className="w-full h-64 object-cover transition-transform duration-1000 ease-in-out hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-1000 ease-in-out hover:scale-105"
             />
           </div>
           <h4 className="text-xl font-serif text-gray-800 mb-2">Manufacturing</h4>
@@ -938,6 +886,7 @@ useEffect(() => {
     </Swiper>
   </div>
 </section>
+
 
 
 
