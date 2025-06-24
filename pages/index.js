@@ -474,10 +474,10 @@ useEffect(() => {
 
 
 
-    {/* === HERO TEXT === */}
+ {/* === HERO TEXT === */}
 <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 text-center px-4">
   <h1
-    className="text-white text-[20px] sm:text-[28px] md:text-[36px] lg:text-[42px] font-['Playfair_Display',_serif]  leading-snug tracking-wide"
+    className="text-white text-[20px] sm:text-[28px] md:text-[36px] lg:text-[42px] font-['Playfair_Display',_serif] leading-snug tracking-wide"
   >
     <Typewriter
       words={['I&A International', 'Luxury Redefined', 'Where Fashion Meets Elegance']}
@@ -489,7 +489,12 @@ useEffect(() => {
       delaySpeed={2000}
     />
   </h1>
+
+  <p className="mt-3 text-white font-['Playfair_Display',_serif] text-[16px] sm:text-[20px] md:text-[24px] lg:text-[28px] leading-snug tracking-wide">
+    Explore timeless elegance and high fashion with I&A International.
+  </p>
 </div>
+
 
     </section>
 
