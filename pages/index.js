@@ -950,15 +950,15 @@ useEffect(() => {
 
 
 
-      <section id="contact" className="bg-white py-24 px-4 sm:px-6 text-center">
+      <section id="contact" className="bg-[#eaeaea] py-24 px-4 sm:px-6 text-center">
         <div className="max-w-2xl mx-auto">
           {/* Heading */}
-          <h3 className="text-3xl sm:text-4xl font-serif text-gray-700 mb-6">
+          <h3 className="text-3xl sm:text-4xl font-serif text-[#000] mb-6">
             Get in touch or <span className="underline">visit us</span>
           </h3>
 
           {/* Description */}
-          <p className="text-gray-600 text-base mb-10 leading-relaxed">
+          <p className="text-[#000] text-base mb-10 leading-relaxed">
             Rr.Kavajës, Pallati Mio 2000, Tirana, Albania<br />
             info@ia-international.com
           </p>
@@ -967,7 +967,7 @@ useEffect(() => {
           <div className="sm:col-span-2 flex justify-center mt-2">
             <Link
               href="/contact-us"
-              className="inline-flex items-center gap-2 border border-[#003049] text-[#003049] font-medium px-6 py-2 hover:bg-[#003049] hover:text-white transition duration-300"
+              className="inline-flex items-center gap-2 border border-[#000000] text-[#000000] font-medium px-6 py-2 hover:bg-[#000000] hover:text-white transition duration-300"
             >
               <MailIcon className="w-5 h-5" />
               Contact Us
