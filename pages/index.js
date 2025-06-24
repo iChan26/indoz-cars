@@ -352,62 +352,55 @@ useEffect(() => {
           />
         </div>
 
-        {/* Desktop Navbar */}
-        <div className="hidden md:flex border-t border-black/20 py-3 px-6 items-center justify-between max-w-7xl mx-auto text-sm">
-          {/* Left: Search + Button */}
-          <div className="w-1/3 flex justify-start items-center gap-4">
-            <button className="hover:text-black-300 hover:font-bold transition">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-            </button>
-            <Link href="/contact-us" className="border border-black px-4 py-1 rounded hover:bg-black hover:text-white transition">
-              Get in Touch
-            </Link>
-          </div>
+      {/* === Desktop Header Bottom Bar === */}
+<div className="hidden md:flex border-t border-black/20 py-3 px-6 items-center relative max-w-7xl mx-auto text-sm">
 
-              {/* Center Nav */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 flex gap-6">
-                <Link href="/" className="relative hover:text-black-300 hover:font-bold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">Home</Link>
-                <Link href="/about-us" className="relative hover:text-black-300 hover:font-bold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">About Us</Link>
-              <div className="relative group">
-  {/* Link for Navigation */}
-  <Link
-    href="/our-brands"
-    className="flex items-center gap-1 relative hover:text-black-300 hover:font-bold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-  >
-    Our Brands
-    <svg
-      className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
-      viewBox="0 0 20 20"
-      fill="currentColor"
+  {/* === Right: Search + Button === */}
+  <div className="flex items-center gap-4 ml-auto">
+    {/* Search Icon */}
+    <button className="hover:text-black transition">
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+    </button>
+
+    {/* Join/Get in Touch Button */}
+    <Link
+      href="/contact-us"
+      className="px-4 py-1 border border-black text-black font-medium hover:bg-black hover:text-white transition duration-300"
     >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z"
-      />
-    </svg>
-  </Link>
+      Get in Touch
+    </Link>
+  </div>
 
-  {/* Dropdown on Hover */}
-  <div className="absolute top-full mt-2 w-48 bg-white text-black rounded-md shadow-lg z-50 divide-y divide-gray-200 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300">
-    {brands.map((b) => (
-      <Link
-        key={b.name}
-        href={b.href}
-        className="block px-4 py-2 hover:bg-gray-100 whitespace-nowrap transition"
-      >
-        {b.name}
+  {/* === Center Nav (absolutely centered) === */}
+  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-6">
+    <Link href="/" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">Home</Link>
+    <Link href="/about-us" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">About Us</Link>
+
+    {/* Dropdown Nav */}
+    <div className="relative group">
+      <Link href="/our-brands" className="flex items-center gap-1 relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">
+        Our Brands
+        <svg className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" clipRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+        </svg>
       </Link>
-    ))}
+
+      <div className="absolute top-full mt-2 w-48 bg-white text-black rounded-md shadow-lg z-50 divide-y divide-gray-200 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300">
+        {brands.map((b) => (
+          <Link key={b.name} href={b.href} className="block px-4 py-2 hover:bg-gray-100 whitespace-nowrap transition">
+            {b.name}
+          </Link>
+        ))}
+      </div>
+    </div>
+
+    <Link href="/press" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">Press</Link>
   </div>
 </div>
 
-            <Link href="/press" className="relative hover:text-black-300 hover:font-bold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">Press</Link>
-          </div>
-        </div>
 
         {/* Mobile Header */}
         <div className="flex md:hidden items-center justify-between px-4 py-3 border-t border-black/20">
@@ -481,23 +474,23 @@ useEffect(() => {
 
 
 
-      {/* === HERO TEXT === */}
-      <div className="relative z-10 h-full flex flex-col justify-center items-center text-center text-white px-4">
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
-          <Typewriter
-            words={['I&A International', 'Luxury Redefined', 'Where Fashion Meets Elegance']}
-            loop
-            cursor
-            cursorStyle="_"
-            typeSpeed={80}
-            deleteSpeed={50}
-            delaySpeed={2000}
-          />
-        </h1>
-        <p className="text-base sm:text-lg md:text-2xl max-w-2xl">
-          Explore timeless elegance and high fashion with I&A International.
-        </p>
-      </div>
+    {/* === HERO TEXT === */}
+<div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 text-center px-4">
+  <h1
+    className="text-white text-[20px] sm:text-[28px] md:text-[36px] lg:text-[42px] font-['Playfair_Display',_serif]  leading-snug tracking-wide"
+  >
+    <Typewriter
+      words={['I&A International', 'Luxury Redefined', 'Where Fashion Meets Elegance']}
+      loop
+      cursor
+      cursorStyle="_"
+      typeSpeed={80}
+      deleteSpeed={50}
+      delaySpeed={2000}
+    />
+  </h1>
+</div>
+
     </section>
 
       </>
@@ -835,153 +828,227 @@ useEffect(() => {
 </section>
 
 
-      <section className="py-20 bg-beige-50 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h3 className="text-2xl sm:text-4xl font-bold mb-4 text-gray-900">Recruitment</h3>
-            <p className="text-gray-700 leading-relaxed text-sm sm:text-base mb-4">
-              Join our team of jewelry and sales experts and help us bring unparalleled quality and customer service to the world of luxury jewelry retail.
-            </p>
-            <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-              At our company, we are dedicated to providing our customers with an unforgettable shopping experience, and we believe that our employees are key to achieving this goal.
-            </p>
-            <a href="#" className="mt-6 inline-block text-black font-medium hover:underline transition-all duration-200">
-              View More →
-            </a>
-          </div>
-          <div className="w-full aspect-video">
+
+<section className="py-20 bg-white px-4 sm:px-6 text-center">
+  {/* Title Section */}
+  <div className="max-w-5xl mx-auto mb-16 text-center">
+    <p className="text-base text-gray-500 font-medium mb-2">Talent</p>
+    <h2 className="text-3xl sm:text-4xl font-serif text-gray-800 border-b-2 inline-block pb-2 mb-6">
+      Where Luxury Meets Talent & Craftsmanship
+    </h2>
+    <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+      I&A International is a distinguished Albanian jewelry retailer founded by Artan Caushi in 1991. Renowned for curating exquisite collections from prestigious international brands, we lead the industry in luxury jewelry and timepieces. With exclusive selling rights for elite brands like Anna Maria Cammilli, Fope, Mirco Visconti, and Ititoli—along with luxury watches from Eberhard & Co, Louis Erard, Bomberg, Eterna, and Wainer—we offer our clientele an unparalleled experience in elegance, quality, and craftsmanship.
+    </p>
+  </div>
+
+  {/* Swiper Cards Section */}
+  <div className="max-w-6xl mx-auto">
+    <Swiper
+      spaceBetween={24}
+      slidesPerView={1}
+      breakpoints={{
+        640: { slidesPerView: 1.2 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+        1280: { slidesPerView: 4 },
+      }}
+      pagination={{ clickable: true }}
+      navigation
+      loop={false}
+      className="career-swiper"
+    >
+      {/* === Recruitment Card === */}
+      <SwiperSlide>
+        <div className="flex flex-col">
+          <div className="w-full overflow-hidden rounded-md shadow-md mb-4 aspect-video">
             <video
               src="/img/recruitement.mp4"
-              autoPlay
+              autoPlay={false}
               muted
               loop
               playsInline
               controls
-              className="rounded-md w-full h-full object-cover shadow-md"
-            >
-              Your browser does not support the video tag.
-            </video>
+              className="w-full h-full object-cover"
+            />
           </div>
+          <h4 className="text-xl font-serif text-gray-800 mb-2">Recruitment</h4>
+          <p className="text-gray-600 text-sm leading-relaxed mb-3">
+            Join our team of jewelry and sales experts and help us bring unparalleled quality and service to the world of luxury jewelry.
+          </p>
+          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+            Our employees are the heart of our mission to deliver an unforgettable experience.
+          </p>
+          <a href="#" className="text-[#003049] font-medium hover:underline mt-auto">
+            View More →
+          </a>
         </div>
-      </section>
+      </SwiperSlide>
 
-      <section className="py-20 bg-white px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h3 className="text-2xl sm:text-4xl font-bold mb-4 text-gray-900">Craftsmanship</h3>
-            <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg mb-6">
-              From the delicate filigree work to the precision setting of diamonds, we believe every detail matters. We’re proud to offer jewelry crafted with utmost care and attention to detail.
-            </p>
-            <Link href="/contact-us" passHref className="inline-block border px-6 py-2 border-black rounded-full hover:bg-black hover:text-white transition-colors duration-300">
-              Contact Us
-            </Link>
+      {/* === Craftsmanship Card === */}
+      <SwiperSlide>
+        <div className="flex flex-col">
+          <div className="w-full overflow-hidden rounded-md shadow-md mb-4">
+            <img
+              src="/img/craftsmanship.jpg"
+              alt="Craftsman working"
+              className="w-full h-64 object-cover transition-transform duration-1000 ease-in-out hover:scale-105"
+            />
           </div>
-          <div className="overflow-hidden rounded-md shadow-md group">
-            <img src="/img/craftsmanship.jpg" alt="Craftsman working" className="w-full h-auto object-cover transition-transform duration-1000 ease-in-out group-hover:scale-105" />
-          </div>
+          <h4 className="text-xl font-serif text-gray-800 mb-2">Craftsmanship</h4>
+          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+            From filigree work to diamond setting, we believe every detail matters. Our pieces are crafted with precision and pride.
+          </p>
+          <a href="/contact-us" className="text-[#003049] font-medium hover:underline mt-auto">
+            Contact Us →
+          </a>
         </div>
-      </section>
+      </SwiperSlide>
 
-      <section id="contact" className="relative bg-gray-100 py-24 px-4 sm:px-6">
-        <div className="absolute inset-0 z-0">
-          <Image src="/img/handsring.jpg" alt="Jewelry on hand" layout="fill" objectFit="cover" className="opacity-30" />
+      {/* === Design & Creation Card === */}
+      <SwiperSlide>
+        <div className="flex flex-col">
+          <div className="w-full overflow-hidden rounded-md shadow-md mb-4">
+            <img
+              src="/img/creation-card1.jpg"
+              alt="Design and creation"
+              className="w-full h-64 object-cover transition-transform duration-1000 ease-in-out hover:scale-105"
+            />
+          </div>
+          <h4 className="text-xl font-serif text-gray-800 mb-2">Design & Creation</h4>
+          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+            Our design teams bring imagination to life, crafting iconic pieces that respect tradition while innovating for the future.
+          </p>
+          <a href="#" className="text-[#003049] font-medium hover:underline mt-auto">
+            Explore Design →
+          </a>
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto bg-white/30 backdrop-blur-[10px] border border-white/40 rounded-2xl p-6 sm:p-10 shadow-2xl">
-          <h3 className="text-2xl sm:text-3xl font-bold mb-2 text-gray-900">
+      </SwiperSlide>
+
+      {/* === Manufacturing Card === */}
+      <SwiperSlide>
+        <div className="flex flex-col">
+          <div className="w-full overflow-hidden rounded-md shadow-md mb-4">
+            <img
+              src="/img/creation-card2.jpg"
+              alt="Manufacturing process"
+              className="w-full h-64 object-cover transition-transform duration-1000 ease-in-out hover:scale-105"
+            />
+          </div>
+          <h4 className="text-xl font-serif text-gray-800 mb-2">Manufacturing</h4>
+          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+            Our artisans safeguard know-how and innovate with purpose. We nurture excellence to shape the future of fine craftsmanship.
+          </p>
+          <a href="#" className="text-[#003049] font-medium hover:underline mt-auto">
+            Learn More →
+          </a>
+        </div>
+      </SwiperSlide>
+    </Swiper>
+  </div>
+</section>
+
+
+
+
+      <section id="contact" className="bg-white py-24 px-4 sm:px-6 text-center">
+        <div className="max-w-2xl mx-auto">
+          {/* Heading */}
+          <h3 className="text-3xl sm:text-4xl font-serif text-gray-700 mb-6">
             Get in touch or <span className="underline">visit us</span>
           </h3>
-          <p className="mb-6 text-sm sm:text-base text-gray-700">
+
+          {/* Description */}
+          <p className="text-gray-600 text-base mb-10 leading-relaxed">
             Rr.Kavajës, Pallati Mio 2000, Tirana, Albania<br />
             info@ia-international.com
           </p>
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div className="flex items-center border border-gray-300/50 rounded-md px-3 py-2 bg-white/60 shadow-sm">
-              <UserIcon className="w-5 h-5 text-gray-500 mr-2" />
-              <input type="text" placeholder="Your name" className="w-full outline-none bg-transparent text-sm text-gray-800 placeholder-gray-500" />
-            </div>
-            <div className="flex items-center border border-gray-300/50 rounded-md px-3 py-2 bg-white/60 shadow-sm">
-              <MailIcon className="w-5 h-5 text-gray-500 mr-2" />
-              <input type="email" placeholder="Email address" className="w-full outline-none bg-transparent text-sm text-gray-800 placeholder-gray-500" />
-            </div>
-            <div className="flex items-start border border-gray-300/50 rounded-md px-3 py-2 bg-white/60 shadow-sm md:col-span-2">
-              <MessageSquareIcon className="w-5 h-5 text-gray-500 mt-1 mr-2" />
-              <textarea placeholder="Your message" rows="4" className="w-full outline-none bg-transparent text-sm text-gray-800 resize-none placeholder-gray-500"></textarea>
-            </div>
-            <div className="md:col-span-2 flex justify-end">
-              <button type="submit" className="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors duration-300 shadow-md">
-                Send →
-              </button>
-            </div>
-          </form>
+
+          {/* Contact Us Button with Icon */}
+          <div className="sm:col-span-2 flex justify-center mt-2">
+            <Link
+              href="/contact-us"
+              className="inline-flex items-center gap-2 border border-[#003049] text-[#003049] font-medium px-6 py-2 hover:bg-[#003049] hover:text-white transition duration-300"
+            >
+              <MailIcon className="w-5 h-5" />
+              Contact Us
+            </Link>
+          </div>
         </div>
       </section>
 
 
 
-      <footer className="bg-black text-white py-12 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
 
-          {/* Logo and Copyright */}
-          <div className="flex flex-col items-center sm:items-start">
-            <Image
-              src="/img/logo.png"
-              alt="I&A International Logo"
-              width={120}
-              height={40}
-              priority
-              className="filter brightness-0 invert mb-4"
-            />
-            <p className="text-sm text-gray-400 leading-relaxed">
-              © {new Date().getFullYear()} I&A International.<br className="hidden sm:inline" /> All Rights Reserved.
-            </p>
-          </div>
+   <footer className="bg-[#222] text-white border-t border-[#9db1b4] py-12 px-4 sm:px-6">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12 text-sm leading-relaxed">
 
-          {/* Contact */}
-          <div className="flex flex-col items-center sm:items-start">
-            <h4 className="font-semibold text-white mb-3 text-lg">Contact Us</h4>
-            <p className="text-gray-400 text-sm break-words">info@ia-international.com</p>
-          </div>
+    {/* === Logo & Copyright === */}
+    <div className="space-y-4">
+      <Image
+        src="/img/logo.png"
+        alt="I&A International Logo"
+        width={140}
+        height={40}
+        priority
+         className="filter brightness-0 invert mb-4"
+      />
+      <p className="text-xs text-white">
+        © {new Date().getFullYear()} I&A International.<br />All Rights Reserved.
+      </p>
+    </div>
 
-          {/* Address & Socials */}
-          <div className="flex flex-col items-center sm:items-start">
-            <h4 className="font-semibold text-white mb-3 text-lg">Our Address</h4>
-            <p className="text-gray-400 text-sm leading-relaxed mb-4">
-              Rr.Kavajës, Pallati Mio 2000<br />
-              Tirana, Albania
-            </p>
-            <div className="flex justify-center sm:justify-start gap-4">
-              <a
-                href="https://www.linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="text-gray-400 hover:text-white transition duration-300"
-              >
-                <LinkedinIcon className="w-5 h-5" />
-              </a>
-              <a
-                href="https://www.facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="text-gray-400 hover:text-white transition duration-300"
-              >
-                <FacebookIcon className="w-5 h-5" />
-              </a>
-              <a
-                href="https://www.instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="text-gray-400 hover:text-white transition duration-300"
-              >
-                <InstagramIcon className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
+    {/* === Contact Us === */}
+    <div>
+      <h4 className="font-serif text-lg text-[#fff] mb-3 border-b border-[#fff] pb-1">Contact Us</h4>
+      <p className="mb-2">info@ia-international.com</p>
 
-        </div>
-      </footer>
+      {/* Optional: Email input box styled like Richemont */}
+      <div className="flex mt-4 border border-white bg-white text-gray-700 overflow-hidden max-w-xs">
+        <input
+          type="email"
+          placeholder="Enter your email address"
+          className="flex-1 px-3 py-2 text-sm outline-none bg-white"
+        />
+        <button className="bg-[#000] text-white px-4 flex items-center justify-center">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Social icons */}
+      <div className="flex gap-4 mt-4 text-[#fff]">
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <LinkedinIcon className="w-5 h-5" />
+        </a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <FacebookIcon className="w-5 h-5" />
+        </a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <InstagramIcon className="w-5 h-5" />
+        </a>
+      </div>
+    </div>
+
+    {/* === Explore Links (Your site sections) === */}
+    <div>
+      <h4 className="font-serif text-lg text-[#fff] mb-3 border-b border-[#fff] pb-1">Explore</h4>
+      <ul className="space-y-2">
+        <li><Link href="/">Home</Link></li>
+        <li><Link href="/about-us">About Us</Link></li>
+        <li><Link href="/our-brands">Our Brands</Link></li>
+        <li><Link href="/press">Press</Link></li>
+      </ul>
+    </div>
+
+    {/* === Our Address === */}
+    <div>
+      <h4 className="font-serif text-lg text-[#fff] mb-3 border-b border-[#fff] pb-1">Our Address</h4>
+      <p>Rr.Kavajës, Pallati Mio 2000<br />Tirana, Albania</p>
+    </div>
+  </div>
+</footer>
+
 {/* === Scroll to Top Button === */}
 <button
   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
