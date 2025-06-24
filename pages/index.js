@@ -331,242 +331,251 @@ useEffect(() => {
        
 
 
-  <section className="relative h-screen w-full overflow-hidden font-termina bg-black">
-      {/* === HEADER === */}
-   <header
-  className={`w-full bg-white text-black z-50 fixed top-0 left-0 right-0 transition-transform duration-300 ${
-    visible ? 'translate-y-0' : '-translate-y-full'
-  } shadow-[0_2px_8px_rgba(0,0,0,0.75)]`}
->
+        <section className="relative h-screen w-full overflow-hidden font-termina bg-black">
+          {/* === HEADER === */}
+          <header
+            className={`w-full bg-white text-black z-50 fixed top-0 left-0 right-0 transition-transform duration-300 ${visible ? 'translate-y-0' : '-translate-y-full'
+              } shadow-[0_2px_8px_rgba(0,0,0,0.75)]`}
+          >
 
 
-        {/* Top Logo */}
-        <div className="flex justify-center items-center py-3">
-          <Image
-            src="/img/logo.png"
-            alt="I&A International Logo"
-            width={100}
-            height={40}
-            priority
-            
-          />
-        </div>
+            {/* Top Logo */}
+            <div className="flex justify-center bg-[#eaeaea] items-center py-3">
+              <Image
+                src="/img/logo.png"
+                alt="I&A International Logo"
+                width={100}
+                height={40}
+                priority
 
-      {/* === Desktop Header Bottom Bar === */}
-<div className="hidden md:flex border-t border-black/20 py-3 px-6 items-center relative max-w-7xl mx-auto text-sm">
+              />
+            </div>
 
-  {/* === Right: Search + Button === */}
-  <div className="flex items-center gap-4 ml-auto">
-    {/* Search Icon */}
-    <button className="hover:text-black transition">
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="8" />
-        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-      </svg>
-    </button>
+            {/* === Desktop Header Bottom Bar === */}
+            <div className="hidden md:flex py-3 px-6 items-center relative max-w-7xl mx-auto text-sm">
 
-    {/* Join/Get in Touch Button */}
-    <Link
-      href="/contact-us"
-      className="px-4 py-1 border border-black text-black font-medium hover:bg-black hover:text-white transition duration-300"
-    >
-      Get in Touch
-    </Link>
-  </div>
+              {/* === Right: Search + Button === */}
+              <div className="flex items-center gap-4 ml-auto">
+                {/* Search Icon */}
+                <button className="hover:text-black transition">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                </button>
 
-  {/* === Center Nav (absolutely centered) === */}
-  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-6">
-    <Link href="/" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">Home</Link>
-    <Link href="/about-us" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">About Us</Link>
+                {/* Join/Get in Touch Button */}
+                <Link
+                  href="/contact-us"
+                  className="px-4 py-1 border border-black text-black font-medium hover:bg-black hover:text-white transition duration-300"
+                >
+                  Get in Touch
+                </Link>
+              </div>
 
-    {/* Dropdown Nav */}
-    <div className="relative group">
-      <Link href="/our-brands" className="flex items-center gap-1 relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">
-        Our Brands
-        <svg className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
-          <path fillRule="evenodd" clipRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
-        </svg>
-      </Link>
+              {/* === Center Nav (absolutely centered) === */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-6 font-sans text-[15px] tracking-wide">
+                <Link href="/" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">Home</Link>
+                <Link href="/about-us" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">About Us</Link>
 
-      <div className="absolute top-full mt-2 w-48 bg-white text-black rounded-md shadow-lg z-50 divide-y divide-gray-200 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300">
-        {brands.map((b) => (
-          <Link key={b.name} href={b.href} className="block px-4 py-2 hover:bg-gray-100 whitespace-nowrap transition">
-            {b.name}
-          </Link>
-        ))}
-      </div>
-    </div>
+                {/* Dropdown Nav */}
+                <div className="relative group">
+                  <Link href="/our-brands" className="flex items-center gap-1 relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">
+                    Our Brands
+                    <svg className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" clipRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                    </svg>
+                  </Link>
 
-    <Link href="/press" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">Press</Link>
-  </div>
-</div>
+                  <div className="absolute top-full mt-2 w-48 bg-white text-black rounded-md shadow-lg z-50 divide-y divide-gray-200 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300">
+                    {brands.map((b) => (
+                      <Link key={b.name} href={b.href} className="block px-4 py-2 hover:bg-gray-100 whitespace-nowrap transition">
+                        {b.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                <Link href="/press" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">Press</Link>
+              </div>
+            </div>
 
 
-        {/* Mobile Header */}
-        <div className="flex md:hidden items-center justify-between px-4 py-3 border-t border-black/20">
-          {/* Hamburger */}
-          <button onClick={() => setMobileNavOpen(!mobileNavOpen)}>
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+            {/* Mobile Header */}
+            <div className="flex md:hidden items-center justify-between px-4 py-3 border-t border-black/20">
+              {/* Hamburger */}
+              <button onClick={() => setMobileNavOpen(!mobileNavOpen)}>
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
 
-          {/* Search */}
-          <button className="hover:text-gray-300 transition">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </button>
-        </div>
+              {/* Search */}
+              <button className="hover:text-gray-300 transition">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+              </button>
+            </div>
 
-        {/* Mobile Nav Drawer */}
-<div
-  className={`md:hidden bg-white border-t border-black/10 text-black overflow-hidden transition-all duration-500 ease-in-out 
+            {/* Mobile Nav Drawer */}
+            <div
+              className={`md:hidden bg-white border-t border-black/10 text-black overflow-hidden transition-all duration-500 ease-in-out 
     ${mobileNavOpen ? 'max-h-[500px] opacity-100 py-4 px-4 space-y-4' : 'max-h-0 opacity-0 py-0 px-4'}
   `}
->
-  <Link href="/" className="block transition-opacity duration-300">Home</Link>
-  <Link href="/about-us" className="block transition-opacity duration-300">About Us</Link>
+            >
+              <Link href="/" className="block transition-opacity duration-300">Home</Link>
+              <Link href="/about-us" className="block transition-opacity duration-300">About Us</Link>
 
-  <details className="group">
-    <summary className="cursor-pointer">Our Brands</summary>
-    <div className="pl-4 pt-2 space-y-2">
-      {brands.map((b) => (
-        <Link key={b.name} href={b.href} className="block hover:text-gray-300 transition">
-          {b.name}
-        </Link>
-      ))}
-    </div>
-  </details>
+              <details className="group">
+                <summary className="cursor-pointer">Our Brands</summary>
+                <div className="pl-4 pt-2 space-y-2">
+                  {brands.map((b) => (
+                    <Link key={b.name} href={b.href} className="block hover:text-gray-300 transition">
+                      {b.name}
+                    </Link>
+                  ))}
+                </div>
+              </details>
 
-  <Link href="/contact-us" className="block transition-opacity duration-300">Contact</Link>
-</div>
+              <Link href="/contact-us" className="block transition-opacity duration-300">Contact</Link>
+            </div>
 
-      </header>
+          </header>
 
-  {/* === HERO VIDEO === */}
-<div className="absolute inset-0 overflow-hidden z-0">
-  <video
-    autoPlay
-    muted
-    loop
-    playsInline
-    className="w-full h-full object-cover"
-    style={{
-      transform: `translateY(${scrollY * 0.2}px)`,
-    }}
-  >
-    <source src="/vid/hero.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+          {/* === HERO VIDEO === */}
+          <div className="absolute inset-0 overflow-hidden z-0">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+              style={{
+                transform: `translateY(${scrollY * 0.2}px)`,
+              }}
+            >
+              <source src="/vid/hero.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
 
-  {/* Overlays */}
-  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 pointer-events-none" />
-  <div
-    className="absolute inset-0 pointer-events-none"
-    style={{
-      background:
-        'radial-gradient(circle, transparent 50%, rgba(0, 0, 0, 0.5) 100%)',
-    }}
-  />
-</div>
-
-
-
-{/* === HERO TEXT === */}
-<div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 text-center px-4">
-  <h1 className="text-white text-[20px] sm:text-[28px] md:text-[36px] lg:text-[42px] font-['Playfair_Display',_serif] leading-snug tracking-wide">
-    Luxury Redefined
-  </h1>
-</div>
+            {/* Overlays */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 pointer-events-none" />
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  'radial-gradient(circle, transparent 50%, rgba(0, 0, 0, 0.5) 100%)',
+              }}
+            />
+          </div>
 
 
 
-    </section>
+          {/* === HERO TEXT === */}
+          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 text-center px-4">
+            <h1 className="text-white text-[20px] sm:text-[28px] md:text-[36px] lg:text-[42px] font-['Playfair_Display',_serif] leading-snug tracking-wide">
+              Luxury Redefined
+            </h1>
+          </div>
+
+
+
+        </section>
 
       </>
 
 
 
-      <section className="bg-white py-12 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+     <section className="bg-white py-12 px-6 md:px-12 font-serif">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
-          {/* Left: Event Image */}
-          <div className="w-full">
-            <Image
-              src="/img/recent-event.webp" // Replace with your actual event image
-              alt="I&A Luxury Showcase"
-              width={800}
-              height={600}
-              className="w-full h-auto object-cover rounded-lg shadow-md"
-            />
-          </div>
+    {/* Left: Event Image */}
+    <div className="w-full">
+      <Image
+        src="/img/recent-event.webp"
+        alt="I&A Luxury Showcase"
+        width={800}
+        height={600}
+        className="w-full h-auto object-cover rounded-lg shadow-md"
+      />
+    </div>
 
-          {/* Right: Event Details */}
-          <div>
-            <p className="text-gray-500 text-sm uppercase mb-2">Recent Event</p>
+    {/* Right: Event Details */}
+    <div>
+      <p className="text-gray-500 text-sm  mb-2 tracking-wide">Recent Event</p>
 
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
-              I&A International Hosts Global Luxury Showcase 2025
-            </h2>
+      <h2 className="text-3xl md:text-4xl font-normal text-gray-800 mb-4 leading-snug">
+        I&A International Hosts Global Luxury Showcase 2025
+      </h2>
 
-            <p className="text-lg text-gray-700 mb-6">
-              Where luxury meets elegance and quality. I&A International recently hosted an exclusive showcase celebrating its legacy since 1991. Featuring iconic pieces from world-renowned brands, the event reflects our rise as a leader in Albania’s jewelry industry.
-            </p>
+      <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+        Where luxury meets elegance and quality. I&A International recently hosted an exclusive showcase celebrating its legacy since 1991. Featuring iconic pieces from world-renowned brands, the event reflects our rise as a leader in Albania’s jewelry industry.
+      </p>
 
-            <Link
-              href="/events/recent-event"
-              className="inline-block border border-gray-800 text-gray-800 font-semibold px-6 py-2 rounded hover:bg-black hover:text-white transition duration-300"
-            >
-              View Full Highlights
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Link
+        href="/events/recent-event"
+        className="inline-block border border-gray-800 text-gray-800 font-medium px-6 py-2 rounded hover:bg-black hover:text-white transition duration-300"
+      >
+        View Full Highlights
+      </Link>
+    </div>
+  </div>
+</section>
 
 
-<section id="about" className="bg-gray-100 py-20 px-4 sm:px-10 lg:px-20 font-termina w-full">
+<section id="about" className="bg-gray-100 py-20 px-4 sm:px-10 lg:px-20 w-full font-serif font-normal">
   <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center max-w-7xl mx-auto">
 
     {/* === Left: Text Content === */}
     <div className="text-left">
-      <p className="text-sm text-gray-500 mb-2">About us</p>
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-800 mb-6 leading-tight">
+      <p className="text-sm text-gray-500 mb-2 tracking-wide">About us</p>
+
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-gray-800 mb-6 leading-snug">
         I&A International
       </h2>
-      <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-6 max-w-prose">
+
+      <p className="text-gray-700 text-base leading-relaxed mb-6 max-w-prose">
         Where luxury meets elegance and quality. I&A International Company is a well-established Albanian jewelry retailer that was founded by Artan Caushi in 1991. The company has since grown to become a leading player in the jewelry industry, with several stores across Albania and an extensive collection of internationally acclaimed jewelry brands.
       </p>
+
       <a
         href="#"
-        className="inline-block border border-black text-black hover:text-white hover:bg-black transition px-6 py-3 text-sm font-medium rounded"
+        className="inline-block border  border-black text-black hover:text-white hover:bg-black transition px-6 py-3 text-sm font-medium rounded"
       >
         View More
       </a>
     </div>
 
- {/* === Right: Static Image === */}
-<div className="w-full flex justify-center md:justify-end">
-  <div className="max-w-md rounded-md overflow-hidden shadow-lg w-full">
-    <Image
-      src="/img/handsring.jpg"
-      alt="Jewelry sketches and hands"
-      width={800}
-      height={600}
-      className="w-full h-auto object-cover"
-    />
-  </div>
-</div>
-
+    {/* === Right: Static Image === */}
+    <div className="w-full flex justify-center md:justify-end">
+      <div className="max-w-md rounded-md overflow-hidden shadow-lg w-full">
+        <Image
+          src="/img/handsring.jpg"
+          alt="Jewelry sketches and hands"
+          width={800}
+          height={600}
+          className="w-full h-auto object-cover"
+        />
+      </div>
+    </div>
 
   </div>
 </section>
 
 
+
 <section id="brands" className="py-20 bg-[#fff] px-4 sm:px-6">
   <div className="max-w-6xl mx-auto text-center">
-    <h3 className="text-2xl sm:text-3xl font-semibold mb-10 sm:mb-12">Our Brands</h3>
+   <div className="text-center">
+  <div className="mx-auto w-12 h-[2px] bg-gray-400 mb-4"></div>
+  <h3 className="text-2xl sm:text-3xl font-serif font-normal text-gray-800 tracking-tight">
+    Our Brands
+  </h3>
+</div>
+
+
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
       {[
         { name: "Altinbas", img: "/img/necklacebrad.jpeg", productImg: "/img/necklace.jpg" },
@@ -608,7 +617,7 @@ useEffect(() => {
   </div>
 </section>
 
-<section className="bg-[#eaeaea] py-12 px-6 md:px-12">
+<section className="bg-[#eaeaea] py-12 px-6 md:px-12 font-termina">
   <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
     {/* === Image (Shown First on Mobile) === */}
@@ -624,16 +633,16 @@ useEffect(() => {
 
     {/* === Text Section === */}
     <div className="order-2 md:order-1">
-      <p className="text-gray-500 text-sm uppercase mb-2">Recent Event</p>
-      <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
+      <p className="text-gray-500 text-xs mb-3 tracking-wider font-serif font-normal">Recent Event</p>
+      <h2 className="text-3xl md:text-4xl font-serif font-normal text-gray-900 mb-5 leading-tight tracking-tight">
         Celebrating Over 30 Years of Timeless Craft
       </h2>
-      <p className="text-lg text-gray-700 mb-6">
+      <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-6 font-serif font-normal">
         To commemorate over three decades of craftsmanship, I&A International unveiled a curated collection of designer pieces. This milestone event reaffirmed our commitment to elegance, quality, and international excellence.
       </p>
       <Link
         href="#"
-        className="inline-block border border-gray-800 text-gray-800 font-semibold px-6 py-2 rounded hover:bg-black hover:text-white transition duration-300"
+        className="inline-block border font-serif font-normal border-gray-800 text-gray-800 font-medium tracking-wide px-6 py-2 rounded hover:bg-black hover:text-white transition duration-300"
       >
         View the Collection
       </Link>
@@ -642,13 +651,14 @@ useEffect(() => {
   </div>
 </section>
 
-<section className="bg-white py-16 px-6 md:px-12">
+
+<section className="bg-white py-16 px-6 md:px-12 font-termina">
   <div className="max-w-7xl mx-auto">
     <div className="flex justify-between items-center mb-8">
-      <h2 className="text-3xl md:text-4xl font-semibold text-gray-900">
+      <h2 className="text-3xl md:text-4xl font-serif font-normal text-gray-900 tracking-tight">
         Latest Press Releases & News
       </h2>
-      <div>{/* Swiper pagination appears automatically */}</div>
+      <div>{/* Swiper pagination */}</div>
     </div>
 
     <Swiper
@@ -678,8 +688,8 @@ useEffect(() => {
               className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>
-          <p className="text-sm text-gray-500 mt-4">18 June 2025</p>
-          <h3 className="mt-2 text-lg font-semibold text-gray-900 group-hover:text-black transition">
+          <p className="text-xs uppercase text-gray-500 mt-4 tracking-wider">18 June 2025</p>
+          <h3 className="mt-2 text-lg font-serif font-normal text-gray-900 group-hover:text-black transition leading-snug">
             I&A International unveils a flagship boutique in central Tirana
           </h3>
         </div>
@@ -697,8 +707,8 @@ useEffect(() => {
               className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>
-          <p className="text-sm text-gray-500 mt-4">12 June 2025</p>
-          <h3 className="mt-2 text-lg font-semibold text-gray-900 group-hover:text-black transition">
+          <p className="text-xs uppercase text-gray-500 mt-4 tracking-wider">12 June 2025</p>
+          <h3 className="mt-2 text-lg font-serif font-normal text-gray-900 group-hover:text-black transition leading-snug">
             New luxury brand partnerships announced at I&A Gala
           </h3>
         </div>
@@ -716,8 +726,8 @@ useEffect(() => {
               className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>
-          <p className="text-sm text-gray-500 mt-4">20 June 2025</p>
-          <h3 className="mt-2 text-lg font-semibold text-gray-900 group-hover:text-black transition">
+          <p className="text-xs uppercase text-gray-500 mt-4 tracking-wider">20 June 2025</p>
+          <h3 className="mt-2 text-lg font-serif font-normal text-gray-900 group-hover:text-black transition leading-snug">
             I&A publishes FY25 Annual Report and Strategic Overview
           </h3>
         </div>
@@ -727,54 +737,55 @@ useEffect(() => {
 </section>
 
 
-<section className="bg-gray-100 py-16 px-6 md:px-12">
+
+<section className="bg-gray-100 py-16 px-6 md:px-12 font-termina">
   <div className="max-w-3xl mx-auto text-center">
-    <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-6">
+    <h2 className="text-2xl md:text-3xl font-serif font-normal text-gray-800 mb-6 tracking-tight">
       Sign up to our Press Releases & News
     </h2>
 
-   <form className="flex flex-col sm:flex-row items-center justify-center gap-4">
-  <div className="relative w-full sm:w-2/3">
-    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-      {/* Email Icon SVG */}
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-18 8h18a2 2 0 002-2V6a2 2 0 00-2-2H3a2 2 0 00-2 2v8a2 2 0 002 2z"
+    <form className="flex flex-col sm:flex-row items-center justify-center gap-4">
+      {/* Input with icon */}
+      <div className="relative w-full sm:w-2/3">
+        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-18 8h18a2 2 0 002-2V6a2 2 0 00-2-2H3a2 2 0 00-2 2v8a2 2 0 002 2z"
+            />
+          </svg>
+        </span>
+        <input
+          type="email"
+          placeholder="Enter your email address"
+          className="w-full  font-serif font-normal pl-10 pr-4 py-3 rounded-md shadow-sm border border-gray-300 focus:ring-2 focus:ring-black focus:outline-none transition text-sm"
+          required
         />
-      </svg>
-    </span>
-    <input
-      type="email"
-      placeholder="Enter your email address"
-      className="w-full pl-10 pr-4 py-3 rounded-md shadow-sm border border-gray-300 focus:ring-2 focus:ring-black focus:outline-none transition"
-      required
-    />
-  </div>
+      </div>
 
-  <button
-    type="submit"
-    className="w-full sm:w-auto px-6 py-3 bg-black text-white font-medium rounded-md hover:bg-gray-800 transition"
-  >
-    Subscribe
-  </button>
-</form>
-
+      {/* Subscribe Button */}
+      <button
+        type="submit"
+        className="w-full sm:w-auto px-6 py-3 bg-black text-white font-medium rounded-md hover:bg-gray-800 transition text-sm"
+      >
+        Subscribe
+      </button>
+    </form>
   </div>
 </section>
 
 
-<section className="py-20 bg-white px-4 sm:px-6 text-center">
+<section className="py-20 bg-white px-4 sm:px-6 text-center font-termina">
   {/* Title Section */}
   <div className="max-w-5xl mx-auto mb-16 text-center">
-    <h2 className="text-3xl sm:text-4xl font-serif text-gray-800 border-b-2 inline-block pb-2 mb-6">
+    <h2 className="text-3xl sm:text-4xl font-serif font-normal text-gray-800 border-b-2 inline-block pb-2 mb-6 tracking-tight">
       Where Luxury Meets Talent & Craftsmanship
     </h2>
     <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
@@ -798,7 +809,7 @@ useEffect(() => {
       loop={false}
       className="career-swiper"
     >
-      {/* === Recruitment Card === */}
+      {/* Recruitment */}
       <SwiperSlide>
         <div className="flex flex-col">
           <div className="w-full aspect-[1/1] overflow-hidden rounded-md shadow-md mb-4">
@@ -811,20 +822,22 @@ useEffect(() => {
               className="w-full h-full object-cover"
             />
           </div>
-          <h4 className="text-xl font-serif text-gray-800 mb-2">Recruitment</h4>
-          <p className="text-gray-600 text-sm leading-relaxed mb-3">
+          <h4 className="text-xl font-serif font-normal text-gray-800 mb-2">
+            Recruitment
+          </h4>
+          <p className="text-gray-600 text-sm leading-relaxed mb-3 font-serif font-normal">
             Join our team of jewelry and sales experts and help us bring unparalleled quality and service to the world of luxury jewelry.
           </p>
-          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+          <p className="text-gray-600 text-sm leading-relaxed mb-4 font-serif font-normal">
             Our employees are the heart of our mission to deliver an unforgettable experience.
           </p>
-          <a href="#" className="text-[#003049] font-medium hover:underline mt-auto">
+          <a href="#" className="text-[#003049] font-medium hover:underline mt-auto text-sm">
             View More →
           </a>
         </div>
       </SwiperSlide>
 
-      {/* === Craftsmanship Card === */}
+      {/* Craftsmanship */}
       <SwiperSlide>
         <div className="flex flex-col">
           <div className="w-full aspect-[1/1] overflow-hidden rounded-md shadow-md mb-4">
@@ -834,17 +847,19 @@ useEffect(() => {
               className="w-full h-full object-cover transition-transform duration-1000 ease-in-out hover:scale-105"
             />
           </div>
-          <h4 className="text-xl font-serif text-gray-800 mb-2">Craftsmanship</h4>
-          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+          <h4 className="text-xl font-serif font-normal text-gray-800 mb-2 ">
+            Craftsmanship
+          </h4>
+          <p className="text-gray-600 text-sm leading-relaxed mb-4 font-serif font-normal">
             From filigree work to diamond setting, we believe every detail matters. Our pieces are crafted with precision and pride.
           </p>
-          <a href="/contact-us" className="text-[#003049] font-medium hover:underline mt-auto">
+          <a href="/contact-us" className="text-[#003049] font-medium hover:underline mt-auto text-sm">
             Contact Us →
           </a>
         </div>
       </SwiperSlide>
 
-      {/* === Design & Creation Card === */}
+      {/* Design & Creation */}
       <SwiperSlide>
         <div className="flex flex-col">
           <div className="w-full aspect-[1/1] overflow-hidden rounded-md shadow-md mb-4">
@@ -854,17 +869,19 @@ useEffect(() => {
               className="w-full h-full object-cover transition-transform duration-1000 ease-in-out hover:scale-105"
             />
           </div>
-          <h4 className="text-xl font-serif text-gray-800 mb-2">Design & Creation</h4>
-          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+          <h4 className="text-xl font-serif font-normal text-gray-800 mb-2">
+            Design & Creation
+          </h4>
+          <p className="text-gray-600 text-sm leading-relaxed mb-4 font-serif font-normal">
             Our design teams bring imagination to life, crafting iconic pieces that respect tradition while innovating for the future.
           </p>
-          <a href="#" className="text-[#003049] font-medium hover:underline mt-auto">
+          <a href="#" className="text-[#003049] font-medium hover:underline mt-auto text-sm">
             Explore Design →
           </a>
         </div>
       </SwiperSlide>
 
-      {/* === Manufacturing Card === */}
+      {/* Manufacturing */}
       <SwiperSlide>
         <div className="flex flex-col">
           <div className="w-full aspect-[1/1] overflow-hidden rounded-md shadow-md mb-4">
@@ -874,11 +891,13 @@ useEffect(() => {
               className="w-full h-full object-cover transition-transform duration-1000 ease-in-out hover:scale-105"
             />
           </div>
-          <h4 className="text-xl font-serif text-gray-800 mb-2">Manufacturing</h4>
-          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+          <h4 className="text-xl font-serif font-normal text-gray-800 mb-2">
+            Manufacturing
+          </h4>
+          <p className="text-gray-600 text-sm leading-relaxed mb-4 font-serif font-normal">
             Our artisans safeguard know-how and innovate with purpose. We nurture excellence to shape the future of fine craftsmanship.
           </p>
-          <a href="#" className="text-[#003049] font-medium hover:underline mt-auto">
+          <a href="#" className="text-[#003049] font-medium hover:underline mt-auto text-sm">
             Learn More →
           </a>
         </div>
@@ -891,15 +910,16 @@ useEffect(() => {
 
 
 
+
       <section id="contact" className="bg-[#eaeaea] py-24 px-4 sm:px-6 text-center">
         <div className="max-w-2xl mx-auto">
           {/* Heading */}
-          <h3 className="text-3xl sm:text-4xl font-serif text-[#000] mb-6">
+          <h3 className="text-3xl sm:text-4xl font-serif text-[#000] mb-6 ">
             Get in touch or <span className="underline">visit us</span>
           </h3>
 
           {/* Description */}
-          <p className="text-[#000] text-base mb-10 leading-relaxed">
+          <p className="text-[#000] text-base mb-10 leading-relaxed font-serif font-normal">
             Rr.Kavajës, Pallati Mio 2000, Tirana, Albania<br />
             info@ia-international.com
           </p>

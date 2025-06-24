@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        termina: ['"Termina"', 'sans-serif'],
+        termina: ['"Termina"', 'sans-serif', 'Inter', 'Helvetica Neue', 'Arial', 'Playfair Display', 'Georgia', 'serif'],
       },
       keyframes: {
         slideDown: {

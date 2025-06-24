@@ -13,7 +13,7 @@
 }
 
 body {
-  font-family: 'Termina', sans-serif;
+  font-family: 'Termina', 'Inter', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 /* tailwind text stroke utility */
 .stroke-text {
