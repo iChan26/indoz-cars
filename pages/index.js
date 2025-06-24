@@ -474,23 +474,13 @@ useEffect(() => {
 
 
 
- {/* === HERO TEXT === */}
+{/* === HERO TEXT === */}
 <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 text-center px-4">
-  <h1
-    className="text-white text-[20px] sm:text-[28px] md:text-[36px] lg:text-[42px] font-['Playfair_Display',_serif] leading-snug tracking-wide"
-  >
-    <Typewriter
-      words={['I&A International', 'Luxury Redefined', 'Where Fashion Meets Elegance']}
-      loop
-      cursor
-      cursorStyle="_"
-      typeSpeed={80}
-      deleteSpeed={50}
-      delaySpeed={2000}
-    />
+  <h1 className="text-white text-[20px] sm:text-[28px] md:text-[36px] lg:text-[42px] font-['Playfair_Display',_serif] leading-snug tracking-wide">
+    Luxury Redefined
   </h1>
-
 </div>
+
 
 
     </section>
@@ -834,7 +824,7 @@ useEffect(() => {
 <section className="py-20 bg-white px-4 sm:px-6 text-center">
   {/* Title Section */}
   <div className="max-w-5xl mx-auto mb-16 text-center">
-    <p className="text-base text-gray-500 font-medium mb-2">Talent</p>
+
     <h2 className="text-3xl sm:text-4xl font-serif text-gray-800 border-b-2 inline-block pb-2 mb-6">
       Where Luxury Meets Talent & Craftsmanship
     </h2>
