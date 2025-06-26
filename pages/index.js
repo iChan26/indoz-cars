@@ -340,7 +340,9 @@ useEffect(() => {
 
 
             {/* Top Logo */}
+            
             <div className="flex justify-center bg-[#eaeaea] items-center py-3">
+              <Link href="/" passHref>
               <Image
                 src="/img/logo.png"
                 alt="I&A International Logo"
@@ -349,6 +351,7 @@ useEffect(() => {
                 priority
 
               />
+              </Link>
             </div>
 
             {/* === Desktop Header Bottom Bar === */}
@@ -376,8 +379,8 @@ useEffect(() => {
               {/* === Center Nav (absolutely centered) === */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-6 font-sans text-[15px] tracking-wide">
                 <Link href="/" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">Home</Link>
-                <Link href="/about-us" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">About Us</Link>
-
+               
+                <Link href="/press" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">Press</Link>
                 {/* Dropdown Nav */}
                 <div className="relative group">
                   <Link href="/our-brands" className="flex items-center gap-1 relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">
@@ -395,8 +398,8 @@ useEffect(() => {
                     ))}
                   </div>
                 </div>
+                <Link href="/about-us" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">About Us</Link>
 
-                <Link href="/press" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">Press</Link>
               </div>
             </div>
 
@@ -422,14 +425,37 @@ useEffect(() => {
             {/* Mobile Nav Drawer */}
             <div
               className={`md:hidden bg-white border-t border-black/10 text-black overflow-hidden transition-all duration-500 ease-in-out 
-    ${mobileNavOpen ? 'max-h-[500px] opacity-100 py-4 px-4 space-y-4' : 'max-h-0 opacity-0 py-0 px-4'}
+    ${mobileNavOpen ? 'max-h-[800px] opacity-100 py-4 px-4 space-y-4' : 'max-h-0 opacity-0 py-0 px-4'}
   `}
             >
               <Link href="/" className="block transition-opacity duration-300">Home</Link>
-              <Link href="/about-us" className="block transition-opacity duration-300">About Us</Link>
-
+              <div className="pt-1">
+                <Link
+                  href="/press"
+                  className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+                >
+                  Press
+                </Link>
+              </div>
               <details className="group">
-                <summary className="cursor-pointer">Our Brands</summary>
+                <summary className="cursor-pointer flex items-center justify-between">
+                  <div className="flex items-center gap-1">
+                    <Link href="/our-brands" className="hover:font-semibold transition">
+                      Our Brands
+                    </Link>
+                    <svg
+                      className="w-4 h-4 ml-2 transform transition-transform group-open:rotate-90"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+
+                </summary>
+
                 <div className="pl-4 pt-2 space-y-2">
                   {brands.map((b) => (
                     <Link key={b.name} href={b.href} className="block hover:text-gray-300 transition">
@@ -439,8 +465,19 @@ useEffect(() => {
                 </div>
               </details>
 
-              <Link href="/contact-us" className="block transition-opacity duration-300">Contact</Link>
+              <Link href="/about-us" className="block transition-opacity duration-300">About Us</Link>
+
+              {/* Fixed Get in Touch button spacing and visibility */}
+              <div className="pt-1">
+                <Link
+                  href="/contact-us"
+                  className="inline-block border border-black text-sm px-4 py-2 font-medium hover:bg-black hover:text-white transition"
+                >
+                  Get in Touch
+                </Link>
+              </div>
             </div>
+
 
           </header>
 
@@ -945,6 +982,7 @@ useEffect(() => {
 
     {/* === Logo & Copyright === */}
     <div className="space-y-4">
+       <Link href="/" passHref>
       <Image
         src="/img/logo.png"
         alt="I&A International Logo"
@@ -953,6 +991,7 @@ useEffect(() => {
         priority
          className="filter brightness-0 invert mb-4"
       />
+      </Link>
       <p className="text-xs text-white">
         © {new Date().getFullYear()} I&A International.<br />All Rights Reserved.
       </p>
