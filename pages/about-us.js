@@ -430,20 +430,20 @@ export default function About() {
 
     {/* === Left: Text Content === */}
 <div className="text-left order-2 md:order-1">
- <h2 className="text-[2.5rem] md:text-[3rem] font-light text-[#555] leading-snug tracking-tight">
+ <h2 className="text-[3rem] md:text-[3rem] font-light text-[#555] leading-snug tracking-tight">
     Defining Elegance Since 1991
   </h2>
 
- <p className="text-[1.125rem] leading-[1.9] text-[#444] font-normal tracking-normal">
-    Where luxury meets elegance and quality. I&A International Company is a well-established Albanian jewelry retailer that was founded by Artan Caushi in 1991. The company has since grown to become a leading player in the jewelry industry, with several stores across Albania and an extensive collection of internationally acclaimed jewelry brands.
+ <p className="text-[1.2500rem] leading-[1.9] text-[#444] font-normal tracking-normal">
+    <br/> Where luxury meets elegance and quality. I&A International Company is a well-established Albanian jewelry retailer that was founded by Artan Caushi in 1991. The company has since grown to become a leading player in the jewelry industry, with several stores across Albania and an extensive collection of internationally acclaimed jewelry brands.
   </p>
 
-  <p className="text-[1.1875rem] text-[#555] leading-[2.1] mb-6 font-[500] tracking-wide">
-    As an official reseller of some of the world’s most prestigious jewelry brands, I&A International Company has built a reputation for offering exquisite and high-quality jewelry pieces to its customers. With exclusive selling rights in Albania for major brands such as Anna Maria Cammilli, Fope, Mirco Visconti, and Ititoli, the company provides a diverse range of jewelry that caters to the varied tastes and preferences of its customers.
+  <p className="text-[1.2500rem] text-[#555] leading-[2.1] mb-6 font-[500] tracking-wide">
+   <br/>  As an official reseller of some of the world’s most prestigious jewelry brands, I&A International Company has built a reputation for offering exquisite and high-quality jewelry pieces to its customers. With exclusive selling rights in Albania for major brands such as Anna Maria Cammilli, Fope, Mirco Visconti, and Ititoli, the company provides a diverse range of jewelry that caters to the varied tastes and preferences of its customers.
   </p>
 
-  <p className="text-[1.1875rem] text-[#555] leading-[2.1] mb-0 font-[500] tracking-wide">
-    In addition to its jewelry collection, I&A International Company also has exclusive selling rights for several luxury watch brands, including Eberhard & Co, Louis Erard, Bomberg, Eterna, and Wainer. The company is committed to offering its customers an unparalleled shopping experience, which is why it strives to offer only the finest luxury brands in the industry.
+  <p className="text-[1.2500rem] text-[#555] leading-[2.1] mb-6 font-[500] tracking-wide">
+   <br/> In addition to its jewelry collection, I&A International Company also has exclusive selling rights for several luxury watch brands, including Eberhard & Co, Louis Erard, Bomberg, Eterna, and Wainer. The company is committed to offering its customers an unparalleled shopping experience, which is why it strives to offer only the finest luxury brands in the industry.
   </p>
 </div>
 
@@ -484,21 +484,21 @@ export default function About() {
 
   {/* === Right: Text === */}
 <div className="text-left">
-  <h2 className="text-[2.5rem] md:text-[3rem] font-light text-[#555] leading-snug tracking-tight">
+  <h2 className="text-[3rem] md:text-[3rem] font-light text-[#555] leading-snug tracking-tight">
     A Legacy of Elegance, Born in Albania
   </h2>
 
-  <p className="text-[1.125rem] leading-[1.9] text-[#555] font-normal tracking-normal">
+  <p className="text-[1.2500rem] leading-[1.9] text-[#555] font-normal tracking-normal">
    <br /> I&A International Company is a distinguished name in Albania’s luxury landscape. Founded by Artan Caushi in 1991, the company has consistently raised the standard in fine jewelry through a deep commitment to quality, elegance, and refinement.
   </p>
 
-  <p className="text-[1.125rem] leading-[1.9] text-[#555] font-normal tracking-normal">
+  <p className="text-[1.2500rem] leading-[1.9] text-[#555] font-normal tracking-normal">
    <br /> With multiple boutiques across Albania and a handpicked selection of internationally acclaimed jewelry brands, we offer more than just adornments—we offer stories of heritage, artistry, and excellence. Our growth reflects a passion for luxury that continues to shape the future of jewelry in the region.
   </p>
-
+<br />
  <a
   href="/about-us"
-  className="inline-block mt-6 border border-black text-black px-6 py-2 text-l hover:bg-[#000] hover:text-white"
+  className="inline-block mt-6 border border-black text-black px-6 py-2 text-[1.2300rem] hover:bg-[#000] hover:text-white"
 >
   Read more
 </a>
@@ -530,21 +530,21 @@ export default function About() {
 
    {/* === Left: Text Content === */}
 <div className="order-2 md:order-1 text-left">
-  <h2 className="text-[2.5rem] md:text-[3rem] font-light text-[#555] leading-snug tracking-tight">
+  <h2 className="text-[3rem] md:text-[3rem] font-light text-[#555] leading-snug tracking-tight">
     What Sets Us Apart?
   </h2>
 
-  <p className="text-[1.125rem] leading-[1.9] text-[#555] font-normal tracking-normal">
+  <p className="text-[1.2500rem] leading-[1.9] text-[#555] font-normal tracking-normal">
    <br /> At I&A International, luxury is not just a product, it’s a legacy. Since 1991, our company has redefined elegance in Albania by blending heritage craftsmanship with modern excellence. Founded by Artan Caushi, we’ve built more than a business—we’ve cultivated a symbol of prestige and refinement.
   </p>
 
-  <p className="text-[1.125rem] leading-[1.9] text-[#555] font-normal tracking-normal">
+  <p className="text-[1.2500rem] leading-[1.9] text-[#555] font-normal tracking-normal">
    <br /> With a curated collection of world-renowned jewelry brands and multiple boutiques across Albania, we offer an experience where quality, authenticity, and attention to detail are paramount. Our commitment goes beyond aesthetics—it lies in delivering timeless pieces that speak of individuality and sophistication.
   </p>
 
  <a
   href="/about-us"
-  className="inline-block mt-6 border border-black text-black px-6 py-2 text-l hover:bg-[#000] hover:text-white"
+  className="inline-block mt-6 border border-black text-black px-6 py-2 text-[1.2300rem] hover:bg-[#000] hover:text-white"
 >
   Read more
 </a>
