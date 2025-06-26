@@ -498,7 +498,7 @@ export default function About() {
 
  <a
   href="/about-us"
-  className="inline-block mt-6 border border-black text-black px-6 py-2 text-sm hover:bg-[#000] hover:text-white"
+  className="inline-block mt-6 border border-black text-black px-6 py-2 text-l hover:bg-[#000] hover:text-white"
 >
   Read more
 </a>
@@ -544,7 +544,7 @@ export default function About() {
 
  <a
   href="/about-us"
-  className="inline-block mt-6 border border-black text-black px-6 py-2 text-sm hover:bg-[#000] hover:text-white"
+  className="inline-block mt-6 border border-black text-black px-6 py-2 text-l hover:bg-[#000] hover:text-white"
 >
   Read more
 </a>
