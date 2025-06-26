@@ -422,140 +422,43 @@ export default function About() {
             </div>
           </div>
         </div>
-
-              <section id="about" className="bg-white pt-24 pb-24 px-4 sm:px-6 font-termina">
-  <div className="max-w-6xl md:max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-
-    {/* Mobile Image (Above Content) */}
-    <div className="block md:hidden w-full flex justify-center items-center mb-8">
-      <img
-        src="/img/girlwithring.png"
-        alt="Elegant woman wearing jewelry"
-        className="shadow-lg object-contain w-full max-w-sm h-auto"
-      />
-    </div>
-
-    {/* Left Content Block */}
-    <div>
-      <h1 className="text-4xl md:text-5xl font-serif font-normal text-gray-800 mb-8 leading-tight tracking-tight">
-        Defining Elegance Since 1991
-      </h1>
-      <p className="text-base md:text-lg text-gray-700 leading-relaxed font-serif font-normal space-y-4">
-        Where luxury meets elegance and quality. I&A International Company is a well-established Albanian jewelry retailer that was founded by Artan Caushi in 1991. The company has since grown to become a leading player in the jewelry industry, with several stores across Albania and an extensive collection of internationally acclaimed jewelry brands.
-      </p>
-      <p className="text-base md:text-lg text-gray-700 leading-relaxed font-serif font-normal mt-6">
-        As an official reseller of some of the world’s most prestigious jewelry brands, I&A International Company has built a reputation for offering exquisite and high-quality jewelry pieces to its customers. With exclusive selling rights in Albania for major brands such as Anna Maria Cammilli, Fope, Mirco Visconti, and Ititoli, the company provides a diverse range of jewelry that caters to the varied tastes and preferences of its customers.
-      </p>
-      <p className="text-base md:text-lg text-gray-700 leading-relaxed font-serif font-normal mt-6">
-        In addition to its jewelry collection, I&A International Company also has exclusive selling rights for several luxury watch brands, including Eberhard & Co, Louis Erard, Bomberg, Eterna, and Wainer. The company is committed to offering its customers an unparalleled shopping experience, which is why it strives to offer only the finest luxury brands in the industry.
-      </p>
-    </div>
-
-    {/* Desktop Image (Right Side) */}
-    <div className="hidden md:flex w-full justify-center items-start">
-      <img
-        src="/img/girlwithring.png"
-        alt="Elegant woman wearing jewelry"
-        className="shadow-lg object-contain w-full max-w-md h-auto"
-      />
-    </div>
-
-  </div>
-</section>
+      </section>
 
 
-    <section className="bg-[#ececec] py-24 px-6 md:px-12">
-  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-
-    {/* === Left: Image === */}
-    <div className="order-1">
-      <Image
-        src="/img/legacy-of-elegance.jpg" // Replace with your image path
-        alt="Luxury design process"
-        width={800}
-        height={600}
-        className="w-full h-auto object-cover shadow-md rounded"
-      />
-    </div>
-
-    {/* === Right: Text Content === */}
-    <div className="order-2">
-      <h2 className="text-4xl md:text-5xl font-serif text-gray-800 mb-8 leading-tight tracking-tight">
-        A Legacy of Elegance, Born in Albania
-      </h2>
-
-      <p className="text-base md:text-lg text-gray-700 leading-relaxed font-serif font-normal mb-6">
-        I&A International Company is a distinguished name in Albania’s luxury landscape. Founded by Artan Caushi in 1991, the company has consistently raised the standard in fine jewelry through a deep commitment to quality, elegance, and refinement.
-      </p>
-
-      <p className="text-base md:text-lg text-gray-700 leading-relaxed font-serif font-normal mb-8">
-        With multiple boutiques across Albania and a handpicked selection of internationally acclaimed jewelry brands, we offer more than just adornments—we offer stories of heritage, artistry, and excellence. Our growth reflects a passion for luxury that continues to shape the future of jewelry in the region.
-      </p>
-
-      <a
-        href="/about-us"
-        className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-black border border-black rounded-full transition duration-300 hover:bg-black hover:text-white group"
-      >
-        Read more
-        <svg
-          className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-
-     <section className="bg-white py-24 px-6 md:px-12">
-  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-
-    {/* === Right: Image (shown first on mobile) === */}
-    <div className="order-1 md:order-2">
-      <Image
-        src="/img/what-set-us-apart.jpg"
-        alt="I&A International Team Discussion"
-        width={800}
-        height={600}
-        className="w-full h-auto object-cover shadow-md rounded"
-      />
-    </div>
+<section id="about" className="bg-[#fff] py-28 px-6 md:px-20 font-serif">
+  <div className="max-w-[1320px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-5 items-start">
 
     {/* === Left: Text Content === */}
-    <div className="order-2 md:order-1">
-      <h2 className="text-4xl md:text-5xl font-serif font-normal text-gray-800 mb-8 leading-tight tracking-tight">
-        What Sets Us Apart?
-      </h2>
+<div className="text-left order-2 md:order-1">
+  <h2 className="text-4xl md:text-[3rem] font-[520] text-[#555] leading-tight mb-6 tracking-wide">
+    Defining Elegance Since 1991
+  </h2>
 
-      <p className="text-base md:text-lg text-gray-700 leading-relaxed font-serif font-normal mb-6">
-        At I&A International, luxury is not just a product, it’s a legacy. Since 1991, our company has redefined elegance in Albania by blending heritage craftsmanship with modern excellence. Founded by Artan Caushi, we’ve built more than a business—we’ve cultivated a symbol of prestige and refinement.
-      </p>
+  <p className="text-[1.1875rem] text-[#555] leading-[2.1] mb-6 font-[500] tracking-wide">
+    Where luxury meets elegance and quality. I&A International Company is a well-established Albanian jewelry retailer that was founded by Artan Caushi in 1991. The company has since grown to become a leading player in the jewelry industry, with several stores across Albania and an extensive collection of internationally acclaimed jewelry brands.
+  </p>
 
-      <p className="text-base md:text-lg text-gray-700 leading-relaxed font-serif font-normal mb-8">
-        With a curated collection of world-renowned jewelry brands and multiple boutiques across Albania, we offer an experience where quality, authenticity, and attention to detail are paramount. Our commitment goes beyond aesthetics—it lies in delivering timeless pieces that speak of individuality and sophistication.
-      </p>
+  <p className="text-[1.1875rem] text-[#555] leading-[2.1] mb-6 font-[500] tracking-wide">
+    As an official reseller of some of the world’s most prestigious jewelry brands, I&A International Company has built a reputation for offering exquisite and high-quality jewelry pieces to its customers. With exclusive selling rights in Albania for major brands such as Anna Maria Cammilli, Fope, Mirco Visconti, and Ititoli, the company provides a diverse range of jewelry that caters to the varied tastes and preferences of its customers.
+  </p>
 
-      <a
-        href="/about-us"
-        className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-black border border-black rounded-full transition duration-300 hover:bg-black hover:text-white group"
-      >
-        Read more
-        <svg
-          className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
+  <p className="text-[1.1875rem] text-[#555] leading-[2.1] mb-0 font-[500] tracking-wide">
+    In addition to its jewelry collection, I&A International Company also has exclusive selling rights for several luxury watch brands, including Eberhard & Co, Louis Erard, Bomberg, Eterna, and Wainer. The company is committed to offering its customers an unparalleled shopping experience, which is why it strives to offer only the finest luxury brands in the industry.
+  </p>
+</div>
+
+
+    {/* === Right: Image === */}
+    <div className="w-full order-1 md:order-2">
+      <div className="w-full h-[400px] md:h-[480px] overflow-hidden shadow-sm">
+        <Image
+          src="/img/girlwithring.png"
+          alt="Elegant woman wearing jewelry"
+          width={720}
+          height={480}
+          className="w-full h-full object-cover"
+        />
+      </div>
     </div>
 
   </div>
@@ -563,49 +466,139 @@ export default function About() {
 
 
 
-      {/* === Mission, Vision, Values (Icon + Separator Style) === */}
-<section className="bg-[#ececec] py-20 px-6">
-  <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center font-serif font-normal">
+<section className="bg-[#f2f2f2] py-28 px-6 md:px-20">
+  <div className="max-w-[1320px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-5 items-start">
 
-    {/* Mission */}
+    {/* === Left: Image === */}
+    <div className="w-full">
+      <div className="w-full h-[400px] md:h-[480px] overflow-hidden shadow-sm">
+        <Image
+          src="/img/legacy-of-elegance.jpg"
+          alt="Luxury design process"
+          width={720}
+          height={480}
+          className="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+
+  {/* === Right: Text === */}
+<div className="text-left">
+  <h2 className="text-4xl md:text-[3rem] font-serif font-light text-[#555] leading-tight mb-4 tracking-wide">
+    A Legacy of Elegance, Born in Albania
+  </h2>
+
+  <p className="text-[1.1875rem] text-[#555] leading-[2.1] mb-5 font-[500] font-serif tracking-wide">
+    I&A International Company is a distinguished name in Albania’s luxury landscape. Founded by Artan Caushi in 1991, the company has consistently raised the standard in fine jewelry through a deep commitment to quality, elegance, and refinement.
+  </p>
+
+  <p className="text-[1.1875rem] text-[#555] leading-[2.1] mb-7 font-[500] font-serif tracking-wide">
+    With multiple boutiques across Albania and a handpicked selection of internationally acclaimed jewelry brands, we offer more than just adornments—we offer stories of heritage, artistry, and excellence. Our growth reflects a passion for luxury that continues to shape the future of jewelry in the region.
+  </p>
+
+  <a
+    href="/about-us"
+    className="inline-block px-6 py-[10px] border border-gray-700 text-gray-800 text-base font-light tracking-wide rounded-sm hover:bg-gray-800 hover:text-white transition duration-300"
+  >
+    Read more
+  </a>
+</div>
+
+  </div>
+</section>
+
+
+
+
+
+<section className="bg-[#fff] py-28 px-6 md:px-20 font-serif">
+  <div className="max-w-[1320px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-5 items-start">
+
+    {/* === Right: Image (shown first on mobile) === */}
+    <div className="order-1 md:order-2 w-full">
+      <div className="w-full h-[400px] md:h-[480px] overflow-hidden shadow-sm">
+        <Image
+          src="/img/what-set-us-apart.jpg"
+          alt="I&A International Team Discussion"
+          width={800}
+          height={600}
+          className="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+
+   {/* === Left: Text Content === */}
+<div className="order-2 md:order-1 text-left">
+  <h2 className="text-4xl md:text-[3rem] font-light text-[#555] leading-tight mb-6 tracking-wide">
+    What Sets Us Apart?
+  </h2>
+
+  <p className="text-[1.1875rem] text-[#4a4a4acc] leading-[2.1] mb-6 font-light tracking-wide">
+    At I&A International, luxury is not just a product, it’s a legacy. Since 1991, our company has redefined elegance in Albania by blending heritage craftsmanship with modern excellence. Founded by Artan Caushi, we’ve built more than a business—we’ve cultivated a symbol of prestige and refinement.
+  </p>
+
+  <p className="text-[1.1875rem] text-[#4a4a4acc] leading-[2.1] mb-8 font-light tracking-wide">
+    With a curated collection of world-renowned jewelry brands and multiple boutiques across Albania, we offer an experience where quality, authenticity, and attention to detail are paramount. Our commitment goes beyond aesthetics—it lies in delivering timeless pieces that speak of individuality and sophistication.
+  </p>
+
+  <a
+    href="/about-us"
+    className="inline-block px-6 py-[10px] border border-gray-700 text-gray-800 text-base font-light tracking-wide rounded-sm hover:bg-gray-800 hover:text-white transition duration-300"
+  >
+    Read more
+  </a>
+</div>
+
+
+
+  </div>
+</section>
+
+
+
+
+  <section className="bg-[#ececec] py-24 px-6">
+  <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center font-serif">
+
+    {/* === Mission === */}
     <div>
-      <div className="flex justify-center mb-5">
-        <svg className="w-10 h-10 text-gray-700" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+      <div className="flex justify-center mb-6">
+        <svg className="w-10 h-10 text-[#4a4a4a]" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="10" strokeLinecap="round" strokeLinejoin="round" />
           <circle cx="12" cy="12" r="4" strokeLinecap="round" strokeLinejoin="round" />
           <path d="M12 2v2M12 20v2M2 12h2M20 12h2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>
-      <h3 className="text-2xl text-gray-800 mb-3">Our Mission</h3>
-      <p className="text-base text-gray-700 leading-relaxed">
+      <h3 className="text-2xl font-[520] text-[#2e2e2e] mb-4 tracking-wide">Our Mission</h3>
+      <p className="text-[1.0625rem] text-[#3a3a3a] leading-[1.9] font-[450] tracking-wide">
         To deliver exceptional jewelry and accessories that reflect each customer's unique style, while upholding the highest standards in service and satisfaction.
       </p>
     </div>
 
-    {/* Vision */}
+    {/* === Vision === */}
     <div className="border-l border-r border-gray-300 px-6">
-      <div className="flex justify-center mb-5">
-        <svg className="w-10 h-10 text-gray-700" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+      <div className="flex justify-center mb-6">
+        <svg className="w-10 h-10 text-[#4a4a4a]" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
           <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z" strokeLinecap="round" strokeLinejoin="round" />
           <circle cx="12" cy="12" r="3" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>
-      <h3 className="text-2xl text-gray-800 mb-3">Our Vision</h3>
-      <p className="text-base text-gray-700 leading-relaxed">
+      <h3 className="text-2xl font-[520] text-[#2e2e2e] mb-4 tracking-wide">Our Vision</h3>
+      <p className="text-[1.0625rem] text-[#3a3a3a] leading-[1.9] font-[450] tracking-wide">
         To become Albania’s leading luxury jewelry retailer, expanding internationally with a commitment to quality, trust, and refined luxury.
       </p>
     </div>
 
-    {/* Values */}
+    {/* === Values === */}
     <div>
-      <div className="flex justify-center mb-5">
-        <svg className="w-10 h-10 text-gray-700" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+      <div className="flex justify-center mb-6">
+        <svg className="w-10 h-10 text-[#4a4a4a]" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
           <path d="M12 2l7 4v5c0 5-3 9-7 11-4-2-7-6-7-11V6l7-4z" strokeLinecap="round" strokeLinejoin="round" />
           <path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>
-      <h3 className="text-2xl text-gray-800 mb-3">Our Values</h3>
-      <p className="text-base text-gray-700 leading-relaxed">
+      <h3 className="text-2xl font-[520] text-[#2e2e2e] mb-4 tracking-wide">Our Values</h3>
+      <p className="text-[1.0625rem] text-[#3a3a3a] leading-[1.9] font-[450] tracking-wide">
         We value <strong>integrity</strong>, <strong>innovation</strong>, and <strong>excellence</strong>. We embrace diversity, uphold transparency, and consistently aim to exceed expectations in everything we do.
       </p>
     </div>
@@ -613,9 +606,10 @@ export default function About() {
   </div>
 </section>
 
-<section className="py-24 px-6 bg-white font-termina" id="timeline">
-  <div className="max-w-4xl mx-auto font-serif font-normal">
-    <h2 className="text-3xl sm:text-4xl text-gray-800 font-normal text-center mb-16">
+
+<section className="py-24 px-6 bg-white font-serif" id="timeline">
+  <div className="max-w-4xl mx-auto font-[450]">
+    <h2 className="text-3xl sm:text-4xl text-[#2e2e2e] font-[520] text-center mb-16 tracking-wide">
       Our Journey
     </h2>
 
@@ -643,10 +637,14 @@ export default function About() {
 
               {/* Timeline Text Block */}
               <div
-                className={`w-[calc(50%-1rem)] md:w-[calc(50%-2rem)] text-sm md:text-base ${isEven ? 'text-left pr-4' : 'text-right pl-4'}`}
+                className={`w-[calc(50%-1rem)] md:w-[calc(50%-2rem)] ${isEven ? 'text-left pr-4' : 'text-right pl-4'}`}
               >
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">{item.year}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.text}</p>
+                <h3 className="text-lg font-[520] text-[#333] mb-2 tracking-wide">
+                  {item.year}
+                </h3>
+                <p className="text-[1.0625rem] text-[#4a4a4a] leading-[1.9] font-[450] tracking-wide">
+                  {item.text}
+                </p>
               </div>
             </motion.div>
           );
@@ -661,21 +659,25 @@ export default function About() {
 
 
 
-+{/* === Corporate Responsibility Section === */}
-<section className="bg-[#ececec] py-24 px-6 font-serif font-normal">
-  <div className="max-w-6xl mx-auto">
+{/* === Corporate Responsibility Section === */}
+<section className="bg-[#ececec] py-28 px-6 md:px-20 font-serif font-[450]">
+  <div className="max-w-[1320px] mx-auto">
+
     {/* Section Heading */}
-    <div className="text-center mb-12">
-      <h2 className="text-3xl sm:text-4xl text-gray-800 font-normal">Corporate Responsibility</h2>
-      <p className="text-md md:text-lg text-gray-600 mt-4 max-w-3xl mx-auto">
+    <div className="text-center mb-14">
+      <h2 className="text-3xl md:text-4xl text-[#2f2f2f] font-[520] tracking-wide">
+        Corporate Responsibility
+      </h2>
+      <p className="text-[1.0625rem] md:text-[1.125rem] text-[#555] mt-4 max-w-3xl mx-auto leading-[1.9] font-[450]">
         We believe in doing business the right way — ethically, sustainably, and with a deep sense of community responsibility.
       </p>
     </div>
 
     {/* Grid: Content + Image */}
-    <div className="grid md:grid-cols-2 gap-10 items-start">
+    <div className="grid md:grid-cols-2 gap-12 items-start">
+
       {/* === Left Column: Text Content === */}
-      <div className="space-y-6 text-gray-700 text-[15px] leading-relaxed order-2 md:order-1">
+      <div className="space-y-6 text-[#3a3a3a] text-[1.0625rem] leading-[1.9] order-2 md:order-1 font-[450] tracking-wide">
         <p>
           At I&A International, we take our role in the community seriously. We are committed to reducing our environmental impact by integrating sustainable practices into every part of our operations — from minimizing waste and using eco-friendly packaging to implementing energy-efficient lighting.
         </p>
@@ -699,124 +701,131 @@ export default function About() {
             className="object-cover w-full h-full"
           />
         </div>
-        <div className="absolute bottom-4 left-4 right-4 bg-white/90 px-4 py-3 rounded shadow-md">
-          <p className="text-sm text-gray-800 italic whitespace-nowrap overflow-hidden border-r-2 border-gray-800 animate-typewriter">
+        <div className="absolute bottom-4 left-4 right-4 bg-white/90 px-5 py-4 rounded shadow-md">
+          <p className="text-sm text-gray-800 italic font-[460] tracking-wide whitespace-nowrap overflow-hidden border-r-2 border-gray-800 animate-typewriter">
             "Sustainability and responsibility are not choices — they are our commitments."
           </p>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-        {/* === Our Commitments Section === */}
-<section className="py-24 px-6 bg-white font-serif font-normal">
-  <div className="max-w-6xl mx-auto text-center">
-    {/* Header */}
-    <h2 className="text-3xl sm:text-4xl text-gray-800 font-normal">Our Commitments</h2>
-    <p className="text-gray-600 text-md md:text-lg max-w-2xl mx-auto mb-12">
+
+     {/* === Our Commitments Section === */}
+<section className="py-28 px-6 md:px-20 bg-white font-serif font-[450]">
+  <div className="max-w-[1320px] mx-auto text-center">
+
+    {/* Section Heading */}
+    <h2 className="text-3xl md:text-4xl text-[#2f2f2f] font-[520] tracking-wide mb-4">
+      Our Commitments
+    </h2>
+    <p className="text-[1.0625rem] md:text-[1.125rem] text-[#555] max-w-2xl mx-auto mb-14 leading-[1.9] font-[450]">
       At I&A International, we are driven by a deep sense of responsibility in every aspect of our business. Our commitments reflect our values and guide our actions.
     </p>
 
-    {/* Cards Grid */}
-    <div className="grid gap-8 md:grid-cols-3">
+    {/* Grid Cards */}
+    <div className="grid gap-10 md:grid-cols-3">
+      
       {/* Card: Business Ethics */}
-      <div className="bg-gray-50 rounded-lg shadow-md p-8 transition hover:shadow-xl">
-        <div className="flex justify-center items-center w-16 h-16 mb-4 mx-auto bg-gray-100 rounded-full">
+      <div className="bg-[#f8f8f8] rounded-lg shadow-sm p-8 transition hover:shadow-md">
+        <div className="flex justify-center items-center w-16 h-16 mb-5 mx-auto bg-gray-100 rounded-full">
           <svg className="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
             <path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M12 2a10 10 0 1010 10A10 10 0 0012 2z" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
-        <h3 className="text-xl text-gray-800 font-normal mb-2">Business Ethics</h3>
-        <p className="text-sm text-gray-600">
+        <h3 className="text-xl text-[#2e2e2e] font-[520] mb-3 tracking-wide">Business Ethics</h3>
+        <p className="text-[0.975rem] text-[#666] leading-relaxed font-[450]">
           We uphold integrity, transparency, and fairness in all our dealings. Ethical standards are the foundation of our company’s success.
         </p>
       </div>
 
       {/* Card: Social Performance */}
-      <div className="bg-gray-50 rounded-lg shadow-md p-8 transition hover:shadow-xl">
-        <div className="flex justify-center items-center w-16 h-16 mb-4 mx-auto bg-gray-100 rounded-full">
+      <div className="bg-[#f8f8f8] rounded-lg shadow-sm p-8 transition hover:shadow-md">
+        <div className="flex justify-center items-center w-16 h-16 mb-5 mx-auto bg-gray-100 rounded-full">
           <svg className="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
             <path d="M17 20h5v-2a3 3 0 00-3-3h-2m-4 5v-6a3 3 0 00-3-3H7a3 3 0 00-3 3v6h6zm-3-8V4a4 4 0 118 0v8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
-        <h3 className="text-xl text-gray-800 font-normal mb-2">Social Performance</h3>
-        <p className="text-sm text-gray-600">
+        <h3 className="text-xl text-[#2e2e2e] font-[520] mb-3 tracking-wide">Social Performance</h3>
+        <p className="text-[0.975rem] text-[#666] leading-relaxed font-[450]">
           We value people. From fair working conditions to inclusive practices, our social commitment drives long-term positive impact.
         </p>
       </div>
 
       {/* Card: Environmental Performance */}
-      <div className="bg-gray-50 rounded-lg shadow-md p-8 transition hover:shadow-xl">
-        <div className="flex justify-center items-center w-16 h-16 mb-4 mx-auto bg-gray-100 rounded-full">
+      <div className="bg-[#f8f8f8] rounded-lg shadow-sm p-8 transition hover:shadow-md">
+        <div className="flex justify-center items-center w-16 h-16 mb-5 mx-auto bg-gray-100 rounded-full">
           <svg className="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
             <path d="M12 8v4l3 3m6-3A9 9 0 113 12a9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
-        <h3 className="text-xl text-gray-800 font-normal mb-2">Environmental Performance</h3>
-        <p className="text-sm text-gray-600">
+        <h3 className="text-xl text-[#2e2e2e] font-[520] mb-3 tracking-wide">Environmental Performance</h3>
+        <p className="text-[0.975rem] text-[#666] leading-relaxed font-[450]">
           We are dedicated to minimizing our environmental footprint through sustainable operations and eco-conscious packaging.
         </p>
       </div>
+
     </div>
   </div>
 </section>
 
-<section className="bg-[#ececec] py-20 px-6 md:px-12 font-serif">
-  <div className="max-w-7xl mx-auto">
-    
-    {/* Title */}
-    <div className="mb-12">
-      <h2 className="text-3xl sm:text-4xl text-gray-800 font-normal border-b-2 border-gray-300 inline-block pb-2">
+<section className="bg-[#ececec] py-24 px-6 md:px-20 font-serif font-[450]">
+  <div className="max-w-[1320px] mx-auto">
+
+    {/* Section Title */}
+    <div className="mb-14">
+      <h2 className="text-3xl md:text-4xl text-[#2f2f2f] font-[520] border-b border-gray-300 inline-block pb-3 tracking-wide">
         Our Presence
       </h2>
     </div>
 
     {/* Locations Grid */}
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-      
+
       {/* Tirana */}
       <div>
-        <div className="w-full h-56 overflow-hidden rounded-md shadow-md mb-4">
+        <div className="w-full h-56 overflow-hidden rounded-md shadow-sm mb-4">
           <img
             src="/img/location-tirana.jpg"
             alt="Tirana Boutique"
             className="w-full h-full object-cover"
           />
         </div>
-        <p className="text-xs text-gray-500 uppercase mb-1">Tirana</p>
-        <h3 className="text-lg text-gray-800 font-normal leading-snug">
+        <p className="text-[0.6875rem] text-gray-500 uppercase tracking-wide mb-1 font-[450]">Tirana</p>
+        <h3 className="text-[1.05rem] text-[#2e2e2e] font-[480] leading-snug">
           Our flagship boutique is located in the heart of Tirana, showcasing exclusive international jewelry collections.
         </h3>
       </div>
 
       {/* Durres */}
       <div>
-        <div className="w-full h-56 overflow-hidden rounded-md shadow-md mb-4">
+        <div className="w-full h-56 overflow-hidden rounded-md shadow-sm mb-4">
           <img
             src="/img/location-durres.jpg"
             alt="Durres Boutique"
             className="w-full h-full object-cover"
           />
         </div>
-        <p className="text-xs text-gray-500 uppercase mb-1">Durres</p>
-        <h3 className="text-lg text-gray-800 font-normal leading-snug">
+        <p className="text-[0.6875rem] text-gray-500 uppercase tracking-wide mb-1 font-[450]">Durres</p>
+        <h3 className="text-[1.05rem] text-[#2e2e2e] font-[480] leading-snug">
           A luxurious shopping experience by the Adriatic coast, our Durres location highlights timeless elegance.
         </h3>
       </div>
 
-      {/* Global Partnerships */}
+      {/* Global */}
       <div>
-        <div className="w-full h-56 overflow-hidden rounded-md shadow-md mb-4">
+        <div className="w-full h-56 overflow-hidden rounded-md shadow-sm mb-4">
           <img
             src="/img/location-global.jpg"
             alt="Global Brand Presence"
             className="w-full h-full object-cover"
           />
         </div>
-        <p className="text-xs text-gray-500 uppercase mb-1">Global</p>
-        <h3 className="text-lg text-gray-800 font-normal leading-snug">
+        <p className="text-[0.6875rem] text-gray-500 uppercase tracking-wide mb-1 font-[450]">Global</p>
+        <h3 className="text-[1.05rem] text-[#2e2e2e] font-[480] leading-snug">
           Through our partnerships with brands like Fope, Anna Maria Cammilli, and Eberhard & Co, we bring global excellence to Albania.
         </h3>
       </div>
@@ -824,10 +833,6 @@ export default function About() {
     </div>
   </div>
 </section>
-
-      </section>
-
-
 
 
       <footer className="bg-[#222] text-white border-t border-[#9db1b4] py-12 px-4 sm:px-6">

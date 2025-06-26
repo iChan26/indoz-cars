@@ -166,7 +166,7 @@ export default function About() {
   const [tappedOnce, setTappedOnce] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const containerRef = useRef(null)
-
+ const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const handleClick = (e) => {
     if (!isOpen) {
       e.preventDefault()     // first click: open
@@ -210,6 +210,27 @@ export default function About() {
     { name: 'ROBERTO BRAVO', href: '/our-brands/roberto-bravo' },
   ]
 
+   const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      const isScrollingUp = prevScrollPos > currentScrollPos;
+
+      if (currentScrollPos < 10) {
+        setVisible(true); // always visible at top
+      } else {
+        setVisible(isScrollingUp);
+      }
+
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [prevScrollPos]);
+
   return (
     <>
       <Head>
@@ -217,247 +238,186 @@ export default function About() {
         <meta name="description" content="Learn more about I&A International – Our story, vision, and values." />
       </Head>
 
-      {/* === Banner Section === */}
-      <div className="w-full h-64 relative overflow-hidden banner-section">
-        <div
-          className="absolute top-0 left-0 w-full h-full bg-cover bg-center transition-transform duration-300 ease-out"
-          style={{
-            backgroundImage: 'url("/img/ourbrandsbanner.png")',
-            transform: `translateY(${offsetY * 0.3}px)`,
-          }}
-        />
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="relative z-10 max-w-6xl mx-auto px-4 h-full flex items-center justify-center text-white mt-[50px]">
-          <h2 className="text-3xl md:text-4xl font-bold uppercase">Our Brands</h2>
-        </div>
-      </div>
-
-      <header className={cn(
-        "fixed top-0 left-0 w-full z-50 bg-white/60 backdrop-blur-md shadow-md text-black font-termina text-sm",
-        "transition-all duration-500 ease-out animate-slideDown"
-      )}>
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" passHref legacyBehavior>
-            <a>
-              <Image src="/img/logo.png" alt="Logo" width={90} height={36} />
-            </a>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link href="/about-us" className="relative group transition text-black flex items-center gap-1">
-              About Us
-              <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-black group-hover:w-full transition-all duration-300" />
+       <section className="relative font-termina">
+        <header
+          className={`w-full bg-white text-black z-50 fixed top-0 left-0 right-0 transition-transform duration-300 ${visible ? 'translate-y-0' : '-translate-y-full'
+            } shadow-[0_2px_8px_rgba(0,0,0,0.75)]`}
+        >
+          {/* Top Logo */}
+          <div className="flex justify-center items-center py-3 bg-[#eaeaea]">
+            <Link href="/" passHref>
+            <Image
+              src="/img/logo.png"
+              alt="I&A International Logo"
+              width={100}
+              height={40}
+              priority
+            />
             </Link>
+          </div>
 
-            {/* === Our Brands Dropdown (click‑twice) === */}
-            <div ref={containerRef} className="relative">
-              {/* Main Link: click twice to open/close */}
-              <Link
-                href="/our-brands"
-                onClick={handleClick}
-                className="group flex items-center gap-1 text-black transition cursor-pointer relative"
-              >
-                Our Brands
-
-                {/* Underline */}
-                <span
-                  className={`absolute -bottom-1 left-0 h-[1.5px] bg-black transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                    }`}
-                />
-
-                {/* Chevron */}
-                <svg
-                  className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''
-                    }`}
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71
-         a.75.75 0 111.08 1.04l-4.25 4.25
-         a.75.75 0 01-1.08 0L5.21 8.27
-         a.75.75 0 01.02-1.06z"
-                  />
+          {/* Desktop Header Bottom Bar */}
+          <div className="hidden md:flex py-3 px-6 items-center relative max-w-7xl mx-auto text-sm">
+            <div className="flex items-center gap-4 ml-auto">
+              <button className="hover:text-black transition">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
+              </button>
+
+              <Link
+                href="/contact-us"
+                className="px-4 py-1 border border-black text-black font-medium hover:bg-black hover:text-white transition duration-300"
+              >
+                Get in Touch
               </Link>
+            </div>
 
+            {/* Center Nav */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-6 font-sans text-[15px] tracking-wide">
+              <Link href="/" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">Home</Link>
+                          <Link
+                              href="/press"
+                              className={`relative transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:bg-black after:transition-all after:duration-300
+    hover:after:w-full hover:font-semibold`}
+                          >
+                              Press
+                          </Link>
 
-              {/* Dropdown Menu: only when open */}
-              {isOpen && (
-                <div className="
-    absolute left-0 mt-2 w-48
-    bg-white text-black
-    rounded shadow-md z-50
-    divide-y divide-gray-200
-    overflow-hidden
-  ">
+              {/* Dropdown Nav */}
+              <div className="relative group">
+                <Link
+                  href="/our-brands"
+                  className={`flex items-center gap-1 relative transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:bg-black after:transition-all after:duration-300
+        ${isActive ? 'font-semibold after:w-full' : 'hover:font-semibold after:w-0 hover:after:w-full'}`}
+                >
+                  Our Brands
+                  <svg
+                    className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z"
+                    />
+                  </svg>
+                </Link>
+
+                <div className="absolute top-full mt-2 w-48 bg-white text-black rounded-md shadow-lg z-50 divide-y divide-gray-200 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300">
                   {brands.map((b) => (
-                    <Link
-                      key={b.name}
-                      href={b.href}
-                      className="block px-4 py-2 hover:bg-gray-100 transition"
-                    >
+                    <Link key={b.name} href={b.href} className="block px-4 py-2 hover:bg-gray-100 whitespace-nowrap transition">
                       {b.name}
                     </Link>
                   ))}
                 </div>
-              )}
+              </div>
+              <Link
+                href="/about-us"
+                className={`relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:bg-black after:transition-all after:duration-300 ${router.pathname === '/about-us' ? 'after:w-full font-semibold' : 'after:w-0'
+                  }`}
+              >
+                About Us
+              </Link>
+            
             </div>
+          </div>
 
-            <Link href="/contact-us" passHref legacyBehavior>
-              <a className="relative group text-sm transition flex items-center gap-1  hover:text-black">
-                GET IN TOUCH
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                  <path d="M21 10l-6 6-4-4-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-black transition-all duration-300 group-hover:w-full" />
-              </a>
-            </Link>
+          {/* Mobile Header */}
+          <div className="flex md:hidden items-center justify-between px-4 py-3 border-t border-black/20">
+            <button onClick={() => setMobileNavOpen(!mobileNavOpen)}>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
 
-            {/* Search Icon */}
             <button className="hover:text-gray-300 transition">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="8" />
                 <line x1="21" y1="21" x2="16.65" y2="16.65" />
               </svg>
             </button>
-          </nav>
+          </div>
 
-          {/* Mobile Toggle Button */}
-          <button className="md:hidden focus:outline-none" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle Menu">
-            <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
-
-        <AnimatePresence initial={false}>
-          {mobileMenuOpen && (
-            <motion.div
-              key="mobile-nav"
-              className="md:hidden px-4 pt-2 overflow-hidden"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{
-                height: 'auto',
-                opacity: 1,
-              }}
-              exit={{
-                height: 0,
-                opacity: 0,
-              }}
-              transition={{
-                height: { duration: 0.25, ease: [0.4, 0, 0.2, 1] },
-                opacity: { duration: 0.2, ease: 'easeOut' },
-              }}
+          {/* Mobile Nav Drawer */}
+            <div
+              className={`md:hidden bg-white border-t border-black/10 text-black overflow-hidden transition-all duration-500 ease-in-out 
+    ${mobileNavOpen ? 'max-h-[800px] opacity-100 py-4 px-4 space-y-4' : 'max-h-0 opacity-0 py-0 px-4'}
+  `}
             >
-              <div>
-                {/* Divider under logo */}
-                <div className="w-full h-[1.5px] bg-black mb-4" />
-
-                {/* Navigation list */}
-                <nav className="flex flex-col items-center gap-4 pb-4">
-                  <Link href="/about-us" passHref legacyBehavior>
-                    <a
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="text-sm text-black hover:underline underline-offset-4"
-                    >
-                      About Us
-                    </a>
-                  </Link>
-
-                  {/* === Mobile Our Brands Dropdown (click‑twice) === */}
-                  <div ref={containerRef} className="relative w-full text-center">
-                    {/* Trigger Row */}
-                    <div className="flex items-center justify-center w-full py-2 text-sm  relative">
-                      {/* Main “Our Brands” link (always navigates) */}
-                      <Link href="/our-brands" className="mr-1 relative">
-                        <span className="relative">
-                          Our Brands
-                          {/* Active underline */}
-                          <span
-                            className={`absolute -bottom-0.5 left-0 h-[1.5px] bg-black transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                              }`}
-                          />
-                        </span>
-                      </Link>
-
-                      {/* Toggle arrow */}
-                      <button
-                        type="button"
-                        onClick={handleClick}
-                        aria-label={isOpen ? "Close brands menu" : "Open brands menu"}
-                        className="p-1 focus:outline-none"
-                      >
-                        <svg
-                          className={`w-4 h-4 transform transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71
-             a.75.75 0 111.08 1.04l-4.25 4.25
-             a.75.75 0 01-1.08 0L5.21 8.27
-             a.75.75 0 01.02-1.06z"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-
-                    {/* Sub‑menu */}
-                    {isOpen && (
-                      <div className="w-full divide-y divide-gray-200 overflow-hidden">
-                        {brands.map((b) => (
-                          <Link key={b.name} href={b.href} legacyBehavior>
-                            <a
-                              onClick={() => setIsOpen(false)}
-                              className="block px-4 py-2 text-sm hover:bg-gray-100 transition"
-                            >
-                              {b.name}
-                            </a>
+              <Link href="/" className="block transition-opacity duration-300">Home</Link>
+              <div className="pt-1">
+                          <Link
+                              href="/press"
+                              className={`relative transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:bg-black after:transition-all after:duration-300
+    ${isActive ? 'font-semibold after:w-full' : 'after:w-0'} hover:after:w-full hover:font-semibold`}
+                          >
+                              Press
                           </Link>
-                        ))}
-                      </div>
-                    )}
+
+              </div>
+              <details className="group">
+                <summary className="cursor-pointer flex items-center justify-between">
+                  <div className="flex items-center gap-1">
+                    <Link href="/our-brands" className="hover:font-semibold transition">
+                      Our Brands
+                    </Link>
+                    <svg
+                      className="w-4 h-4 ml-2 transform transition-transform group-open:rotate-90"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
                   </div>
 
-                  <Link href="/contact-us" passHref legacyBehavior>
-                    <a
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="text-sm flex items-center gap-1 hover:text-black transition"
-                    >
-                      GET IN TOUCH
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M21 10l-6 6-4-4-6 6"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </a>
-                  </Link>
-                </nav>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                </summary>
 
-      </header>
+                <div className="pl-4 pt-2 space-y-2">
+                  {brands.map((b) => (
+                    <Link key={b.name} href={b.href} className="block hover:text-gray-300 transition">
+                      {b.name}
+                    </Link>
+                  ))}
+                </div>
+              </details>
+
+            <Link
+              href="/about-us"
+              className={`block transition-opacity duration-300 relative ${router.pathname === '/about-us' ? 'font-semibold underline underline-offset-4' : ''
+                }`}
+            >
+              About Us
+            </Link>
+
+
+              {/* Fixed Get in Touch button spacing and visibility */}
+              <div className="pt-1">
+                <Link
+                  href="/contact-us"
+                  className="inline-block border border-black text-sm px-4 py-2 font-medium hover:bg-black hover:text-white transition"
+                >
+                  Get in Touch
+                </Link>
+              </div>
+            </div>
+
+        </header>
+        {/* === Breadcrumb Section === */}
+        <div className="pt-40 bg-white border-t border-gray-200 w-full text-sm font-medium text-[#003049] tracking-wide">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-center items-center text-center">
+            <div>
+              <span className="text-[#333] font-thin">HOME</span>
+              <span className="mx-2 text-gray-400">•</span>
+              <span className="text-[#000] font-semibold">Our Brands</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
       <section id="brands" className="py-24 bg-white px-4 sm:px-6">
