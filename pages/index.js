@@ -214,7 +214,7 @@ export default function Home() {
     }
   }, [mobileMenuOpen])
 
-  // 2️⃣ ResizeObserver only when navRef.current is non-null
+ 
   useEffect(() => {
     const el = navRef.current
     if (!el) return
@@ -283,7 +283,20 @@ const [isOpen, setIsOpen] = useState(false);
     document.addEventListener('mousedown', handleOutside)
     return () => document.removeEventListener('mousedown', handleOutside)
   }, [isOpen])
+const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(true);
 
+  const togglePlayback = () => {
+    if (!videoRef.current) return;
+
+    if (isPlaying) {
+      videoRef.current.pause();
+    } else {
+      videoRef.current.play();
+    }
+
+    setIsPlaying(!isPlaying);
+  };
   const brands = [
     { name: 'Altınbaş', href: '/our-brands/altinbas' },
     { name: 'BELMA', href: '/our-brands/belma' },
@@ -317,6 +330,21 @@ useEffect(() => {
   return () => window.removeEventListener('scroll', handleScroll);
 }, [prevScrollPos]);
 
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 100) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
 
   return (
     <>
@@ -327,11 +355,12 @@ useEffect(() => {
       </Head>
 
 
-      <>
+      
        
 
 
-        <section className="relative h-screen w-full overflow-hidden font-termina bg-black">
+       <section className="relative overflow-hidden font-termina">
+
           {/* === HEADER === */}
           <header
             className={`w-full bg-white text-black z-50 fixed top-0 left-0 right-0 transition-transform duration-300 ${visible ? 'translate-y-0' : '-translate-y-full'
@@ -481,119 +510,134 @@ useEffect(() => {
 
           </header>
 
-          {/* === HERO VIDEO === */}
-          <div className="absolute inset-0 overflow-hidden z-0">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
-              style={{
-                transform: `translateY(${scrollY * 0.2}px)`,
-              }}
-            >
-              <source src="/vid/hero.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-
-            {/* Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 pointer-events-none" />
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  'radial-gradient(circle, transparent 50%, rgba(0, 0, 0, 0.5) 100%)',
-              }}
-            />
-          </div>
-
-
-
-          {/* === HERO TEXT === */}
-          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 text-center px-4">
-            <h1 className="text-white text-[20px] sm:text-[28px] md:text-[36px] lg:text-[42px] font-['Playfair_Display',_serif] leading-snug tracking-wide">
-              Luxury Redefined
-            </h1>
-          </div>
-
-
+    
 
         </section>
 
-      </>
+    
+<section className="relative w-full h-[850px] overflow-hidden font-serif">
+  {/* === Background Video === */}
+  <video
+    ref={videoRef}
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="auto"
+    className="absolute top-0 left-0 w-full h-full object-cover z-0"
+    style={{ transition: 'opacity 0.3s ease-in-out' }}
+  >
+    <source src="/vid/hero.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  {/* === Gradient Overlay === */}
+  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 z-10" />
+
+  {/* === Bottom Center Text === */}
+  <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 text-center px-4">
+  <h1 className="inline-block text-white text-[3rem] font-['Playfair_Display',_serif] leading-snug tracking-wide whitespace-nowrap">
+      Luxury Redefined
+    </h1>
+  </div>
+
+  {/* === Play / Pause Button === */}
+  <button
+    onClick={togglePlayback}
+    className="absolute bottom-5 right-6 z-30 text-white hover:opacity-80 transition"
+    aria-label={isPlaying ? 'Pause video' : 'Play video'}
+  >
+    {isPlaying ? (
+      <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
+      </svg>
+    ) : (
+      <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    )}
+  </button>
+</section>
 
 
-
-     <section className="bg-white py-12 px-6 md:px-12 font-serif">
-  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+<section className="bg-white py-20 px-4 md:px-12 font-serif">
+  <div className="max-w-container-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-y-12 lg:gap-x-16 items-start">
 
     {/* Left: Event Image */}
-    <div className="w-full">
+    <div className="aspect-[3/2] w-full overflow-hidden shadow-sm rounded-none">
       <Image
         src="/img/recent-event.webp"
         alt="I&A Luxury Showcase"
         width={800}
         height={600}
-        className="w-full h-auto object-cover rounded-lg shadow-md"
+        className="w-full h-auto object-cover shadow-md rounded-none"
       />
     </div>
 
     {/* Right: Event Details */}
-    <div>
-      <p className="text-gray-500 text-sm  mb-2 tracking-wide">Recent Event</p>
+    <div className="text-left">
+      <p className="text-[1.2500rem] leading-[1.9] text-[#555] font-normal tracking-normal">
+        Recent Event
+      </p>
 
-      <h2 className="text-3xl md:text-4xl font-normal text-gray-800 mb-4 leading-snug">
+      <h2 className="text-[2.2rem] sm:text-[2.6rem] md:text-[3rem] font-light text-[#555] leading-snug tracking-tight">
         I&A International Hosts Global Luxury Showcase 2025
       </h2>
 
-      <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+      <p className="text-[1.1rem] sm:text-[1.25rem] leading-[1.9] text-[#444] font-normal tracking-normal">
         Where luxury meets elegance and quality. I&A International recently hosted an exclusive showcase celebrating its legacy since 1991. Featuring iconic pieces from world-renowned brands, the event reflects our rise as a leader in Albania’s jewelry industry.
       </p>
 
-      <Link
-        href="/events/recent-event"
-        className="inline-block border border-gray-800 text-gray-800 font-medium px-6 py-2 rounded hover:bg-black hover:text-white transition duration-300"
-      >
-        View Full Highlights
-      </Link>
+      <div className="mt-6 flex sm:justify-start justify-center">
+        <Link
+          href="/events/recent-event"
+          className="font-sans font-normal not-italic inline-block border border-black text-black px-4 py-2 text-[1rem] sm:text-[1.23rem] hover:bg-black hover:text-white transition"
+        >
+          View Full Highlights
+        </Link>
+      </div>
     </div>
   </div>
 </section>
 
 
-<section id="about" className="bg-gray-100 py-20 px-4 sm:px-10 lg:px-20 w-full font-serif font-normal">
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center max-w-7xl mx-auto">
+
+<section id="about" className="bg-gray-100 py-20 px-4 md:px-12 font-serif">
+  <div className="max-w-container-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-y-12 lg:gap-x-16 items-start">
 
     {/* === Left: Text Content === */}
-    <div className="text-left">
-      <p className="text-sm text-gray-500 mb-2 tracking-wide">About us</p>
+    <div className="order-2 md:order-1 text-left">
+      <p className="text-[1.25rem] leading-[1.9] text-[#555] font-normal tracking-normal sm:text-left">
+        About us
+      </p>
 
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-gray-800 mb-6 leading-snug">
+      <h2 className="text-[2.5rem] md:text-[3rem] font-light text-[#555] leading-snug tracking-tight sm:text-left">
         I&A International
       </h2>
 
-      <p className="text-gray-700 text-base leading-relaxed mb-6 max-w-prose">
+      <p className="text-[1.25rem] leading-[1.9] text-[#555] font-normal tracking-normal sm:text-left">
         Where luxury meets elegance and quality. I&A International Company is a well-established Albanian jewelry retailer that was founded by Artan Caushi in 1991. The company has since grown to become a leading player in the jewelry industry, with several stores across Albania and an extensive collection of internationally acclaimed jewelry brands.
       </p>
 
-      <a
-        href="#"
-        className="inline-block border  border-black text-black hover:text-white hover:bg-black transition px-6 py-3 text-sm font-medium rounded"
-      >
-        View More
-      </a>
+      <div className="mt-6 flex sm:justify-start justify-center">
+        <a
+          href="#"
+          className="font-sans font-normal not-italic inline-block border border-black text-black px-5 py-2 text-[1.1rem] hover:bg-black hover:text-white transition"
+        >
+          View More
+        </a>
+      </div>
     </div>
 
     {/* === Right: Static Image === */}
-    <div className="w-full flex justify-center md:justify-end">
-      <div className="max-w-md rounded-md overflow-hidden shadow-lg w-full">
+    <div className="order-1 md:order-2 w-full">
+      <div className="aspect-[3/2] w-full overflow-hidden shadow-sm">
         <Image
-          src="/img/handsring.jpg"
+          src="/img/handsring.png"
           alt="Jewelry sketches and hands"
           width={800}
           height={600}
-          className="w-full h-auto object-cover"
+          className="w-full h-full object-cover object-top rounded-none"
         />
       </div>
     </div>
@@ -603,16 +647,18 @@ useEffect(() => {
 
 
 
-<section id="brands" className="py-20 bg-[#fff] px-4 sm:px-6">
-  <div className="max-w-6xl mx-auto text-center">
-   <div className="text-center">
-  <div className="mx-auto w-12 h-[2px] bg-gray-400 mb-4"></div>
-  <h3 className="text-2xl sm:text-3xl font-serif font-normal text-gray-800 tracking-tight">
-    Our Brands
+<section id="brands" className="bg-[#fff] py-20 px-4 md:px-12 font-serif">
+  <div className="max-w-6xl mx-auto text-center sm:text-left">
+    
+   {/* Section Title */}
+<div className="text-center">
+  <div className="mx-auto w-[8rem] h-[4.5px] bg-[#555] mb-4"></div>
+  <h3 className="text-[2rem] sm:text-[3rem] font-light text-[#555] leading-snug tracking-tight">
+    Our Brands <br /> <br />
   </h3>
 </div>
 
-
+    {/* Brand Grid */}
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
       {[
         { name: "Altinbas", img: "/img/necklacebrad.jpeg", productImg: "/img/necklace.jpg" },
@@ -630,7 +676,7 @@ useEffect(() => {
           <div className="relative w-full h-full transition-transform duration-700 ease-in-out [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
 
             {/* Front Face */}
-            <div className="absolute w-full h-full [backface-visibility:hidden] bg-[#fff] rounded overflow-hidden shadow-md flex items-center justify-center">
+            <div className="absolute w-full h-full [backface-visibility:hidden] bg-[#fff] overflow-hidden flex items-center justify-center border border-[#555] sm:rounded-md rounded-none">
               <img
                 src={brand.img}
                 alt={brand.name}
@@ -638,8 +684,8 @@ useEffect(() => {
               />
             </div>
 
-            {/* Back Face (Product Image Fill) */}
-            <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-white rounded overflow-hidden shadow-md">
+            {/* Back Face */}
+            <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-white overflow-hidden shadow-md sm:rounded-md rounded-none">
               <img
                 src={brand.productImg}
                 alt={`${brand.name} Product`}
@@ -654,50 +700,63 @@ useEffect(() => {
   </div>
 </section>
 
-<section className="bg-[#eaeaea] py-12 px-6 md:px-12 font-termina">
-  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+<section className="bg-[#f2f2f2] py-20 px-4 md:px-12 font-serif">
+  <div className="max-w-container-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-y-12 lg:gap-x-16 items-start">
 
     {/* === Image (Shown First on Mobile) === */}
-    <div className="order-1 md:order-2">
+    <div className="aspect-[3/2] w-full overflow-hidden shadow-sm">
       <Image
         src="/img/recent-event2.webp"
         alt="Anniversary Gala"
         width={800}
         height={600}
-        className="w-full h-auto object-cover rounded-lg shadow-md"
+        className="w-full h-full object-cover rounded-none" // removes round border
       />
     </div>
 
     {/* === Text Section === */}
-    <div className="order-2 md:order-1">
-      <p className="text-gray-500 text-xs mb-3 tracking-wider font-serif font-normal">Recent Event</p>
-      <h2 className="text-3xl md:text-4xl font-serif font-normal text-gray-900 mb-5 leading-tight tracking-tight">
+    <div className="order-2 md:order-1 text-left">
+      <p className="text-[1.2500rem] leading-[1.9] text-[#555] font-normal tracking-normal">
+        Recent Event
+      </p>
+      <h2 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] font-light text-[#555] leading-snug tracking-tight">
         Celebrating Over 30 Years of Timeless Craft
       </h2>
-      <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-6 font-serif font-normal">
+      <p className="text-[1.2500rem] leading-[1.9] text-[#555] font-normal tracking-normal">
+        <br />
         To commemorate over three decades of craftsmanship, I&A International unveiled a curated collection of designer pieces. This milestone event reaffirmed our commitment to elegance, quality, and international excellence.
       </p>
-      <Link
-        href="#"
-        className="inline-block border font-serif font-normal border-gray-800 text-gray-800 font-medium tracking-wide px-6 py-2 rounded hover:bg-black hover:text-white transition duration-300"
-      >
-        View the Collection
-      </Link>
+
+      {/* Button */}
+      <div className="mt-6 flex sm:justify-start justify-center">
+        <Link
+          href="#"
+          className="font-sans font-normal not-italic border border-black text-black px-4 py-2 text-[1rem] sm:text-[1.2300rem] hover:bg-[#000] hover:text-white transition"
+        >
+          View the Collection
+        </Link>
+      </div>
     </div>
 
   </div>
 </section>
 
 
-<section className="bg-white py-16 px-6 md:px-12 font-termina">
-  <div className="max-w-7xl mx-auto">
-    <div className="flex justify-between items-center mb-8">
-      <h2 className="text-3xl md:text-4xl font-serif font-normal text-gray-900 tracking-tight">
-        Latest Press Releases & News
+<section className="bg-white py-20 px-4 md:px-12 font-serif">
+  <div className="max-w-container-xl mx-auto">
+    {/* Divider line */}
+    <div className="w-[8rem] h-[4.5px] bg-[#555] mb-4 ml-0"></div>
+
+    {/* Heading and Pagination */}
+    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-8 text-left sm:text-left">
+      <h2 className="text-[2rem] sm:text-[3rem] font-light text-[#555] leading-snug tracking-tight">
+        Latest press releases and news
       </h2>
-      <div>{/* Swiper pagination */}</div>
+      <div className="mt-4 sm:mt-0 flex justify-center sm:justify-end">{/* Swiper pagination */}</div>
     </div>
 
+    {/* Swiper */}
     <Swiper
       modules={[Autoplay, Pagination]}
       spaceBetween={30}
@@ -715,18 +774,20 @@ useEffect(() => {
     >
       {/* Slide 1 */}
       <SwiperSlide>
-        <div className="group">
-          <div className="overflow-hidden rounded-md shadow-md">
+        <div className="group text-left">
+          <div className="aspect-[3/2] w-full overflow-hidden shadow-sm rounded-none ">
             <Image
               src="/img/news1.jpg"
               alt="I&A flagship opening"
               width={400}
               height={250}
-              className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>
-          <p className="text-xs uppercase text-gray-500 mt-4 tracking-wider">18 June 2025</p>
-          <h3 className="mt-2 text-lg font-serif font-normal text-gray-900 group-hover:text-black transition leading-snug">
+          <p className="text-sm sm:text-[1rem] uppercase text-gray-500 mt-4 tracking-wider font-sans font-normal not-italic">
+            18 June 2025
+          </p>
+          <h3 className="text-[1.4rem] sm:text-[2.2rem] font-light text-[#555] leading-snug tracking-tight">
             I&A International unveils a flagship boutique in central Tirana
           </h3>
         </div>
@@ -734,18 +795,20 @@ useEffect(() => {
 
       {/* Slide 2 */}
       <SwiperSlide>
-        <div className="group">
-          <div className="overflow-hidden rounded-md shadow-md">
+        <div className="group text-left">
+          <div className="aspect-[3/2] w-full overflow-hidden shadow-sm rounded-none ">
             <Image
               src="/img/news2.jpg"
               alt="Luxury partnership"
               width={400}
               height={250}
-              className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>
-          <p className="text-xs uppercase text-gray-500 mt-4 tracking-wider">12 June 2025</p>
-          <h3 className="mt-2 text-lg font-serif font-normal text-gray-900 group-hover:text-black transition leading-snug">
+          <p className="text-sm sm:text-[1rem] uppercase text-gray-500 mt-4 tracking-wider font-sans font-normal not-italic">
+            10 June 2025
+          </p>
+          <h3 className="text-[1.4rem] sm:text-[2.2rem] font-light text-[#555] leading-snug tracking-tight">
             New luxury brand partnerships announced at I&A Gala
           </h3>
         </div>
@@ -753,18 +816,20 @@ useEffect(() => {
 
       {/* Slide 3 */}
       <SwiperSlide>
-        <div className="group">
-          <div className="overflow-hidden rounded-md shadow-md">
+        <div className="group text-left">
+          <div className="aspect-[3/2] w-full overflow-hidden shadow-sm rounded-none">
             <Image
               src="/img/news3.jpg"
               alt="Annual Report"
               width={400}
               height={250}
-              className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>
-          <p className="text-xs uppercase text-gray-500 mt-4 tracking-wider">20 June 2025</p>
-          <h3 className="mt-2 text-lg font-serif font-normal text-gray-900 group-hover:text-black transition leading-snug">
+          <p className="text-sm sm:text-[1rem] uppercase text-gray-500 mt-4 tracking-wider font-sans font-normal not-italic">
+            07 June 2025
+          </p>
+          <h3 className="text-[1.4rem] sm:text-[2.2rem] font-light text-[#555] leading-snug tracking-tight">
             I&A publishes FY25 Annual Report and Strategic Overview
           </h3>
         </div>
@@ -773,18 +838,17 @@ useEffect(() => {
   </div>
 </section>
 
+<section className="bg-[#f2f2f2] py-5 px-4 md:px-12 font-serif flex items-center justify-center min-h-[33vh]">
+  <div className="w-full max-w-3xl">
+   <h2 className="text-[1.6rem] md:text-[2rem] font-light text-[#555] leading-snug tracking-tight text-center mb-6">
+  Sign up to our Press releases & News
+</h2>
 
 
-<section className="bg-gray-100 py-16 px-6 md:px-12 font-termina">
-  <div className="max-w-3xl mx-auto text-center">
-    <h2 className="text-2xl md:text-3xl font-serif font-normal text-gray-800 mb-6 tracking-tight">
-      Sign up to our Press Releases & News
-    </h2>
-
-    <form className="flex flex-col sm:flex-row items-center justify-center gap-4">
+    <form className="flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-0 w-full">
       {/* Input with icon */}
-      <div className="relative w-full sm:w-2/3">
-        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+      <div className="relative flex-grow max-w-[800px]">
+        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#333]">
           <svg
             className="w-5 h-5"
             fill="none"
@@ -802,7 +866,7 @@ useEffect(() => {
         <input
           type="email"
           placeholder="Enter your email address"
-          className="w-full  font-serif font-normal pl-10 pr-4 py-3 rounded-md shadow-sm border border-gray-300 focus:ring-2 focus:ring-black focus:outline-none transition text-sm"
+          className="w-full pl-12 pr-4 py-3 text-black text-[15px] font-serif font-normal leading-snug shadow-lg border border-gray-300 focus:ring-2 focus:ring-black focus:outline-none transition placeholder:text-base placeholder:leading-snug placeholder:text-[#555] rounded-none"
           required
         />
       </div>
@@ -810,7 +874,7 @@ useEffect(() => {
       {/* Subscribe Button */}
       <button
         type="submit"
-        className="w-full sm:w-auto px-6 py-3 bg-black text-white font-medium rounded-md hover:bg-gray-800 transition text-sm"
+        className="px-6 py-3 bg-black text-white font-medium border border-transparent hover:bg-transparent hover:text-black hover:border-black transition text-sm rounded-none whitespace-nowrap"
       >
         Subscribe
       </button>
@@ -819,128 +883,102 @@ useEffect(() => {
 </section>
 
 
-<section className="py-20 bg-white px-4 sm:px-6 text-center font-termina">
+
+
+
+
+<section className="bg-white py-20 px-4 md:px-12 font-serif">
   {/* Title Section */}
-  <div className="max-w-5xl mx-auto mb-16 text-center">
-    <h2 className="text-3xl sm:text-4xl font-serif font-normal text-gray-800 border-b-2 inline-block pb-2 mb-6 tracking-tight">
+  <div className="max-w-container-xl mx-auto mb-16 text-center sm:text-center">
+    <h2 className="mb-6 text-[2rem] sm:text-[3rem] font-light text-[#555] leading-snug tracking-tight">
       Where Luxury Meets Talent & Craftsmanship
     </h2>
-    <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-      I&A International is a distinguished Albanian jewelry retailer founded by Artan Caushi in 1991. Renowned for curating exquisite collections from prestigious international brands, we lead the industry in luxury jewelry and timepieces. With exclusive selling rights for elite brands like Anna Maria Cammilli, Fope, Mirco Visconti, and Ititoli—along with luxury watches from Eberhard & Co, Louis Erard, Bomberg, Eterna, and Wainer—we offer our clientele an unparalleled experience in elegance, quality, and craftsmanship.
+    <p className="text-base sm:text-[1.2500rem] leading-relaxed sm:leading-[1.9] text-[#555] font-normal tracking-normal text-left sm:text-center">
+      I&A International is a distinguished Albanian jewelry retailer founded by Artan Caushi in 1991. Renowned for curating exquisite collections from prestigious international brands, we lead the industry in luxury jewelry and timepieces. With exclusive selling rights for elite brands like Anna Maria Cammilli, Fope, Mirco Visconti, and Ititoli, along with luxury watches from Eberhard & Co, Louis Erard, Bomberg, Eterna, and Wainer, we offer our clientele an unparalleled experience in elegance, quality, and craftsmanship.
     </p>
   </div>
 
-  {/* Swiper Cards Section */}
-  <div className="max-w-6xl mx-auto">
-    <Swiper
-      spaceBetween={24}
-      slidesPerView={1}
-      breakpoints={{
-        640: { slidesPerView: 1.2 },
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-        1280: { slidesPerView: 4 },
-      }}
-      pagination={{ clickable: true }}
-      navigation
-      loop={false}
-      className="career-swiper"
-    >
-      {/* Recruitment */}
-      <SwiperSlide>
-        <div className="flex flex-col">
-          <div className="w-full aspect-[1/1] overflow-hidden rounded-md shadow-md mb-4">
-            <video
-              src="/img/recruitement.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
-            />
+  <Swiper
+    spaceBetween={24}
+    slidesPerView={1}
+    breakpoints={{
+      640: { slidesPerView: 1.2 },
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
+      1280: { slidesPerView: 4 },
+    }}
+    pagination={{ clickable: true }}
+    navigation
+    loop={false}
+    className="career-swiper"
+  >
+    {/* === Slide Template (Repeatable) === */}
+    {[
+      {
+        title: "Recruitment",
+        content: "Join our team of jewelry and sales experts and help us bring unparalleled quality and service to the world of luxury jewelry. Our employees are the heart of our mission to deliver an unforgettable experience.",
+        video: "/img/recruitement.mp4",
+        href: "#",
+        buttonText: "View More"
+      },
+      {
+        title: "Craftsmanship",
+        content: "From filigree work to diamond setting, we believe every detail matters. Our pieces are crafted with precision and pride.",
+        image: "/img/craftsmanship.jpg",
+        href: "/contact-us",
+        buttonText: "Contact Us"
+      },
+      {
+        title: "Design & Creation",
+        content: "Our design teams bring imagination to life, crafting iconic pieces that respect tradition while innovating for the future.",
+        image: "/img/creation-card1.jpg",
+        href: "#",
+        buttonText: "Explore Design"
+      },
+      {
+        title: "Manufacturing",
+        content: "Our artisans safeguard know-how and innovate with purpose. We nurture excellence to shape the future of fine craftsmanship.",
+        image: "/img/creation-card2.jpg",
+        href: "#",
+        buttonText: "Learn More"
+      }
+    ].map((item, idx) => (
+      <SwiperSlide key={idx}>
+        <div className="flex flex-col text-left">
+          <div className="mb-2 aspect-[1/1] w-full overflow-hidden shadow-sm">
+            {item.video ? (
+              <video
+                src={item.video}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-full object-cover transition-transform duration-1000 ease-in-out hover:scale-105"
+              />
+            )}
           </div>
-          <h4 className="text-xl font-serif font-normal text-gray-800 mb-2">
-            Recruitment
+          <h4 className="text-xl sm:text-[2rem] mb-2 font-light text-[#555] leading-snug tracking-tight">
+            {item.title}
           </h4>
-          <p className="text-gray-600 text-sm leading-relaxed mb-3 font-serif font-normal">
-            Join our team of jewelry and sales experts and help us bring unparalleled quality and service to the world of luxury jewelry.
+          <p className="text-sm sm:text-[1.1rem] leading-[1.5] text-[#555] font-normal tracking-normal">
+            {item.content}
           </p>
-          <p className="text-gray-600 text-sm leading-relaxed mb-4 font-serif font-normal">
-            Our employees are the heart of our mission to deliver an unforgettable experience.
-          </p>
-          <a href="#" className="text-[#003049] font-medium hover:underline mt-auto text-sm">
-            View More →
+          <a
+            href={item.href}
+            className="font-sans font-normal not-italic inline-block mt-4 sm:mt-6 border w-[11rem] sm:w-[11rem] border-black text-black px-4 sm:px-6 py-2 text-sm sm:text-[1.1rem] hover:bg-[#000] hover:text-white transition"
+          >
+            {item.buttonText}
           </a>
         </div>
       </SwiperSlide>
-
-      {/* Craftsmanship */}
-      <SwiperSlide>
-        <div className="flex flex-col">
-          <div className="w-full aspect-[1/1] overflow-hidden rounded-md shadow-md mb-4">
-            <img
-              src="/img/craftsmanship.jpg"
-              alt="Craftsman working"
-              className="w-full h-full object-cover transition-transform duration-1000 ease-in-out hover:scale-105"
-            />
-          </div>
-          <h4 className="text-xl font-serif font-normal text-gray-800 mb-2 ">
-            Craftsmanship
-          </h4>
-          <p className="text-gray-600 text-sm leading-relaxed mb-4 font-serif font-normal">
-            From filigree work to diamond setting, we believe every detail matters. Our pieces are crafted with precision and pride.
-          </p>
-          <a href="/contact-us" className="text-[#003049] font-medium hover:underline mt-auto text-sm">
-            Contact Us →
-          </a>
-        </div>
-      </SwiperSlide>
-
-      {/* Design & Creation */}
-      <SwiperSlide>
-        <div className="flex flex-col">
-          <div className="w-full aspect-[1/1] overflow-hidden rounded-md shadow-md mb-4">
-            <img
-              src="/img/creation-card1.jpg"
-              alt="Design and creation"
-              className="w-full h-full object-cover transition-transform duration-1000 ease-in-out hover:scale-105"
-            />
-          </div>
-          <h4 className="text-xl font-serif font-normal text-gray-800 mb-2">
-            Design & Creation
-          </h4>
-          <p className="text-gray-600 text-sm leading-relaxed mb-4 font-serif font-normal">
-            Our design teams bring imagination to life, crafting iconic pieces that respect tradition while innovating for the future.
-          </p>
-          <a href="#" className="text-[#003049] font-medium hover:underline mt-auto text-sm">
-            Explore Design →
-          </a>
-        </div>
-      </SwiperSlide>
-
-      {/* Manufacturing */}
-      <SwiperSlide>
-        <div className="flex flex-col">
-          <div className="w-full aspect-[1/1] overflow-hidden rounded-md shadow-md mb-4">
-            <img
-              src="/img/creation-card2.jpg"
-              alt="Manufacturing process"
-              className="w-full h-full object-cover transition-transform duration-1000 ease-in-out hover:scale-105"
-            />
-          </div>
-          <h4 className="text-xl font-serif font-normal text-gray-800 mb-2">
-            Manufacturing
-          </h4>
-          <p className="text-gray-600 text-sm leading-relaxed mb-4 font-serif font-normal">
-            Our artisans safeguard know-how and innovate with purpose. We nurture excellence to shape the future of fine craftsmanship.
-          </p>
-          <a href="#" className="text-[#003049] font-medium hover:underline mt-auto text-sm">
-            Learn More →
-          </a>
-        </div>
-      </SwiperSlide>
-    </Swiper>
-  </div>
+    ))}
+  </Swiper>
 </section>
 
 
@@ -948,31 +986,34 @@ useEffect(() => {
 
 
 
-      <section id="contact" className="bg-[#eaeaea] py-24 px-4 sm:px-6 text-center">
-        <div className="max-w-2xl mx-auto">
-          {/* Heading */}
-          <h3 className="text-3xl sm:text-4xl font-serif text-[#000] mb-6 ">
-            Get in touch or <span className="underline">visit us</span>
-          </h3>
 
-          {/* Description */}
-          <p className="text-[#000] text-base mb-10 leading-relaxed font-serif font-normal">
-            Rr.Kavajës, Pallati Mio 2000, Tirana, Albania<br />
-            info@ia-international.com
-          </p>
+      <section id="contact" className="bg-[#eaeaea] py-10 px-4 md:px-12 font-serif flex items-center justify-center min-h-[3vh]">
+  <div className="max-w-5xl mx-auto mb-16 text-center sm:text-center">
+    {/* Heading */}
+    <h3 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] font-light text-[#555] leading-snug tracking-tight">
+      Get in touch
+    </h3>
 
-          {/* Contact Us Button with Icon */}
-          <div className="sm:col-span-2 flex justify-center mt-2">
-            <Link
-              href="/contact-us"
-              className="inline-flex items-center gap-2 border border-[#000000] text-[#000000] font-medium px-6 py-2 hover:bg-[#000000] hover:text-white transition duration-300"
-            >
-              <MailIcon className="w-5 h-5" />
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </section>
+    {/* Description */}
+    <p className="text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] leading-[1.7] text-[#555] font-normal tracking-normal">
+      Rr.Kavajës, Pallati Mio 2000, Tirana, Albania<br />
+      info@ia-international.com
+    </p>
+
+   {/* Contact Us Button with Icon */}
+<div className="flex justify-center mt-4">
+  <Link
+    href="/contact-us"
+    className="font-sans font-normal not-italic inline-flex items-center justify-center gap-2 mt-6 border border-black text-black px-4 sm:px-6 py-2 text-[1rem] sm:text-[1.23rem] hover:bg-black hover:text-white transition"
+  >
+    <MailIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+    Contact Us
+  </Link>
+</div>
+
+  </div>
+</section>
+
 
 
 
@@ -1049,24 +1090,23 @@ useEffect(() => {
   </div>
 </footer>
 
-{/* === Scroll to Top Button === */}
-<button
-  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-  aria-label="Scroll to top"
-  className="fixed bottom-6 right-6 z-[99] p-3 rounded-full bg-black text-white shadow-xl hover:bg-gray-800 transition-all duration-300"
->
-  <svg
-    className="w-5 h-5 animate-bounce"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    viewBox="0 0 24 24"
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
-  </svg>
-</button>
-
-
+ {isVisible && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Scroll to top"
+          className="fixed bottom-6 right-6 z-[99] p-3 rounded-full bg-black text-white shadow-xl hover:bg-gray-800 transition-all duration-300"
+        >
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+          </svg>
+        </button>
+      )}
     </>
   );
 }

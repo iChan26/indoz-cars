@@ -418,13 +418,72 @@ export default function About() {
           </div>
         </div>
       </section>
+<section className="flex flex-col md:flex-row items-center justify-between py-20 px-4 md:px-12 font-serif bg-white">
+  {/* Image: Show first on mobile, second on desktop */}
+  <div className="w-full md:w-1/2 order-1 md:order-2 mb-6 md:mb-0">
+    <img
+      src="/img/hero-jewelry.jpg"
+      alt="Jewelry model"
+      className="w-full h-auto object-cover shadow-lg"
+    />
+ <p className="text-sm text-gray-500 text-center mt-2">© I&A International – 2025</p>
+  </div>
 
+  {/* Text: Show second on mobile, first on desktop */}
+  <div className="w-full md:w-1/2 order-2 md:order-1">
+    <h1 className="text-4xl md:text-5xl font-serif text-[#555] mb-6">
+      Where luxury meets elegance and quality
+    </h1>
+    <p className="text-lg text-gray-700 leading-relaxed mb-4">
+      I&A International Company is a well-established Albanian jewelry retailer that was founded by Artan Caushi in 1991.
+    </p>
+    <p className="text-lg text-gray-700 leading-relaxed">
+      The company has since grown to become a leading player in the jewelry industry, with several stores across Albania and an extensive collection of internationally acclaimed jewelry brands.
+    </p>
+  </div>
+</section>
 
-      <section id="brands" className="py-24 bg-white px-4 sm:px-6">
+      <section className="bg-gray-50 py-20 px-6 md:px-24 text-center">
+      <h2 className="text-4xl font-serif text-[#555]">Our Presence & Values</h2>
+
+      <div className="flex flex-col md:flex-row justify-center gap-20 mb-16">
+        <div>
+          <h3 className="text-5xl font-semibold text-[#D4AF37]">5</h3>
+          <p className="text-gray-700 mt-2">Retail Stores in Albania</p>
+        </div>
+        <div>
+          <h3 className="text-5xl font-semibold text-[#D4AF37]">15+</h3>
+          <p className="text-gray-700 mt-2">Luxury Brand Partnerships</p>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-12 text-left">
+        <div>
+          <h4 className="text-xl font-semibold text-[#D4AF37] mb-2">Heritage</h4>
+          <p className="text-gray-600">
+            Since 1991, we’ve built a trusted name rooted in excellence, tradition, and innovation in luxury jewelry.
+          </p>
+        </div>
+        <div>
+          <h4 className="text-xl font-semibold text-[#D4AF37] mb-2">Craftsmanship</h4>
+          <p className="text-gray-600">
+            Every piece we offer is a symbol of precision, elegance, and the finest international standards of design.
+          </p>
+        </div>
+        <div>
+          <h4 className="text-xl font-semibold text-[#D4AF37] mb-2">Sustainability</h4>
+          <p className="text-gray-600">
+            We are committed to responsible business practices that honor both people and the planet.
+          </p>
+        </div>
+      </div>
+    </section>
+
+      <section id="brands" className="bg-white py-20 px-4 md:px-12 font-serif">
         <div className="max-w-6xl mx-auto text-center">
           {/* Luxury intro content */}
           <div className="mb-16">
-            <h3 className="text-3xl sm:text-4xl font-semibold tracking-wide uppercase text-gray-900 mb-4">
+            <h3 className="text-3xl sm:text-4xl font-semibold tracking-wide uppercase text-[#555] mb-4">
               Representing <span className="text-[#D4AF37]">Timeless Luxury</span>
             </h3>
             <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -472,45 +531,95 @@ export default function About() {
 
 
 
-      {/* === Footer === */}
-      <footer className="bg-black text-white py-12 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
-          <div className="flex flex-col items-center sm:items-start">
-            <Link href="/" passHref legacyBehavior>
-              <a>
-                <Image src="/img/logo.png" alt="I&A International Logo" width={120} height={40} priority className="filter brightness-0 invert mb-4" />
-              </a>
+          <footer className="bg-[#222] text-white border-t border-[#9db1b4] py-12 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12 text-sm leading-relaxed">
+
+          {/* === Logo & Copyright === */}
+          <div className="space-y-4">
+            <Link href="/" passHref>
+              <Image
+                src="/img/logo.png"
+                alt="I&A International Logo"
+                width={140}
+                height={40}
+                priority
+                className="filter brightness-0 invert mb-4 cursor-pointer"
+              />
             </Link>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              © {new Date().getFullYear()} I&A International.<br className="hidden sm:inline" /> All Rights Reserved.
+            <p className="text-xs text-white">
+              © {new Date().getFullYear()} I&A International.<br />All Rights Reserved.
             </p>
           </div>
 
-          <div className="flex flex-col items-center sm:items-start">
-            <h4 className="font-semibold text-white mb-3 text-lg">Contact Us</h4>
-            <p className="text-gray-400 text-sm break-words">info@ia-international.com</p>
-          </div>
+          {/* === Contact Us === */}
+          <div>
+            <h4 className="font-serif text-lg text-[#fff] mb-3 border-b border-[#fff] pb-1">Contact Us</h4>
+            <p className="mb-2">info@ia-international.com</p>
 
-          <div className="flex flex-col items-center sm:items-start">
-            <h4 className="font-semibold text-white mb-3 text-lg">Our Address</h4>
-            <p className="text-gray-400 text-sm leading-relaxed mb-4">
-              Rr.Kavajës, Pallati Mio 2000<br />
-              Tirana, Albania
-            </p>
-            <div className="flex justify-center sm:justify-start gap-4">
-              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-gray-400 hover:text-white transition duration-300">
+            {/* Optional: Email input box styled like Richemont */}
+            <div className="flex mt-4 border border-white bg-white text-gray-700 overflow-hidden max-w-xs">
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                className="flex-1 px-3 py-2 text-sm outline-none bg-white"
+              />
+              <button className="bg-[#000] text-white px-4 flex items-center justify-center">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Social icons */}
+            <div className="flex gap-4 mt-4 text-[#fff]">
+              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <LinkedinIcon className="w-5 h-5" />
               </a>
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-400 hover:text-white transition duration-300">
+              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <FacebookIcon className="w-5 h-5" />
               </a>
-              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-gray-400 hover:text-white transition duration-300">
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <InstagramIcon className="w-5 h-5" />
               </a>
             </div>
           </div>
+
+          {/* === Explore Links (Your site sections) === */}
+          <div>
+            <h4 className="font-serif text-lg text-[#fff] mb-3 border-b border-[#fff] pb-1">Explore</h4>
+            <ul className="space-y-2">
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/about-us">About Us</Link></li>
+              <li><Link href="/our-brands">Our Brands</Link></li>
+              <li><Link href="/press">Press</Link></li>
+            </ul>
+          </div>
+
+          {/* === Our Address === */}
+          <div>
+            <h4 className="font-serif text-lg text-[#fff] mb-3 border-b border-[#fff] pb-1">Our Address</h4>
+            <p>Rr.Kavajës, Pallati Mio 2000<br />Tirana, Albania</p>
+          </div>
         </div>
       </footer>
+
+      {/* === Scroll to Top Button === */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Scroll to top"
+        className="fixed bottom-6 right-6 z-[99] p-3 rounded-full bg-black text-white shadow-xl hover:bg-gray-800 transition-all duration-300"
+      >
+        <svg
+          className="w-5 h-5 animate-bounce"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+      </button>
+
     </>
   );
 }
