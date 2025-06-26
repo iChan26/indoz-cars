@@ -425,16 +425,16 @@ export default function About() {
       </section>
 
 
-<section id="about" className="bg-[#fff] py-28 px-6 md:px-20 font-serif">
-  <div className="max-w-[1320px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-5 items-start">
+<section id="about" className="bg-[#fff] py-20 px-4 md:px-12 font-serif">
+  <div className="max-w-container-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-y-12 lg:gap-x-16 items-start">
 
     {/* === Left: Text Content === */}
 <div className="text-left order-2 md:order-1">
-  <h2 className="text-4xl md:text-[3rem] font-[520] text-[#555] leading-tight mb-6 tracking-wide">
+ <h2 className="text-[2.5rem] md:text-[3rem] font-light text-[#555] leading-snug tracking-tight">
     Defining Elegance Since 1991
   </h2>
 
-  <p className="text-[1.1875rem] text-[#555] leading-[2.1] mb-6 font-[500] tracking-wide">
+ <p className="text-[1.125rem] leading-[1.9] text-[#444] font-normal tracking-normal">
     Where luxury meets elegance and quality. I&A International Company is a well-established Albanian jewelry retailer that was founded by Artan Caushi in 1991. The company has since grown to become a leading player in the jewelry industry, with several stores across Albania and an extensive collection of internationally acclaimed jewelry brands.
   </p>
 
@@ -450,7 +450,7 @@ export default function About() {
 
     {/* === Right: Image === */}
     <div className="w-full order-1 md:order-2">
-      <div className="w-full h-[400px] md:h-[480px] overflow-hidden shadow-sm">
+      <div className="aspect-[3/2] w-full overflow-hidden shadow-sm">
         <Image
           src="/img/girlwithring.png"
           alt="Elegant woman wearing jewelry"
@@ -466,12 +466,12 @@ export default function About() {
 
 
 
-<section className="bg-[#f2f2f2] py-28 px-6 md:px-20">
-  <div className="max-w-[1320px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-5 items-start">
+<section className="bg-[#f2f2f2] py-20 px-4 md:px-12 font-serif">
+  <div className="max-w-container-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-y-12 lg:gap-x-16 items-start">
 
     {/* === Left: Image === */}
     <div className="w-full">
-      <div className="w-full h-[400px] md:h-[480px] overflow-hidden shadow-sm">
+      <div className="aspect-[3/2] w-full overflow-hidden shadow-sm">
         <Image
           src="/img/legacy-of-elegance.jpg"
           alt="Luxury design process"
@@ -484,24 +484,25 @@ export default function About() {
 
   {/* === Right: Text === */}
 <div className="text-left">
-  <h2 className="text-4xl md:text-[3rem] font-serif font-light text-[#555] leading-tight mb-4 tracking-wide">
+  <h2 className="text-[2.5rem] md:text-[3rem] font-light text-[#555] leading-snug tracking-tight">
     A Legacy of Elegance, Born in Albania
   </h2>
 
-  <p className="text-[1.1875rem] text-[#555] leading-[2.1] mb-5 font-[500] font-serif tracking-wide">
-    I&A International Company is a distinguished name in Albania’s luxury landscape. Founded by Artan Caushi in 1991, the company has consistently raised the standard in fine jewelry through a deep commitment to quality, elegance, and refinement.
+  <p className="text-[1.125rem] leading-[1.9] text-[#555] font-normal tracking-normal">
+   <br /> I&A International Company is a distinguished name in Albania’s luxury landscape. Founded by Artan Caushi in 1991, the company has consistently raised the standard in fine jewelry through a deep commitment to quality, elegance, and refinement.
   </p>
 
-  <p className="text-[1.1875rem] text-[#555] leading-[2.1] mb-7 font-[500] font-serif tracking-wide">
-    With multiple boutiques across Albania and a handpicked selection of internationally acclaimed jewelry brands, we offer more than just adornments—we offer stories of heritage, artistry, and excellence. Our growth reflects a passion for luxury that continues to shape the future of jewelry in the region.
+  <p className="text-[1.125rem] leading-[1.9] text-[#555] font-normal tracking-normal">
+   <br /> With multiple boutiques across Albania and a handpicked selection of internationally acclaimed jewelry brands, we offer more than just adornments—we offer stories of heritage, artistry, and excellence. Our growth reflects a passion for luxury that continues to shape the future of jewelry in the region.
   </p>
 
-  <a
-    href="/about-us"
-    className="inline-block px-6 py-[10px] border border-gray-700 text-gray-800 text-base font-light tracking-wide rounded-sm hover:bg-gray-800 hover:text-white transition duration-300"
-  >
-    Read more
-  </a>
+ <a
+  href="/about-us"
+  className="inline-block mt-6 border border-black text-black px-6 py-2 text-sm hover:bg-[#000] hover:text-white"
+>
+  Read more
+</a>
+
 </div>
 
   </div>
@@ -511,12 +512,12 @@ export default function About() {
 
 
 
-<section className="bg-[#fff] py-28 px-6 md:px-20 font-serif">
-  <div className="max-w-[1320px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-5 items-start">
+<section className="bg-[#fff] py-20 px-4 md:px-12 font-serif">
+  <div className="max-w-container-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-y-12 lg:gap-x-16 items-start">
 
     {/* === Right: Image (shown first on mobile) === */}
     <div className="order-1 md:order-2 w-full">
-      <div className="w-full h-[400px] md:h-[480px] overflow-hidden shadow-sm">
+      <div className="aspect-[3/2] w-full overflow-hidden shadow-sm">
         <Image
           src="/img/what-set-us-apart.jpg"
           alt="I&A International Team Discussion"
@@ -529,24 +530,25 @@ export default function About() {
 
    {/* === Left: Text Content === */}
 <div className="order-2 md:order-1 text-left">
-  <h2 className="text-4xl md:text-[3rem] font-light text-[#555] leading-tight mb-6 tracking-wide">
+  <h2 className="text-[2.5rem] md:text-[3rem] font-light text-[#555] leading-snug tracking-tight">
     What Sets Us Apart?
   </h2>
 
-  <p className="text-[1.1875rem] text-[#4a4a4acc] leading-[2.1] mb-6 font-light tracking-wide">
-    At I&A International, luxury is not just a product, it’s a legacy. Since 1991, our company has redefined elegance in Albania by blending heritage craftsmanship with modern excellence. Founded by Artan Caushi, we’ve built more than a business—we’ve cultivated a symbol of prestige and refinement.
+  <p className="text-[1.125rem] leading-[1.9] text-[#555] font-normal tracking-normal">
+   <br /> At I&A International, luxury is not just a product, it’s a legacy. Since 1991, our company has redefined elegance in Albania by blending heritage craftsmanship with modern excellence. Founded by Artan Caushi, we’ve built more than a business—we’ve cultivated a symbol of prestige and refinement.
   </p>
 
-  <p className="text-[1.1875rem] text-[#4a4a4acc] leading-[2.1] mb-8 font-light tracking-wide">
-    With a curated collection of world-renowned jewelry brands and multiple boutiques across Albania, we offer an experience where quality, authenticity, and attention to detail are paramount. Our commitment goes beyond aesthetics—it lies in delivering timeless pieces that speak of individuality and sophistication.
+  <p className="text-[1.125rem] leading-[1.9] text-[#555] font-normal tracking-normal">
+   <br /> With a curated collection of world-renowned jewelry brands and multiple boutiques across Albania, we offer an experience where quality, authenticity, and attention to detail are paramount. Our commitment goes beyond aesthetics—it lies in delivering timeless pieces that speak of individuality and sophistication.
   </p>
 
-  <a
-    href="/about-us"
-    className="inline-block px-6 py-[10px] border border-gray-700 text-gray-800 text-base font-light tracking-wide rounded-sm hover:bg-gray-800 hover:text-white transition duration-300"
-  >
-    Read more
-  </a>
+ <a
+  href="/about-us"
+  className="inline-block mt-6 border border-black text-black px-6 py-2 text-sm hover:bg-[#000] hover:text-white"
+>
+  Read more
+</a>
+
 </div>
 
 
@@ -772,60 +774,60 @@ export default function About() {
   </div>
 </section>
 
-<section className="bg-[#ececec] py-24 px-6 md:px-20 font-serif font-[450]">
-  <div className="max-w-[1320px] mx-auto">
-
-    {/* Section Title */}
-    <div className="mb-14">
-      <h2 className="text-3xl md:text-4xl text-[#2f2f2f] font-[520] border-b border-gray-300 inline-block pb-3 tracking-wide">
+<section className="bg-[#ececec] py-20 px-6 md:px-12 font-serif">
+  <div className="max-w-7xl mx-auto">
+    
+    {/* Title */}
+    <div className="mb-12">
+      <h2 className="text-3xl sm:text-4xl text-gray-800 font-normal border-b-2 border-gray-300 inline-block pb-2">
         Our Presence
       </h2>
     </div>
 
     {/* Locations Grid */}
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-
+      
       {/* Tirana */}
       <div>
-        <div className="w-full h-56 overflow-hidden rounded-md shadow-sm mb-4">
+        <div className="w-full h-56 overflow-hidden rounded-md shadow-md mb-4">
           <img
             src="/img/location-tirana.jpg"
             alt="Tirana Boutique"
             className="w-full h-full object-cover"
           />
         </div>
-        <p className="text-[0.6875rem] text-gray-500 uppercase tracking-wide mb-1 font-[450]">Tirana</p>
-        <h3 className="text-[1.05rem] text-[#2e2e2e] font-[480] leading-snug">
+        <p className="text-xs text-gray-500 uppercase mb-1">Tirana</p>
+        <h3 className="text-lg text-gray-800 font-normal leading-snug">
           Our flagship boutique is located in the heart of Tirana, showcasing exclusive international jewelry collections.
         </h3>
       </div>
 
       {/* Durres */}
       <div>
-        <div className="w-full h-56 overflow-hidden rounded-md shadow-sm mb-4">
+        <div className="w-full h-56 overflow-hidden rounded-md shadow-md mb-4">
           <img
             src="/img/location-durres.jpg"
             alt="Durres Boutique"
             className="w-full h-full object-cover"
           />
         </div>
-        <p className="text-[0.6875rem] text-gray-500 uppercase tracking-wide mb-1 font-[450]">Durres</p>
-        <h3 className="text-[1.05rem] text-[#2e2e2e] font-[480] leading-snug">
+        <p className="text-xs text-gray-500 uppercase mb-1">Durres</p>
+        <h3 className="text-lg text-gray-800 font-normal leading-snug">
           A luxurious shopping experience by the Adriatic coast, our Durres location highlights timeless elegance.
         </h3>
       </div>
 
-      {/* Global */}
+      {/* Global Partnerships */}
       <div>
-        <div className="w-full h-56 overflow-hidden rounded-md shadow-sm mb-4">
+        <div className="w-full h-56 overflow-hidden rounded-md shadow-md mb-4">
           <img
             src="/img/location-global.jpg"
             alt="Global Brand Presence"
             className="w-full h-full object-cover"
           />
         </div>
-        <p className="text-[0.6875rem] text-gray-500 uppercase tracking-wide mb-1 font-[450]">Global</p>
-        <h3 className="text-[1.05rem] text-[#2e2e2e] font-[480] leading-snug">
+        <p className="text-xs text-gray-500 uppercase mb-1">Global</p>
+        <h3 className="text-lg text-gray-800 font-normal leading-snug">
           Through our partnerships with brands like Fope, Anna Maria Cammilli, and Eberhard & Co, we bring global excellence to Albania.
         </h3>
       </div>
@@ -833,7 +835,6 @@ export default function About() {
     </div>
   </div>
 </section>
-
 
       <footer className="bg-[#222] text-white border-t border-[#9db1b4] py-12 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12 text-sm leading-relaxed">
