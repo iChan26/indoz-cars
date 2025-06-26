@@ -362,12 +362,14 @@ export default function Press() {
             >
               <Link href="/" className="block transition-opacity duration-300">Home</Link>
               <div className="pt-1">
-                <Link
-                  href="/press"
-                  className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-                >
-                  Press
-                </Link>
+                          <Link
+                              href="/press"
+                              className={`relative transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:bg-black after:transition-all after:duration-300
+    ${isActive ? 'font-semibold after:w-full' : 'after:w-0'} hover:after:w-full hover:font-semibold`}
+                          >
+                              Press
+                          </Link>
+
               </div>
               <details className="group">
                 <summary className="cursor-pointer flex items-center justify-between">
