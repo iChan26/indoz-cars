@@ -121,10 +121,10 @@ const NavBrands = ({ isMobile }) => {
 };
 
 
-export default function About() {
+export default function Press() {
 
   const router = useRouter();
-  const isBrandsPage = router.pathname === '/about-us';
+   const isActive = router.pathname === '/press';
   const [activeSection, setActiveSection] = useState(null);
   const [offsetY, setOffsetY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -302,11 +302,17 @@ export default function About() {
             {/* Center Nav */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-6 font-sans text-[15px] tracking-wide">
               <Link href="/" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">Home</Link>
-                <Link href="/press" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">Press</Link>
+                          <Link
+                              href="/press"
+                              className={`relative transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:bg-black after:transition-all after:duration-300
+    ${isActive ? 'font-semibold after:w-full' : 'after:w-0'} hover:after:w-full hover:font-semibold`}
+                          >
+                              Press
+                          </Link>
 
               {/* Dropdown Nav */}
               <div className="relative group">
-                <Link href="/our-brands" className="flex items-center gap-1 relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">
+                <Link href="/our-brands" className="flex items-center gap-1 relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all  after:duration-300 hover:after:w-full">
                   Our Brands
                   <svg className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" clipRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
