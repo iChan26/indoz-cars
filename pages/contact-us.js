@@ -438,7 +438,7 @@ const isActive = router.pathname === '/contact-us';
         </div>
       </section>
 <section className="bg-[#fff] py-16 px-4 sm:px-6 md:px-10 lg:px-12 font-serif text-center">
-  <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] font-light text-[#555] leading-snug tracking-tight">
+  <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem]  font-light text-[#555] leading-snug tracking-tight">
     Contact Us
   </h1>
 </section>
@@ -531,14 +531,14 @@ const isActive = router.pathname === '/contact-us';
 
      <section id="contact" className="py-20 px-4 sm:px-6 bg-white">
   <div className="max-w-5xl mx-auto bg-white overflow-hidden">
-    <h3 className="text-center text-lg mb-6 text-gray-700 font-light">
+    <h3 className="text-center text-[1.500rem] mb-6 text-[#555] font-light font-serif">
       For all other enquiries, please use the following contact form:
     </h3>
 
     <form className="grid grid-cols-1 md:grid-cols-2 gap-6 px-6 md:px-12 pb-10">
       {/* Title */}
       <div className="col-span-1 md:col-span-2">
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="text-[1.200rem] block text-sm font-medium text-[#111] mb-1">
           Title <span className="text-red-500">*</span>
         </label>
         <select className="w-full border border-gray-300 rounded px-3 py-2">
@@ -553,7 +553,7 @@ const isActive = router.pathname === '/contact-us';
 
       {/* First Name */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="text-[1.200rem] block text-sm font-medium text-[#111] mb-1">
           First Name <span className="text-red-500">*</span>
         </label>
         <input type="text" className="w-full border border-gray-300 rounded px-3 py-2" />
@@ -561,7 +561,7 @@ const isActive = router.pathname === '/contact-us';
 
       {/* Last Name */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="text-[1.200rem] block text-sm font-medium text-[#111] mb-1">
           Last Name <span className="text-red-500">*</span>
         </label>
         <input type="text" className="w-full border border-gray-300 rounded px-3 py-2" />
@@ -569,7 +569,7 @@ const isActive = router.pathname === '/contact-us';
 
       {/* Company */}
       <div className="col-span-1 md:col-span-2">
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="text-[1.200rem] block text-sm font-medium text-[#111] mb-1">
           Company <span className="text-red-500">*</span>
         </label>
         <input type="text" className="w-full border border-gray-300 rounded px-3 py-2" />
@@ -585,7 +585,7 @@ const isActive = router.pathname === '/contact-us';
 
       {/* Confirm Email */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="text-[1.200rem] block text-sm font-medium text-[#111] mb-1">
           Confirm Email <span className="text-red-500">*</span>
         </label>
         <input type="email" className="w-full border border-gray-300 rounded px-3 py-2" />
@@ -593,7 +593,7 @@ const isActive = router.pathname === '/contact-us';
 
       {/* Location */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="text-[1.200rem] block text-sm font-medium text-[#111] mb-1">
           Location <span className="text-red-500">*</span>
         </label>
         <select className="w-full border border-gray-300 rounded px-3 py-2">
@@ -876,7 +876,7 @@ const isActive = router.pathname === '/contact-us';
 
       {/* Profile */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="text-[1.200rem] block text-sm font-medium text-[#111] mb-1">
           Profile <span className="text-red-500">*</span>
         </label>
         <select className="w-full border border-gray-300 rounded px-3 py-2">
@@ -892,7 +892,7 @@ const isActive = router.pathname === '/contact-us';
 
       {/* Subject of Enquiry */}
       <div className="col-span-1 md:col-span-2">
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="text-[1.200rem] block text-sm font-medium text-[#111] mb-1">
           Subject of enquiry <span className="text-red-500">*</span>
         </label>
         <select className="w-full border border-gray-300 rounded px-3 py-2">
@@ -912,7 +912,7 @@ const isActive = router.pathname === '/contact-us';
 
   {/* Message */}
 <div className="col-span-1 md:col-span-2">
-  <label className="block text-sm font-medium text-gray-700 mb-1">
+  <label className="text-[1.200rem] block text-sm font-medium text-[#111] mb-1">
     Message <span className="text-red-500">*</span>
   </label>
   <textarea
@@ -925,29 +925,40 @@ const isActive = router.pathname === '/contact-us';
 
       {/* Consent */}
       <div className="col-span-1 md:col-span-2">
+         <label className="text-[1.200rem] block text-sm font-medium text-[#111] mb-1">
+          Consent for storing submitted data <span className="text-red-500">*</span>
+        </label>
         <label className="inline-flex items-start gap-2 text-sm text-gray-700">
           <input type="checkbox" className="mt-1" />
           <span>I accept I&A International’s Terms of Use and Privacy Policy</span>
         </label>
       </div>
 
-      {/* reCAPTCHA */}
-      <div className="col-span-1 md:col-span-2">
-        <div className="border border-gray-300 rounded-md p-4 flex items-center justify-between max-w-md">
-          <label className="flex items-center gap-3">
-            <input type="checkbox" className="w-4 h-4" />
-            <span className="text-sm text-gray-800">I'm not a robot</span>
-          </label>
-          <img src="/svg/RecaptchaLogo.svg" alt="reCAPTCHA" className="h-10 w-10" />
-        </div>
-      </div>
+    {/* reCAPTCHA */}
+<div className="col-span-1 md:col-span-2">
+  <span className="text-red-500">*</span>
+  <div
+    className="bg-[#f5f5f5] border border-gray-300 rounded-md p-4 flex items-center justify-between"
+    style={{ maxWidth: '15rem' }}
+  >
+    <label className="flex items-center gap-3">
+      <input type="checkbox" className="w-4 h-4" />
+      <span className="text-sm text-[#222]">I'm not a robot</span>
+    </label>
+    <img src="/svg/RecaptchaLogo.svg" alt="reCAPTCHA" className="h-10 w-10" />
+  </div>
+</div>
 
+
+  <label className="block text-m text-[#555] font-medium mb-1">
+       <span className="text-red-500">*</span> Mandatory fields
+        </label>
       {/* Submit */}
       <div className="col-span-1 md:col-span-2">
-        <button type="submit" className="border border-gray-800 text-gray-800 px-6 py-2 rounded hover:bg-gray-800 hover:text-white transition-all">
+        <button type="submit" className="border border-[#000] px-6 py-2 hover:bg-[#000] hover:text-white">
           Submit
         </button>
-        <p className="mt-4 text-xs text-gray-500">
+        <p className="font-serif text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] leading-[1.9] text-[#555] font-normal tracking-normal sm:text-left mt-10">
           Your personal details are intended for use solely by I&A International. We will not send you any information other than what you have requested. Before submitting, please review our{' '}
           <a href="#" className="underline">Terms of Use</a> and <a href="#" className="underline">Privacy Policy</a>.
         </p>
