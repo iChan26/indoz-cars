@@ -119,9 +119,9 @@ const NavBrands = ({ isMobile }) => {
 export default function About() {
 
   const cn = (...classes) => classes.filter(Boolean).join(" ");
-
-
   const router = useRouter();
+
+const isOurBrandsActive = router.pathname.startsWith('/our-brands');
   const isBrandsPage = router.pathname === '/our-brands';
   const [activeSection, setActiveSection] = useState(null);
   const [offsetY, setOffsetY] = useState(0);
@@ -378,39 +378,53 @@ const [isVisible, setIsVisible] = useState(false);
                           <Link
                               href="/press"
                               className={`relative transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:bg-black after:transition-all after:duration-300
-    ${isActive ? 'font-semibold after:w-full' : 'after:w-0'} hover:after:w-full hover:font-semibold`}
+    : 'after:w-0'} hover:after:w-full hover:font-semibold`}
                           >
                               Press
                           </Link>
 
               </div>
-              <details className="group">
-                <summary className="cursor-pointer flex items-center justify-between">
-                  <div className="flex items-center gap-1">
-                    <Link href="/our-brands" className="hover:font-semibold transition">
-                      Our Brands
-                    </Link>
-                    <svg
-                      className="w-4 h-4 ml-2 transform transition-transform group-open:rotate-90"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
+            <details className="group" open={isOurBrandsActive}>
+  <summary
+    className={`cursor-pointer list-none px-1 py-2 flex items-center w-full ${
+      isOurBrandsActive ? 'font-semibold' : ''
+    }`}
+  >
+    <div className="flex items-center gap-2">
+      {/* Our Brands link */}
+      <Link
+        href="/our-brands"
+        className={`relative transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:bg-black after:transition-all after:duration-300 ${
+          isOurBrandsActive ? 'after:w-full font-semibold' : 'after:w-0'
+        }`}
+      >
+        Our Brands
+      </Link>
 
-                </summary>
+      {/* Arrow beside the text */}
+      <svg
+        className="w-4 h-4 transform transition-transform group-open:rotate-90"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        viewBox="0 0 24 24"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </div>
+  </summary>
 
-                <div className="pl-4 pt-2 space-y-2">
-                  {brands.map((b) => (
-                    <Link key={b.name} href={b.href} className="block hover:text-gray-300 transition">
-                      {b.name}
-                    </Link>
-                  ))}
-                </div>
-              </details>
+  {/* Dropdown content */}
+  <div className="pl-4 pt-2 space-y-2">
+    {brands.map((b) => (
+      <Link key={b.name} href={b.href} className="block hover:text-gray-300 transition">
+        {b.name}
+      </Link>
+    ))}
+  </div>
+</details>
+
+
 
             <Link
               href="/about-us"
