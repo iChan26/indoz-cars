@@ -925,7 +925,7 @@ const isActive = router.pathname === '/contact-us';
 
       {/* Consent */}
       <div className="col-span-1 md:col-span-2">
-         <label className="text-[1.200rem] block text-sm font-medium text-[#111] mb-1">
+         <label className="text-[1.300rem] block text-sm font-medium text-[#111] mb-1">
           Consent for storing submitted data <span className="text-red-500">*</span>
         </label>
         <label className="inline-flex items-start gap-2 text-sm text-gray-700">
