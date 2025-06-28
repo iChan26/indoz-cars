@@ -130,7 +130,20 @@ const [prevScrollPos, setPrevScrollPos] = useState(0);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [prevScrollPos]);
+const [isVisible, setIsVisible] = useState(false);
 
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 100) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
   return (
    <>
       <Head>
@@ -559,30 +572,32 @@ const [prevScrollPos, setPrevScrollPos] = useState(0);
   </div>
 </section>
 
-<footer className="bg-[#222] text-white border-t border-[#9db1b4] py-12 px-4 sm:px-6">
+  <footer className="bg-[#222] text-white border-t border-[#9db1b4] py-12 px-4 sm:px-6">
   <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12 text-sm leading-relaxed">
-    {/* Logo & Copyright */}
+
+    {/* === Logo & Copyright === */}
     <div className="space-y-4">
-      <Link href="/" passHref>
-        <Image
-          src="/img/logo.png"
-          alt="I&A International Logo"
-          width={140}
-          height={40}
-          priority
-          className="filter brightness-0 invert mb-4 cursor-pointer"
-        />
+       <Link href="/" passHref>
+      <Image
+        src="/img/logo.png"
+        alt="I&A International Logo"
+        width={140}
+        height={40}
+        priority
+         className="filter brightness-0 invert mb-4"
+      />
       </Link>
       <p className="text-xs text-white">
         © {new Date().getFullYear()} I&A International.<br />All Rights Reserved.
       </p>
     </div>
 
-    {/* Contact Us */}
+    {/* === Contact Us === */}
     <div>
       <h4 className="font-serif text-lg text-[#fff] mb-3 border-b border-[#fff] pb-1">Contact Us</h4>
       <p className="mb-2">info@ia-international.com</p>
 
+      {/* Optional: Email input box styled like Richemont */}
       <div className="flex mt-4 border border-white bg-white text-gray-700 overflow-hidden max-w-xs">
         <input
           type="email"
@@ -596,6 +611,7 @@ const [prevScrollPos, setPrevScrollPos] = useState(0);
         </button>
       </div>
 
+      {/* Social icons */}
       <div className="flex gap-4 mt-4 text-[#fff]">
         <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <LinkedinIcon className="w-5 h-5" />
@@ -609,7 +625,7 @@ const [prevScrollPos, setPrevScrollPos] = useState(0);
       </div>
     </div>
 
-    {/* Explore Links */}
+    {/* === Explore Links (Your site sections) === */}
     <div>
       <h4 className="font-serif text-lg text-[#fff] mb-3 border-b border-[#fff] pb-1">Explore</h4>
       <ul className="space-y-2">
@@ -620,7 +636,7 @@ const [prevScrollPos, setPrevScrollPos] = useState(0);
       </ul>
     </div>
 
-    {/* Our Address */}
+    {/* === Our Address === */}
     <div>
       <h4 className="font-serif text-lg text-[#fff] mb-3 border-b border-[#fff] pb-1">Our Address</h4>
       <p>Rr.Kavajës, Pallati Mio 2000<br />Tirana, Albania</p>
@@ -628,24 +644,23 @@ const [prevScrollPos, setPrevScrollPos] = useState(0);
   </div>
 </footer>
 
-
-      {/* === Scroll to Top Button === */}
-      <button
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        aria-label="Scroll to top"
-        className="fixed bottom-6 right-6 z-[99] p-3 rounded-full bg-black text-white shadow-xl hover:bg-gray-800 transition-all duration-300"
-      >
-        <svg
-          className="w-5 h-5 animate-bounce"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
+ {isVisible && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Scroll to top"
+          className="fixed bottom-6 right-6 z-[99] p-3 rounded-full bg-black text-white shadow-xl hover:bg-gray-800 transition-all duration-300"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
-        </svg>
-      </button>
-</>
-   
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+          </svg>
+        </button>
+      )}
+    </>
   );
 }

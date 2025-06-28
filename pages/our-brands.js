@@ -62,7 +62,6 @@ const NavBrands = ({ isMobile }) => {
     { name: 'ROBERTO BRAVO', href: '/our-brands/roberto-bravo' },
   ]
 
-
   return (
     <div className="relative group w-full">
       <Link
@@ -209,6 +208,20 @@ export default function About() {
     { name: 'PANDORA', href: '/our-brands/pandora' },
     { name: 'ROBERTO BRAVO', href: '/our-brands/roberto-bravo' },
   ]
+const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 100) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
 
    const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -276,25 +289,32 @@ export default function About() {
 
             {/* Center Nav */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-6 font-sans text-[15px] tracking-wide">
-              <Link href="/" className="relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full">Home</Link>
-                          <Link
-                              href="/press"
-                              className={`relative transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:bg-black after:transition-all after:duration-300
-    hover:after:w-full hover:font-semibold`}
-                          >
-                              Press
-                          </Link>
 
-              {/* Dropdown Nav */}
-              <div className="relative group">
+              {/* Home */}
+              <Link
+                href="/"
+                className="relative transition hover:font-semibold after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+              >
+                Home
+              </Link>
+
+              {/* Press */}
+              <Link
+                href="/press"
+                className="relative transition hover:font-semibold after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+              >
+                Press
+              </Link>
+
+              {/* Dropdown Nav: Our Brands (Always Active) */}
+              <div className="relative group flex items-center">
                 <Link
                   href="/our-brands"
-                  className={`flex items-center gap-1 relative transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:bg-black after:transition-all after:duration-300
-        ${isActive ? 'font-semibold after:w-full' : 'hover:font-semibold after:w-0 hover:after:w-full'}`}
+                  className="flex items-center gap-1 relative transition font-semibold after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-full after:bg-black after:transition-all after:duration-300"
                 >
                   Our Brands
                   <svg
-                    className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+                    className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
@@ -308,21 +328,27 @@ export default function About() {
 
                 <div className="absolute top-full mt-2 w-48 bg-white text-black rounded-md shadow-lg z-50 divide-y divide-gray-200 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300">
                   {brands.map((b) => (
-                    <Link key={b.name} href={b.href} className="block px-4 py-2 hover:bg-gray-100 whitespace-nowrap transition">
+                    <Link
+                      key={b.name}
+                      href={b.href}
+                      className="block px-4 py-2 hover:bg-gray-100 whitespace-nowrap transition"
+                    >
                       {b.name}
                     </Link>
                   ))}
                 </div>
               </div>
+
+              {/* About Us */}
               <Link
                 href="/about-us"
-                className={`relative hover:font-semibold transition after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:bg-black after:transition-all after:duration-300 ${router.pathname === '/about-us' ? 'after:w-full font-semibold' : 'after:w-0'
-                  }`}
+                className="relative transition hover:font-semibold after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
               >
                 About Us
               </Link>
-            
+
             </div>
+
           </div>
 
           {/* Mobile Header */}
@@ -535,96 +561,95 @@ export default function About() {
 
 
 
+ <footer className="bg-[#222] text-white border-t border-[#9db1b4] py-12 px-4 sm:px-6">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12 text-sm leading-relaxed">
 
-          <footer className="bg-[#222] text-white border-t border-[#9db1b4] py-12 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12 text-sm leading-relaxed">
+    {/* === Logo & Copyright === */}
+    <div className="space-y-4">
+       <Link href="/" passHref>
+      <Image
+        src="/img/logo.png"
+        alt="I&A International Logo"
+        width={140}
+        height={40}
+        priority
+         className="filter brightness-0 invert mb-4"
+      />
+      </Link>
+      <p className="text-xs text-white">
+        © {new Date().getFullYear()} I&A International.<br />All Rights Reserved.
+      </p>
+    </div>
 
-          {/* === Logo & Copyright === */}
-          <div className="space-y-4">
-            <Link href="/" passHref>
-              <Image
-                src="/img/logo.png"
-                alt="I&A International Logo"
-                width={140}
-                height={40}
-                priority
-                className="filter brightness-0 invert mb-4 cursor-pointer"
-              />
-            </Link>
-            <p className="text-xs text-white">
-              © {new Date().getFullYear()} I&A International.<br />All Rights Reserved.
-            </p>
-          </div>
+    {/* === Contact Us === */}
+    <div>
+      <h4 className="font-serif text-lg text-[#fff] mb-3 border-b border-[#fff] pb-1">Contact Us</h4>
+      <p className="mb-2">info@ia-international.com</p>
 
-          {/* === Contact Us === */}
-          <div>
-            <h4 className="font-serif text-lg text-[#fff] mb-3 border-b border-[#fff] pb-1">Contact Us</h4>
-            <p className="mb-2">info@ia-international.com</p>
+      {/* Optional: Email input box styled like Richemont */}
+      <div className="flex mt-4 border border-white bg-white text-gray-700 overflow-hidden max-w-xs">
+        <input
+          type="email"
+          placeholder="Enter your email address"
+          className="flex-1 px-3 py-2 text-sm outline-none bg-white"
+        />
+        <button className="bg-[#000] text-white px-4 flex items-center justify-center">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
 
-            {/* Optional: Email input box styled like Richemont */}
-            <div className="flex mt-4 border border-white bg-white text-gray-700 overflow-hidden max-w-xs">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="flex-1 px-3 py-2 text-sm outline-none bg-white"
-              />
-              <button className="bg-[#000] text-white px-4 flex items-center justify-center">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
+      {/* Social icons */}
+      <div className="flex gap-4 mt-4 text-[#fff]">
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <LinkedinIcon className="w-5 h-5" />
+        </a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <FacebookIcon className="w-5 h-5" />
+        </a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <InstagramIcon className="w-5 h-5" />
+        </a>
+      </div>
+    </div>
 
-            {/* Social icons */}
-            <div className="flex gap-4 mt-4 text-[#fff]">
-              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <LinkedinIcon className="w-5 h-5" />
-              </a>
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <FacebookIcon className="w-5 h-5" />
-              </a>
-              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <InstagramIcon className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
+    {/* === Explore Links (Your site sections) === */}
+    <div>
+      <h4 className="font-serif text-lg text-[#fff] mb-3 border-b border-[#fff] pb-1">Explore</h4>
+      <ul className="space-y-2">
+        <li><Link href="/">Home</Link></li>
+        <li><Link href="/about-us">About Us</Link></li>
+        <li><Link href="/our-brands">Our Brands</Link></li>
+        <li><Link href="/press">Press</Link></li>
+      </ul>
+    </div>
 
-          {/* === Explore Links (Your site sections) === */}
-          <div>
-            <h4 className="font-serif text-lg text-[#fff] mb-3 border-b border-[#fff] pb-1">Explore</h4>
-            <ul className="space-y-2">
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/about-us">About Us</Link></li>
-              <li><Link href="/our-brands">Our Brands</Link></li>
-              <li><Link href="/press">Press</Link></li>
-            </ul>
-          </div>
+    {/* === Our Address === */}
+    <div>
+      <h4 className="font-serif text-lg text-[#fff] mb-3 border-b border-[#fff] pb-1">Our Address</h4>
+      <p>Rr.Kavajës, Pallati Mio 2000<br />Tirana, Albania</p>
+    </div>
+  </div>
+</footer>
 
-          {/* === Our Address === */}
-          <div>
-            <h4 className="font-serif text-lg text-[#fff] mb-3 border-b border-[#fff] pb-1">Our Address</h4>
-            <p>Rr.Kavajës, Pallati Mio 2000<br />Tirana, Albania</p>
-          </div>
-        </div>
-      </footer>
-
-      {/* === Scroll to Top Button === */}
-      <button
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        aria-label="Scroll to top"
-        className="fixed bottom-6 right-6 z-[99] p-3 rounded-full bg-black text-white shadow-xl hover:bg-gray-800 transition-all duration-300"
-      >
-        <svg
-          className="w-5 h-5 animate-bounce"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
+ {isVisible && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Scroll to top"
+          className="fixed bottom-6 right-6 z-[99] p-3 rounded-full bg-black text-white shadow-xl hover:bg-gray-800 transition-all duration-300"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
-        </svg>
-      </button>
-
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+          </svg>
+        </button>
+      )}
     </>
   );
 }
