@@ -515,7 +515,7 @@ useEffect(() => {
         </section>
 
     
-<section className="relative w-full h-[850px] overflow-hidden font-serif">
+<section className="relative w-full h-[600px] sm:h-[700px] md:h-[850px] overflow-hidden font-serif">
   {/* === Background Video === */}
   <video
     ref={videoRef}
@@ -535,29 +535,31 @@ useEffect(() => {
   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 z-10" />
 
   {/* === Bottom Center Text === */}
-  <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 text-center px-4">
-  <h1 className="inline-block text-white text-[3rem] font-['Playfair_Display',_serif] leading-snug tracking-wide whitespace-nowrap">
-      Luxury Redefined
-    </h1>
-  </div>
+<div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 text-center px-4">
+  <h1 className="inline-block text-white text-[1.75rem] sm:text-[2.25rem] md:text-[3rem] lg:text-[3.5rem] font-['Playfair_Display',_serif] leading-tight tracking-wide whitespace-nowrap">
+    Luxury Redefined
+  </h1>
+</div>
+
 
   {/* === Play / Pause Button === */}
   <button
     onClick={togglePlayback}
-    className="absolute bottom-5 right-6 z-30 text-white hover:opacity-80 transition"
+    className="absolute bottom-4 sm:bottom-5 right-4 sm:right-6 z-30 text-white hover:opacity-80 transition"
     aria-label={isPlaying ? 'Pause video' : 'Play video'}
   >
     {isPlaying ? (
-      <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+      <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="currentColor" viewBox="0 0 24 24">
         <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
       </svg>
     ) : (
-      <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+      <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="currentColor" viewBox="0 0 24 24">
         <path d="M8 5v14l11-7z" />
       </svg>
     )}
   </button>
 </section>
+
 
 
 <section className="bg-white py-20 px-4 md:px-12 font-serif">
