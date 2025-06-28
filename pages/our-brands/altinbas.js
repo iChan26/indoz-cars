@@ -453,10 +453,10 @@ const [prevScrollPos, setPrevScrollPos] = useState(0);
 
       </div>
       <h3 className="text-xl sm:text-2xl font-[520] text-[#2e2e2e] mb-3 sm:mb-4 tracking-wide">
-        Chairman
+        Partnership with I&A
       </h3>
       <p className="text-[0.95rem] sm:text-[1.0625rem] text-[#3a3a3a] leading-[1.7] sm:leading-[1.9] font-[450] tracking-wide">
-      Sadettin Altınbaş
+      Since 2007
       </p>
     </div>
 
@@ -471,10 +471,10 @@ const [prevScrollPos, setPrevScrollPos] = useState(0);
 
       </div>
       <h3 className="text-xl sm:text-2xl font-[520] text-[#2e2e2e] mb-3 sm:mb-4 tracking-wide">
-       Store Network
+       Operated by I&A
       </h3>
       <p className="text-[0.95rem] sm:text-[1.0625rem] text-[#3a3a3a] leading-[1.7] sm:leading-[1.9] font-[450] tracking-wide">
-       Over <strong>100 boutiques worldwide</strong>
+       Over <strong>4 countries</strong>
       </p>
     </div>
 
