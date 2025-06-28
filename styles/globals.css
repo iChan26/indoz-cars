@@ -11,7 +11,9 @@
   font-weight: normal;
   font-style: normal;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: 'Termina', 'Inter', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }

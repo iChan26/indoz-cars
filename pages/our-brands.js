@@ -418,30 +418,35 @@ export default function About() {
           </div>
         </div>
       </section>
-<section className="flex flex-col md:flex-row items-center justify-between py-20 px-4 md:px-12 font-serif bg-white">
-  {/* Image: Show first on mobile, second on desktop */}
-  <div className="w-full md:w-1/2 order-1 md:order-2 mb-6 md:mb-0">
+
+
+      <section className="flex flex-col md:flex-row items-center justify-between py-16 px-4 sm:px-6 md:px-12 font-serif bg-white">
+  {/* === Image: First on mobile, second on desktop === */}
+  <div className="w-full md:w-1/2 order-1 md:order-2 mb-8 md:mb-0">
     <img
       src="/img/hero-jewelry.jpg"
       alt="Jewelry model"
       className="w-full h-auto object-cover shadow-lg"
     />
- <p className="text-sm text-gray-500 text-center mt-2">© I&A International – 2025</p>
+    <p className="text-xs sm:text-sm text-gray-500 text-center mt-2">
+      © I&A International – 2025
+    </p>
   </div>
 
-  {/* Text: Show second on mobile, first on desktop */}
-  <div className="w-full md:w-1/2 order-2 md:order-1">
-    <h1 className="text-4xl md:text-5xl font-serif text-[#555] mb-6">
+  {/* === Text: Second on mobile, first on desktop === */}
+  <div className="w-full md:w-1/2 order-2 md:order-1 text-left">
+    <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] font-light text-[#555] leading-snug tracking-tight">
       Where luxury meets elegance and quality
     </h1>
-    <p className="text-lg text-gray-700 leading-relaxed mb-4">
+    <p className="text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] leading-[1.7] sm:leading-[1.8] text-[#444] font-normal tracking-normal mt-4">
       I&A International Company is a well-established Albanian jewelry retailer that was founded by Artan Caushi in 1991.
     </p>
-    <p className="text-lg text-gray-700 leading-relaxed">
+    <p className="text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] leading-[1.7] sm:leading-[1.8] text-[#444] font-normal tracking-normal mt-4">
       The company has since grown to become a leading player in the jewelry industry, with several stores across Albania and an extensive collection of internationally acclaimed jewelry brands.
     </p>
   </div>
 </section>
+
 
       <section className="bg-gray-50 py-20 px-6 md:px-24 text-center">
       <h2 className="text-4xl font-serif text-[#555]">Our Presence & Values</h2>
